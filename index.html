@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Game Tier List</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0b14;
+      --card: #11121f;
+      --accent: #7b5eff;
+      --accent-dark: #5a3eff;
+      --text: #e0e0ff;
+      --muted: #a0a0cc;
+      --error: #ff6b6b;
+      --success: #4ade80;
+      --glow: 0 0 25px rgba(123, 94, 255, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(123, 94, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(90, 62, 255, 0.08) 0%, transparent 60%);
+    }
+
+    .container {
+      background: linear-gradient(135deg, #11121f, #0c0d18);
+      width: 100%;
+      max-width: 420px;
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      border: 1px solid #7c5eff2e;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7), inset 0 0 40px rgba(123, 94, 255, 0.05);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .logo img {
+      height: 110px;
+      filter: drop-shadow(0 0 20px rgba(123, 94, 255, 0.7));
+      transition: transform 0.4s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #fff;
+      text-shadow: 0 3px 15px rgba(123, 94, 255, 0.5);
+      letter-spacing: 1px;
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+      position: relative;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(20, 20, 35, 0.8);
+      border: 1px solid rgba(123, 94, 255, 0.25);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(123, 94, 255, 0.2);
+    }
+
+    input::placeholder {
+      color: #777;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(123, 94, 255, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(123, 94, 255, 0.5);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button.loading::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border: 3px solid #fff;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @keyframes spin {
+      to { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    .message {
+      text-align: center;
+      font-size: 0.95rem;
+      margin: 1rem 0;
+      min-height: 1.2rem;
+    }
+
+    .error { color: var(--error); }
+    .success { color: var(--success); }
+
+    .toggle-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .toggle-link a {
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .toggle-link a:hover {
+      color: #a08fff;
+      text-decoration: underline;
+    }
+
+    .admin-toggle {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .admin-toggle a {
+      color: #ff6b6b;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .admin-toggle a:hover {
+      color: #ff8b8b;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        margin: 1rem;
+        padding: 2rem 1.5rem;
+      }
+      h2 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- LOGIN FORM -->
+    <div id="login-form">
+      <div class="logo">
+        <img src="asset/logo.png" alt="Game Tier List Logo">
+      </div>
+      <h2>Login</h2>
+
+      <div class="form-group">
+        <input type="text" id="loginUsername" placeholder="Username" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+      </div>
+
+      <button id="loginBtn" onclick="login()">Masuk</button>
+
+      <div id="loginMsg" class="message"></div>
+
+      <div class="toggle-link">
+        Belum punya akun? <a onclick="toggleForm()">Daftar sekarang</a>
+      </div>
+
+      <div class="admin-toggle">
+        <a onclick="toggleAdminForm()">🔐 Admin Login</a>
+      </div>
+    </div>
+
+    <!-- ADMIN LOGIN FORM -->
+    <div id="admin-form" style="display:none;">
+      <div class="logo">
+        <img src="asset/logo.png" alt="Admin Panel">
+      </div>
+      <h2>Admin Login</h2>
+
+      <div class="form-group">
+        <input type="text" id="adminUsername" placeholder="Admin Username" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <input type="password" id="adminPassword" placeholder="Admin Password" autocomplete="current-password">
+      </div>
+
+      <button id="adminBtn" onclick="adminLogin()">Login Admin</button>
+
+      <div id="adminMsg" class="message"></div>
+
+      <div class="toggle-link">
+        <a onclick="toggleAdminForm()">← Kembali ke Login</a>
+      </div>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="register-form" style="display:none;">
+      <h2>Daftar Akun</h2>
+
+      <div class="form-group">
+        <input type="text" id="regUsername" placeholder="Username" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <input type="email" id="regEmail" placeholder="Email" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <input type="password" id="regPassword" placeholder="Password (min. 6 karakter)" autocomplete="new-password">
+      </div>
+
+      <button id="regBtn" onclick="register()">Buat Akun</button>
+
+      <div id="registerMsg" class="message"></div>
+
+      <div class="toggle-link">
+        Sudah punya akun? <a onclick="toggleForm()">Login</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("login-form");
+    const registerForm = document.getElementById("register-form");
+    const adminForm = document.getElementById("admin-form");
+    const loginMsg = document.getElementById("loginMsg");
+    const registerMsg = document.getElementById("registerMsg");
+    const adminMsg = document.getElementById("adminMsg");
+    const loginBtn = document.getElementById("loginBtn");
+    const regBtn = document.getElementById("regBtn");
+    const adminBtn = document.getElementById("adminBtn");
+
+    // Admin credentials (ganti dengan yang Anda inginkan)
+    const ADMIN_USERNAME = "admin";
+    const ADMIN_PASSWORD = "admin123";
+
+    function showMessage(el, text, type = 'error') {
+      el.className = `message ${type}`;
+      el.innerText = text;
+    }
+
+    function clearMessages() {
+      loginMsg.innerText = "";
+      registerMsg.innerText = "";
+      adminMsg.innerText = "";
+    }
+
+    function toggleForm() {
+      clearMessages();
+      loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+      registerForm.style.display = registerForm.style.display === "none" ? "block" : "none";
+      adminForm.style.display = "none";
+    }
+
+    function toggleAdminForm() {
+      clearMessages();
+      adminForm.style.display = adminForm.style.display === "none" ? "block" : "none";
+      loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+      registerForm.style.display = "none";
+    }
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function register() {
+      const username = regUsername.value.trim();
+      const email = regEmail.value.trim();
+      const password = regPassword.value.trim();
+
+      if (!username || !email || !password) {
+        showMessage(registerMsg, "Semua field wajib diisi!");
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        showMessage(registerMsg, "Format email tidak valid!");
+        return;
+      }
+
+      if (password.length < 6) {
+        showMessage(registerMsg, "Password minimal 6 karakter!");
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      if (users.some(u => u.username === username)) {
+        showMessage(registerMsg, "Username sudah digunakan!");
+        return;
+      }
+
+      if (users.some(u => u.email === email)) {
+        showMessage(registerMsg, "Email sudah terdaftar!");
+        return;
+      }
+
+      users.push({ username, email, password });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      showMessage(registerMsg, "Akun berhasil dibuat! Mengarahkan ke login...", "success");
+      regBtn.disabled = true;
+      setTimeout(() => {
+        toggleForm();
+        regBtn.disabled = false;
+        regUsername.value = regEmail.value = regPassword.value = "";
+      }, 1800);
+    }
+
+    function login() {
+      const username = loginUsername.value.trim();
+      const password = loginPassword.value.trim();
+
+      if (!username || !password) {
+        showMessage(loginMsg, "Username dan password wajib diisi!");
+        return;
+      }
+
+      loginBtn.disabled = true;
+      loginBtn.classList.add("loading");
+      loginBtn.innerText = "Memeriksa...";
+
+      setTimeout(() => {
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+        if (users.length === 0) {
+          showMessage(loginMsg, "Belum ada akun terdaftar. Silakan daftar dulu.");
+          loginBtn.disabled = false;
+          loginBtn.classList.remove("loading");
+          loginBtn.innerText = "Masuk";
+          return;
+        }
+        const user = users.find(u => u.username === username && u.password === password);
+
+        if (!user) {
+          showMessage(loginMsg, "Username atau password salah! Pastikan sudah daftar dan data benar.");
+          loginBtn.disabled = false;
+          loginBtn.classList.remove("loading");
+          loginBtn.innerText = "Masuk";
+        } else {
+          showMessage(loginMsg, "Login berhasil! Mengarahkan...", "success");
+          localStorage.setItem("isLogin", "true");
+          localStorage.setItem("activeUser", user.username);
+          localStorage.setItem("userRole", "user");
+          setTimeout(() => {
+            window.location.href = "choose game.html";
+          }, 1200);
+        }
+      }, 800);
+    }
+
+    function adminLogin() {
+      const username = adminUsername.value.trim();
+      const password = adminPassword.value.trim();
+
+      if (!username || !password) {
+        showMessage(adminMsg, "Username dan password wajib diisi!");
+        return;
+      }
+
+      adminBtn.disabled = true;
+      adminBtn.classList.add("loading");
+      adminBtn.innerText = "Verifikasi...";
+
+      setTimeout(() => {
+        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+          showMessage(adminMsg, "Login Admin berhasil! Mengarahkan...", "success");
+          localStorage.setItem("isAdmin", "true");
+          localStorage.setItem("adminUser", username);
+          localStorage.setItem("userRole", "admin");
+          setTimeout(() => {
+            window.location.href = "admin-panel.html";
+          }, 1200);
+        } else {
+          showMessage(adminMsg, "Username admin: admin | Password: admin123 (default, bisa diubah di kode)", "error");
+          adminBtn.disabled = false;
+          adminBtn.classList.remove("loading");
+          adminBtn.innerText = "Login Admin";
+        }
+      }, 800);
+    }
+
+    // Optional: Enter key support
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        if (loginForm.style.display !== "none") login();
+        else if (registerForm.style.display !== "none") register();
+        else if (adminForm.style.display !== "none") adminLogin();
+      }
+    });
+  </script>
+
+</body>
+</html>
