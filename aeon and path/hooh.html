@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HooH • Aeon of Equilibrium</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #000000;
+      --card:        #0a0a0a;
+      --accent-silver:#c0c0c0;
+      --equil:       #ffffff;
+      --equil-dark:  #808080;
+      --text:        #f5f5f5;
+      --muted:       #a9a9a9;
+      --border:      #2a2a2a;
+      --glow:        0 0 30px rgba(192, 192, 192, 0.45);
+      --glow-dark:   0 0 25px rgba(128, 128, 128, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #111111 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(192, 192, 192, 0.06) 0%, transparent 70%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.92), rgba(0, 0, 0, 0.88));
+      border-radius: 20px;
+      border: 1px solid rgba(192, 192, 192, 0.20);
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.98), inset 0 0 90px rgba(192, 192, 192, 0.03);
+      backdrop-filter: blur(4px);
+    }
+
+    .header {
+      padding: 3.5rem 3.5rem 2.5rem;
+      background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+      border-bottom: 1px solid rgba(192, 192, 192, 0.25);
+      position: relative;
+      text-align: center;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(192, 192, 192, 0.06) 0%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(3.2rem, 8.5vw, 5.2rem);
+      color: var(--equil);
+      letter-spacing: 6px;
+      text-shadow: var(--glow), var(--glow-dark), 0 6px 30px rgba(192, 192, 192, 0.4);
+      margin-bottom: 0.8rem;
+    }
+
+    .header .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--muted);
+      letter-spacing: 2.5px;
+      text-shadow: 0 3px 12px rgba(192, 192, 192, 0.3);
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 2.2rem;
+      left: 2.5rem;
+      background: linear-gradient(135deg, rgba(192, 192, 192, 0.85), rgba(128, 128, 128, 0.7));
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(192, 192, 192, 0.3);
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+      box-shadow: var(--glow);
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, var(--equil), var(--accent-silver));
+      transform: translateY(-5px) scale(1.06);
+      box-shadow: 0 15px 40px rgba(192, 192, 192, 0.7), var(--glow-dark);
+    }
+
+    .content {
+      padding: 4rem 4rem 5.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 2.8rem 2.2rem; }
+      .back-btn { position: static; margin: 0 auto 2.5rem; display: block; width: fit-content; }
+      .header { padding: 2.8rem 2rem 2.2rem; }
+    }
+
+    .profile {
+      display: flex;
+      gap: 3.5rem;
+      align-items: center;
+      margin: 0 auto 4.5rem;
+      max-width: 950px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .profile img {
+      width: 240px;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 20px;
+      border: 4px solid rgba(192, 192, 192, 0.35);
+      box-shadow: var(--glow), var(--glow-dark), 0 0 60px rgba(192, 192, 192, 0.35);
+      background: rgba(192, 192, 192, 0.08);
+      transition: all 0.5s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.1) rotate(1deg);
+      box-shadow: 0 0 90px rgba(192, 192, 192, 0.7), var(--glow-dark);
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .profile-info h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 4.2rem;
+      color: white;
+      margin-bottom: 0.7rem;
+      text-shadow: 0 5px 25px rgba(192, 192, 192, 0.6);
+    }
+
+    .tag {
+      background: linear-gradient(90deg, var(--accent-silver), var(--equil), #808080);
+      color: #000000;
+      padding: 0.7rem 2rem;
+      border-radius: 50px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      box-shadow: var(--glow), 0 8px 25px rgba(192, 192, 192, 0.55);
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 50px rgba(192, 192, 192, 0.8);
+    }
+
+    .section {
+      margin-bottom: 5.5rem;
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--equil);
+      font-size: 2.6rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      text-shadow: 0 3px 15px rgba(192, 192, 192, 0.5);
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--equil), var(--accent-silver), #808080, transparent);
+      border-radius: 5px;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section p strong {
+      color: #f5f5f5;
+      font-weight: 700;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 2.2rem;
+      margin: 1.6rem 0;
+    }
+
+    .section ul li {
+      margin-bottom: 1.1rem;
+      position: relative;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .section ul li::before {
+      content: '⚖️';
+      color: var(--equil);
+      position: absolute;
+      left: -2.2rem;
+      font-size: 1.5rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.2rem;
+      margin-top: 3rem;
+    }
+
+    .info-box {
+      background: rgba(10, 10, 10, 0.8);
+      border: 1px solid rgba(192, 192, 192, 0.2);
+      border-radius: 18px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-box:hover {
+      border-color: var(--equil);
+      background: rgba(10, 10, 10, 0.95);
+      transform: translateY(-10px);
+      box-shadow: var(--glow), var(--glow-dark), 0 20px 50px rgba(192, 192, 192, 0.35);
+    }
+
+    .info-box b {
+      color: var(--equil);
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 1rem;
+      text-shadow: 0 3px 10px rgba(192, 192, 192, 0.5);
+    }
+
+    .info-box span {
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .profile { flex-direction: column; text-align: center; gap: 2rem; }
+      .profile img { width: 200px; height: 200px; }
+      .profile-info h2 { font-size: 3.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <a href="../aeon and path.html" class="back-btn">← Kembali</a>
+    <h1>HooH</h1>
+    <div class="subtitle">Aeon of Equilibrium</div>
+  </div>
+
+  <div class="content">
+
+    <div class="profile">
+      <img src="Aeon_HooH.webp" alt="HooH — Aeon of Equilibrium">
+      <div class="profile-info">
+        <h2>HooH</h2>
+        <span class="tag">Aeon of Equilibrium</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lore</h3>
+      <p>
+        HooH adalah Aeon yang memimpin Path of Equilibrium (Jalur Keseimbangan), mewakili keseimbangan mutlak di seluruh alam semesta. THEY tidak memihak, tidak punya preferensi, tidak suka atau benci — segala sesuatu harus berada dalam keseimbangan sempurna, baik itu kehidupan dan kematian, kebahagiaan dan penderitaan, atau kekuatan dan kelemahan.
+      </p>
+      <p>
+        HooH adalah salah satu Aeon paling netral dan pasif. Mereka tidak pernah berinteraksi secara aktif dengan makhluk hidup atau Aeon lain kecuali ketika keseimbangan alam semesta terganggu secara ekstrem. Jika satu Path menjadi terlalu dominan (misalnya Destruction atau Abundance), HooH akan secara otomatis menimbang dengan memperkuat Path lawannya untuk mengembalikan keseimbangan.
+      </p>
+      <p>
+        HooH digambarkan sebagai entitas yang tidak memiliki kehendak pribadi — mereka adalah "timbangan kosmik" yang bekerja secara mekanis. Dalam Simulated Universe, HooH jarang muncul, tapi ketika muncul, mereka sering menyebabkan perubahan halus yang menyeimbangkan kekuatan (misalnya mengurangi kekuatan Aeon yang terlalu kuat atau memperkuat yang terlalu lemah).
+      </p>
+      <p>
+        Nama "HooH" adalah onomatopoeia simetris (seperti "hoo" dan "h" yang berlawanan tapi sama). Pronoun: THEY/THEM. Quote ikonik: "All things must balance. No more, no less." — Herta (mengomentari HooH).
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Emanator</h3>
+      <p>
+        Emanator Equilibrium sangat jarang dan hampir tidak pernah muncul secara eksplisit, karena HooH tidak memilih atau memberkati siapa pun secara sengaja. Mereka hanya "menyeimbangkan" ketika diperlukan, sehingga Emanator mereka lebih seperti "alat" sementara daripada pengikut setia.
+      </p>
+      <p>
+        Tidak ada Emanator Equilibrium yang confirmed secara resmi dalam lore utama. Namun, ada spekulasi bahwa beberapa karakter atau entitas yang bertindak sangat netral (misalnya beberapa anggota Genius Society atau entitas kosmik tertentu) mungkin pernah menjadi "wadah sementara" keseimbangan HooH.
+      </p>
+      <p>
+        Path Equilibrium tidak memiliki organisasi pengikut seperti IPC atau The Family. Pengaruh HooH bersifat pasif dan otomatis — ketika keseimbangan terganggu, kekuatan mereka muncul tanpa perlu pemujaan atau doa.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Penampilan</h3>
+      <p>
+        HooH tidak memiliki bentuk fisik tetap — THEY muncul sebagai simbol timbangan kosmik simetris sempurna, sering berupa dua sisi hitam dan putih yang saling menyeimbangkan, dengan pusat netral abu-abu/perak. Bentuk ini melambangkan tidak adanya bias sama sekali.
+      </p>
+      <p>
+        Di Simulated Universe dan lore, HooH terlihat sebagai entitas abstrak tanpa wajah, hanya garis simetris dan pola yin-yang yang berputar perlahan. Aura mereka adalah ketiadaan warna (netral) dengan kilau perak samar, mencerminkan segala sesuatu tanpa mengubahnya.
+      </p>
+      <p>
+        Suara HooH (jika ada) adalah nada tunggal yang sempurna selaras, tanpa emosi, tanpa variasi — hanya keseimbangan mutlak yang terdengar.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Informasi Singkat</h3>
+      <div class="info-grid">
+        <div class="info-box">
+          <b>Konsep Inti</b>
+          <span>Keseimbangan mutlak — tidak memihak, tidak suka, tidak benci. Segala sesuatu harus seimbang tanpa preferensi. Path Equilibrium adalah penyeimbang pasif terhadap semua Path lain. (Tidak ada gameplay Path Equilibrium playable).</span>
+        </div>
+        <div class="info-box">
+          <b>Status Saat Ini</b>
+          <span>Aktif, tapi sangat pasif. Tidak ada Emanator confirmed, tidak ada organisasi pengikut. HooH hanya muncul ketika keseimbangan alam semesta terganggu secara ekstrem.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

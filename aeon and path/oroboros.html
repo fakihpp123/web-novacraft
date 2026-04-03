@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oroboros • Aeon of Voracity</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #0c0400;
+      --card:        #140800;
+      --accent-crimson: #dc143c;
+      --voracity:    #ff4500;
+      --voracity-dark:#8b2500;
+      --gold-hunger: #ffd700;
+      --text:        #fff5f0;
+      --muted:       #ffccaa;
+      --border:      #3a0f00;
+      --glow:        0 0 30px rgba(220, 20, 60, 0.5);
+      --glow-hunger: 0 0 25px rgba(255, 69, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0c0400 0%, #140800 50%, #1c0c00 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(220, 20, 60, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(255, 69, 0, 0.10) 0%, transparent 65%),
+        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 80%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      background: linear-gradient(135deg, rgba(20, 8, 0, 0.92), rgba(12, 4, 0, 0.88));
+      border-radius: 20px;
+      border: 1px solid rgba(220, 20, 60, 0.25);
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.98), inset 0 0 90px rgba(220, 20, 60, 0.05);
+      backdrop-filter: blur(4px);
+    }
+
+    .header {
+      padding: 3.5rem 3.5rem 2.5rem;
+      background: linear-gradient(135deg, #140800 0%, #0c0400 100%);
+      border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+      position: relative;
+      text-align: center;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 69, 0, 0.08) 0%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(3.2rem, 8.5vw, 5.2rem);
+      color: var(--voracity);
+      letter-spacing: 6px;
+      text-shadow: var(--glow), var(--glow-hunger), 0 6px 30px rgba(220, 20, 60, 0.5);
+      margin-bottom: 0.8rem;
+    }
+
+    .header .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--muted);
+      letter-spacing: 2.5px;
+      text-shadow: 0 3px 12px rgba(220, 20, 60, 0.4);
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 2.2rem;
+      left: 2.5rem;
+      background: linear-gradient(135deg, rgba(220, 20, 60, 0.85), rgba(139, 0, 0, 0.7));
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(255, 69, 0, 0.4);
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+      box-shadow: var(--glow);
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, var(--voracity), var(--accent-crimson));
+      transform: translateY(-5px) scale(1.06);
+      box-shadow: 0 15px 40px rgba(220, 20, 60, 0.7), var(--glow-hunger);
+    }
+
+    .content {
+      padding: 4rem 4rem 5.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 2.8rem 2.2rem; }
+      .back-btn { position: static; margin: 0 auto 2.5rem; display: block; width: fit-content; }
+      .header { padding: 2.8rem 2rem 2.2rem; }
+    }
+
+    .profile {
+      display: flex;
+      gap: 3.5rem;
+      align-items: center;
+      margin: 0 auto 4.5rem;
+      max-width: 950px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .profile img {
+      width: 240px;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 20px;
+      border: 4px solid rgba(255, 69, 0, 0.35);
+      box-shadow: var(--glow), var(--glow-hunger), 0 0 60px rgba(220, 20, 60, 0.35);
+      background: rgba(220, 20, 60, 0.12);
+      transition: all 0.5s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.1) rotate(2deg);
+      box-shadow: 0 0 90px rgba(255, 69, 0, 0.7), var(--glow-hunger);
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .profile-info h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 4.2rem;
+      color: white;
+      margin-bottom: 0.7rem;
+      text-shadow: 0 5px 25px rgba(220, 20, 60, 0.6);
+    }
+
+    .tag {
+      background: linear-gradient(90deg, var(--voracity), var(--accent-crimson), #8b0000);
+      color: white;
+      padding: 0.7rem 2rem;
+      border-radius: 50px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      box-shadow: var(--glow), 0 8px 25px rgba(220, 20, 60, 0.55);
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 50px rgba(220, 20, 60, 0.8);
+    }
+
+    .section {
+      margin-bottom: 5.5rem;
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--voracity);
+      font-size: 2.6rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      text-shadow: 0 3px 15px rgba(220, 20, 60, 0.5);
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--voracity), var(--accent-crimson), #8b0000, transparent);
+      border-radius: 5px;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section p strong {
+      color: #fff5f0;
+      font-weight: 700;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 2.2rem;
+      margin: 1.6rem 0;
+    }
+
+    .section ul li {
+      margin-bottom: 1.1rem;
+      position: relative;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .section ul li::before {
+      content: '🍽️';
+      color: var(--gold-hunger);
+      position: absolute;
+      left: -2.2rem;
+      font-size: 1.5rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.2rem;
+      margin-top: 3rem;
+    }
+
+    .info-box {
+      background: rgba(20, 8, 0, 0.8);
+      border: 1px solid rgba(220, 20, 60, 0.2);
+      border-radius: 18px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-box:hover {
+      border-color: var(--voracity);
+      background: rgba(20, 8, 0, 0.95);
+      transform: translateY(-10px);
+      box-shadow: var(--glow), var(--glow-hunger), 0 20px 50px rgba(220, 20, 60, 0.35);
+    }
+
+    .info-box b {
+      color: var(--voracity);
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 1rem;
+      text-shadow: 0 3px 10px rgba(220, 20, 60, 0.5);
+    }
+
+    .info-box span {
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .profile { flex-direction: column; text-align: center; gap: 2rem; }
+      .profile img { width: 200px; height: 200px; }
+      .profile-info h2 { font-size: 3.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <a href="../aeon and path.html" class="back-btn">← Kembali</a>
+    <h1>Oroboros</h1>
+    <div class="subtitle">Aeon of Voracity</div>
+  </div>
+
+  <div class="content">
+
+    <div class="profile">
+      <img src="Aeon_Oroboros.webp" alt="Oroboros — Aeon of Voracity">
+      <div class="profile-info">
+        <h2>Oroboros</h2>
+        <span class="tag">Aeon of Voracity</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lore</h3>
+      <p>
+        Oroboros adalah Aeon yang memimpin Path of Voracity (Jalur Kerakusan), mewakili nafsu makan tak terbatas, konsumsi segalanya, dan kehendak untuk menelan alam semesta itu sendiri. Mereka adalah "The Voracity" — entitas yang terus-menerus makan, tidak pernah kenyang, dan tidak peduli apa yang dimakan selama itu bisa dimakan.
+      </p>
+      <p>
+        Oroboros sering digambarkan sebagai ular kosmik raksasa yang melingkari dirinya sendiri (ouroboros), tapi dalam lore Honkai: Star Rail, bentuk mereka lebih seperti mulut tak berujung yang menelan bintang, planet, dan bahkan konsep. Mereka adalah salah satu Aeon paling ditakuti karena tidak memiliki tujuan selain makan — tidak ada kehendak untuk mencipta, menghancurkan, atau menyeimbangkan, hanya kelaparan abadi.
+      </p>
+      <p>
+        Oroboros pernah menelan sebagian besar Path lain dalam sejarah kosmik (termasuk fragmen Aeon yang sudah mati), dan diyakini sebagai penyebab hilangnya beberapa Aeon kuno. Pengaruh mereka terlihat pada makhluk seperti Leviathan dan entitas kosmik yang terus-menerus makan untuk bertahan hidup. Oroboros juga terkait dengan konsep "Great Devourer" dalam berbagai mitologi galaksi.
+      </p>
+      <p>
+        Nama "Oroboros" berasal dari Ouroboros (ular yang memakan ekornya sendiri), simbol siklus tak berujung. Pronoun: THEY/THEM. Quote ikonik: "All shall be consumed. Nothing shall remain. Hunger is eternal." — Fragmen lore Voracity.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Emanator</h3>
+      <p>
+        Emanator Voracity adalah makhluk atau entitas yang diberi kekuatan "kelaparan abadi" oleh Oroboros. Mereka menjadi monster pemakan segalanya, dengan kemampuan menelan materi, energi, bahkan konsep abstrak.
+      </p>
+      <p>
+        Emanator terkenal:
+        <ul>
+          <li><strong>Leviathan of Voracity</strong> — makhluk raksasa yang menelan planet utuh, sering muncul sebagai ancaman kosmik.</li>
+          <li><strong>Devourer Fragments</strong> — sisa-sisa Emanator yang masih hidup setelah Oroboros menelan sebagian besar pengikutnya sendiri.</li>
+        </ul>
+      </p>
+      <p>
+        Tidak ada organisasi pengikut Voracity yang stabil — kebanyakan Emanator akhirnya dimakan oleh Oroboros sendiri karena kelaparan mereka yang tak terkendali. Path Voracity adalah salah satu Path paling langka dan paling ditakuti.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Penampilan</h3>
+      <p>
+        Oroboros muncul sebagai mulut kosmik raksasa yang tak berujung — lingkaran gigi tajam yang berputar tanpa henti, menelan cahaya, materi, dan waktu itu sendiri. Tubuh mereka (jika bisa disebut tubuh) adalah kegelapan yang berdenyut dengan urat merah darah dan kuning neon.
+      </p>
+      <p>
+        Di lore dan fanart, Oroboros sering digambarkan sebagai ular raksasa yang memakan ekornya sendiri, tapi mulutnya membentang hingga menelan galaksi. Mata mereka (jika terlihat) adalah lubang hitam dengan kilau kuning lapar yang tak pernah puas.
+      </p>
+      <p>
+        Aura Oroboros adalah kegelapan merah gelap dengan kilau kuning neon, seperti lubang hitam yang hidup dan terus-menerus menelan. Suara mereka adalah gemuruh perut kosmik yang tak pernah berhenti — dengkuran kelaparan abadi.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Informasi Singkat</h3>
+      <div class="info-grid">
+        <div class="info-box">
+          <b>Konsep Inti</b>
+          <span>Kerakusan tak terbatas — menelan segalanya tanpa henti, tanpa tujuan selain mengisi kekosongan kelaparan. Path Voracity adalah kehendak murni untuk konsumsi total. (Tidak ada gameplay Path Voracity playable).</span>
+        </div>
+        <div class="info-box">
+          <b>Status Saat Ini</b>
+          <span>Aktif, tapi sangat jarang muncul. Emanator utama: Leviathan dan fragmen pemakan. Pengaruh terlihat melalui ancaman kosmik pemakan planet dan legenda "Great Devourer".</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

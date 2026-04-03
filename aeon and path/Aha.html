@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aha • Aeon of The Elation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #120814;
+      --card:        #1f0f24;
+      --accent-pink: #ff1493;
+      --magenta:     #ff2e9e;
+      --pink-dark:   #c71585;
+      --text:        #fff5f8;
+      --muted:       #ff99c8;
+      --border:      #4a1a45;
+      --glow:        0 0 22px rgba(255, 20, 147, 0.38);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 20, 147, 0.14) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.11) 0%, transparent 55%);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      background: linear-gradient(to bottom, var(--card), #140b1a);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.88), inset 0 0 60px rgba(255, 20, 147, 0.06);
+    }
+
+    .header {
+      padding: 3rem 3rem 2.5rem;
+      background: linear-gradient(135deg, #220d28 0%, #120814 100%);
+      border-bottom: 1px solid rgba(255, 20, 147, 0.22);
+      position: relative;
+      text-align: center;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 105, 180, 0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(3rem, 8vw, 4.5rem);
+      color: var(--magenta);
+      letter-spacing: 5px;
+      text-shadow: var(--glow), 0 4px 20px rgba(255, 20, 147, 0.35);
+      margin-bottom: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--muted);
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      background: rgba(255, 20, 147, 0.85);
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(255, 105, 180, 0.35);
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      z-index: 10;
+      font-size: 1.1rem;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-pink);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(255, 20, 147, 0.55);
+    }
+
+    .content {
+      padding: 3.5rem 4rem 4.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 2.5rem 2rem; }
+      .back-btn { position: static; margin-bottom: 2rem; display: inline-block; }
+      .header { padding: 2.5rem 1.5rem 2rem; }
+    }
+
+    .profile {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      margin: 0 auto 4.5rem;
+      max-width: 900px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .profile img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 20px;
+      border: 3px solid rgba(255, 105, 180, 0.4);
+      box-shadow: var(--glow), 0 0 50px rgba(255, 20, 147, 0.32);
+      background: rgba(255, 20, 147, 0.12);
+      transition: transform 0.5s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.1) rotate(3deg);
+    }
+
+    .profile-info {
+      text-align: center;
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .profile-info h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.5rem;
+      color: white;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 18px rgba(255, 105, 180, 0.5);
+    }
+
+    .tag {
+      background: linear-gradient(90deg, var(--accent-pink), #ff69b4);
+      color: white;
+      padding: 0.7rem 2rem;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      box-shadow: 0 6px 22px rgba(255, 20, 147, 0.6);
+      display: inline-block;
+    }
+
+    .section {
+      margin-bottom: 4.5rem;
+      max-width: 920px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--magenta);
+      font-size: 2.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      letter-spacing: 1px;
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-pink), #ff69b4, transparent);
+      border-radius: 4px;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 1.4rem;
+      line-height: 1.9;
+    }
+
+    .section p strong {
+      color: #ffb3d9;
+      font-weight: 700;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .section ul li {
+      margin-bottom: 1.1rem;
+      position: relative;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .section ul li::before {
+      content: '✦';
+      color: var(--magenta);
+      position: absolute;
+      left: -2rem;
+      font-size: 1.4rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, rgba(31, 15, 36, 0.8), rgba(20, 10, 25, 0.8));
+      border: 2px solid rgba(255, 105, 180, 0.25);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(255, 20, 147, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .info-box:hover {
+      border-color: var(--magenta);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(255, 20, 147, 0.28);
+    }
+
+    .info-box b {
+      color: var(--magenta);
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .info-box span {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 600px) {
+      .profile { 
+        flex-direction: column; 
+        text-align: center; 
+        gap: 2rem;
+      }
+      .profile img { width: 160px; height: 160px; }
+      .profile-info h2 { font-size: 2.8rem; }
+      .content { padding: 2rem 1.5rem; }
+      .section h3 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <a href="../aeon and path.html" class="back-btn">← Kembali</a>
+    <h1>Aha</h1>
+    <div class="subtitle">Aeon of The Elation — 欢愉 (Huānyú)</div>
+  </div>
+
+  <div class="content">
+
+    <div class="profile">
+      <img src="Aeon_Aha.webp" alt="Aha — Aeon of The Elation">
+      <div class="profile-info">
+        <h2>Aha</h2>
+        <span class="tag">Aeon of The Elation</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lore</h3>
+      <p>
+        Aha adalah Aeon yang memimpin Path of Elation, mewakili kesenangan, kekacauan, dan tawa yang tak terkendali. Bagi Aha, alam semesta hanyalah panggung besar untuk hiburan, dan semua makhluk hidup adalah aktor yang tidak menyadari bahwa mereka sedang dimainkan. Aha sangat suka melakukan lelucon besar, prank kosmik, dan mengacaukan rencana Aeon lain hanya demi “kesenangan”.
+      </p>
+      <p>
+        Aha pernah membantu Annihilation Gang untuk mencoba membunuh IX hanya karena menganggapnya “lucu”. Ia juga pernah menipu Masked Fools dengan berbagai cara, bahkan membuat mereka bertarung satu sama lain demi hiburan. Salah satu tindakan paling terkenal adalah saat Aha “menyaksikan” kehancuran planet yang ia sendiri sebabkan, lalu tertawa terbahak-bahak.
+      </p>
+      <p>
+        Dalam Simulated Universe, Aha muncul sebagai sosok yang sangat tidak bisa diprediksi. Ia sering memberikan Blessing Elation yang memberikan efek acak (kadang sangat kuat, kadang merugikan). Herta pernah menyebut Aha sebagai “satu-satunya Aeon yang benar-benar gila” dan sangat sulit dianalisis.
+      </p>
+      <p>
+        Nama “Aha” sendiri merupakan ekspresi tawa spontan. Julukan resminya adalah 欢愉 (Huānyú) yang berarti “kegembiraan” atau “kesenangan”. Quote ikonik: “Why so serious? Let’s have some fun!” Pronoun: THEY/THEM.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Emanator</h3>
+      <p>
+        Emanator Elation disebut <strong>Masked Fools</strong>. Mereka adalah kelompok yang mengenakan topeng dan kostum eksentrik, hidup demi menyebarkan kekacauan dan tawa di seluruh alam semesta. Tidak seperti Emanator Aeon lain yang dipilih secara langsung, Masked Fools lebih seperti “penggemar fanatik” yang diakui Aha karena tingkat kegilaan dan dedikasi mereka terhadap kesenangan.
+      </p>
+      <p>
+        Salah satu Masked Fools paling terkenal adalah <strong>Sparkle</strong>, yang dikenal karena kemampuannya mengubah realitas, menyamar sempurna, dan membuat segala situasi menjadi kekacauan total demi hiburan. Sparkle bahkan pernah menyamar sebagai Acheron dan hampir membuat Penacony hancur.
+      </p>
+      <p>
+        Masked Fools tidak memiliki hierarki ketat—semakin gila dan kreatif prank mereka, semakin diakui oleh Aha. Beberapa di antaranya bahkan bersedia mengorbankan nyawa sendiri hanya untuk “punchline yang bagus”.
+      </p>
+      <p>
+        Hingga update terbaru, hanya Sparkle yang menjadi karakter playable dari kelompok ini. Namun banyak Masked Fools lain yang muncul dalam cerita, terutama di event-event seperti Penacony.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Penampilan</h3>
+      <p>
+        Aha muncul dalam berbagai bentuk yang selalu berubah-ubah, mencerminkan sifatnya yang tidak bisa diprediksi. Bentuk paling ikonik adalah sosok humanoid dengan <strong>topeng komedi klasik</strong> (senyum lebar dan mata tertutup) yang sangat mencolok.
+      </p>
+      <p>
+        Tubuhnya sering diselimuti warna-warna cerah berpola kotak-kotak atau motif harlequin, dengan banyak aksesori seperti topi berbentuk bel, lonceng, dan pita berwarna-warni. Kadang ia muncul sebagai badut raksasa, kadang sebagai anak kecil, bahkan pernah menjadi bentuk makhluk aneh yang penuh mata dan mulut tertawa.
+      </p>
+      <p>
+        Di Simulated Universe, suara Aha penuh cekikikan dan nada main-main, sering disertai efek suara tawa atau musik sirkus yang tiba-tiba muncul. Semua penampilan Aha selalu memberikan kesan “tidak serius” namun sangat berbahaya.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Informasi Singkat</h3>
+      <div class="info-grid">
+        <div class="info-box">
+          <b>Konsep Inti</b>
+          <span>Path Elation mewakili kegembiraan, kekacauan, dan tawa yang tak terkendali. Semua hal di alam semesta hanyalah lelucon besar, dan tujuan hidup adalah menciptakan hiburan—apa pun harganya. Blessing Elation sering memberikan efek acak yang bisa sangat menguntungkan atau menghancurkan.</span>
+        </div>
+        <div class="info-box">
+          <b>Pengikut yang Dapat Dimainkan (Elation)</b>
+          <span>Sparkle (Quantum), Sampo (Wind), Gallagher (Fire), March 7th (Hunt) — meski secara teknis bukan Masked Fool, tapi memiliki nuansa Elation.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Long • Aeon of Permanence</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #12060a;
+      --card:        #1a0a12;
+      --accent-red:  #c41e3a;
+      --blood:       #8b0000;
+      --gold:        #ffd700;
+      --text:        #fff0f5;
+      --muted:       #e0b0c0;
+      --border:      #3a0f1f;
+      --glow:        0 0 30px rgba(196, 30, 58, 0.5);
+      --glow-gold:   0 0 25px rgba(255, 215, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #12060a 0%, #1a0a12 50%, #220e1a 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(196, 30, 58, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.09) 0%, transparent 65%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      background: linear-gradient(135deg, rgba(26, 10, 18, 0.92), rgba(18, 6, 10, 0.88));
+      border-radius: 20px;
+      border: 1px solid rgba(196, 30, 58, 0.25);
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.98), inset 0 0 90px rgba(196, 30, 58, 0.05);
+      backdrop-filter: blur(4px);
+    }
+
+    .header {
+      padding: 3.5rem 3.5rem 2.5rem;
+      background: linear-gradient(135deg, #1a0a12 0%, #12060a 100%);
+      border-bottom: 1px solid rgba(196, 30, 58, 0.3);
+      position: relative;
+      text-align: center;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 215, 0, 0.08) 0%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(3.2rem, 8.5vw, 5.2rem);
+      color: var(--gold);
+      letter-spacing: 6px;
+      text-shadow: var(--glow), var(--glow-gold), 0 6px 30px rgba(196, 30, 58, 0.5);
+      margin-bottom: 0.8rem;
+    }
+
+    .header .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--muted);
+      letter-spacing: 2.5px;
+      text-shadow: 0 3px 12px rgba(196, 30, 58, 0.4);
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 2.2rem;
+      left: 2.5rem;
+      background: linear-gradient(135deg, rgba(196, 30, 58, 0.85), rgba(139, 0, 0, 0.7));
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+      box-shadow: var(--glow);
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, var(--accent-red), var(--blood));
+      transform: translateY(-5px) scale(1.06);
+      box-shadow: 0 15px 40px rgba(196, 30, 58, 0.7), var(--glow-gold);
+    }
+
+    .content {
+      padding: 4rem 4rem 5.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 2.8rem 2.2rem; }
+      .back-btn { position: static; margin: 0 auto 2.5rem; display: block; width: fit-content; }
+      .header { padding: 2.8rem 2rem 2.2rem; }
+    }
+
+    .profile {
+      display: flex;
+      gap: 3.5rem;
+      align-items: center;
+      margin: 0 auto 4.5rem;
+      max-width: 950px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .profile img {
+      width: 240px;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 20px;
+      border: 4px solid rgba(255, 215, 0, 0.35);
+      box-shadow: var(--glow), var(--glow-gold), 0 0 60px rgba(196, 30, 58, 0.35);
+      background: rgba(196, 30, 58, 0.12);
+      transition: all 0.5s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.1) rotate(2deg);
+      box-shadow: 0 0 90px rgba(255, 215, 0, 0.7), var(--glow-gold);
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .profile-info h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 4.2rem;
+      color: white;
+      margin-bottom: 0.7rem;
+      text-shadow: 0 5px 25px rgba(196, 30, 58, 0.6);
+    }
+
+    .tag {
+      background: linear-gradient(90deg, var(--accent-red), var(--gold), var(--blood));
+      color: white;
+      padding: 0.7rem 2rem;
+      border-radius: 50px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      box-shadow: var(--glow), 0 8px 25px rgba(196, 30, 58, 0.55);
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 50px rgba(196, 30, 58, 0.8);
+    }
+
+    .section {
+      margin-bottom: 5.5rem;
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 2.6rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      text-shadow: 0 3px 15px rgba(196, 30, 58, 0.5);
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--gold), var(--accent-red), var(--blood), transparent);
+      border-radius: 5px;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section p strong {
+      color: #fff0f5;
+      font-weight: 700;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 2.2rem;
+      margin: 1.6rem 0;
+    }
+
+    .section ul li {
+      margin-bottom: 1.1rem;
+      position: relative;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .section ul li::before {
+      content: '🐉';
+      color: var(--gold);
+      position: absolute;
+      left: -2.2rem;
+      font-size: 1.5rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.2rem;
+      margin-top: 3rem;
+    }
+
+    .info-box {
+      background: rgba(26, 10, 18, 0.8);
+      border: 1px solid rgba(196, 30, 58, 0.2);
+      border-radius: 18px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-box:hover {
+      border-color: var(--gold);
+      background: rgba(26, 10, 18, 0.95);
+      transform: translateY(-10px);
+      box-shadow: var(--glow), var(--glow-gold), 0 20px 50px rgba(196, 30, 58, 0.35);
+    }
+
+    .info-box b {
+      color: var(--gold);
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 1rem;
+      text-shadow: 0 3px 10px rgba(196, 30, 58, 0.5);
+    }
+
+    .info-box span {
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .profile { flex-direction: column; text-align: center; gap: 2rem; }
+      .profile img { width: 200px; height: 200px; }
+      .profile-info h2 { font-size: 3.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <a href="../aeon and path.html" class="back-btn">← Kembali</a>
+    <h1>Long</h1>
+    <div class="subtitle">Aeon of Permanence</div>
+  </div>
+
+  <div class="content">
+
+    <div class="profile">
+      <img src="Aeon_Long.webp" alt="Long — Aeon of Permanence">
+      <div class="profile-info">
+        <h2>Long</h2>
+        <span class="tag">Aeon of Permanence</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lore</h3>
+      <p>
+        Long adalah Aeon kuno yang memimpin Path of Permanence, mewakili keabadian, siklus waktu tak berujung, dan eksistensi yang tak pernah berakhir. Long adalah Dewa Naga Permanen yang diyakini sebagai pencipta Vidyadhara (ras naga Vidyadhara di Xianzhou Luofu), dan merupakan salah satu Aeon paling tua bersama Ena dan Qlipoth.
+      </p>
+      <p>
+        Long pernah menjadi Aeon yang sangat kuat, tapi akhirnya "mati" atau lenyap sebelum timeline utama Honkai: Star Rail dimulai. Ada teori bahwa Long sengaja memilih untuk "mati" agar tidak mengganggu keseimbangan alam semesta, atau karena Path Permanence bertentangan dengan siklus kehancuran dan kelahiran kembali. Kematian Long menyebabkan Vidyadhara kehilangan sebagian besar kekuatan naga mereka, dan High-Cloud Quintet (termasuk Jingliu, Jing Yuan, Baiheng, Blade, Dan Feng) terbentuk untuk mengatasi kekosongan itu.
+      </p>
+      <p>
+        Pengaruh Long masih terasa kuat di Xianzhou Luofu melalui Vidyadhara dan Dan Heng (reinkarnasi Dan Feng). Long digambarkan sebagai naga raksasa yang melingkari waktu itu sendiri, dengan sisik emas dan mata merah darah yang melihat segala masa lalu, sekarang, dan masa depan secara simultan.
+      </p>
+      <p>
+        Path Permanence sudah lenyap setelah kematian Long, tapi konsepnya masih ada dalam lore Vidyadhara dan siklus reinkarnasi mereka. Pronoun: THEY/THEM. Quote ikonik: "Permanence is not eternity in bliss, but eternity in suffering." — Dan Feng (Imbibitor Lunae).
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Emanator & Pengaruh</h3>
+      <p>
+        Karena Long sudah "mati", tidak ada Emanator Permanence aktif saat ini. Namun, Vidyadhara (terutama High Elder seperti Dan Feng dan Dan Heng) dianggap memiliki sisa kekuatan Permanence dari Long, seperti kemampuan reinkarnasi dan manipulasi air/time.
+      </p>
+      <p>
+        Dan Feng (Imbibitor Lunae sebelumnya) adalah yang paling dekat dengan status Emanator Permanence, karena ia melakukan transgresi besar (menciptakan makhluk hybrid dengan Baiheng) untuk mencoba menghidupkan kembali kekuatan Long. Akibatnya, ia dihukum dan direinkarnasi menjadi Dan Heng.
+      </p>
+      <p>
+        Tidak ada organisasi pengikut Permanence seperti Disciples atau Garden, karena Path ini sudah punah. Pengaruh Long hanya tersisa dalam darah Vidyadhara dan legenda Xianzhou.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Penampilan</h3>
+      <p>
+        Long digambarkan sebagai naga kosmik raksasa dengan tubuh memanjang tak berujung, sisik emas merah darah yang berkilau seperti permata abadi. Matanya merah menyala, memandang ke segala arah waktu sekaligus.
+      </p>
+      <p>
+        Tubuhnya melingkari nebula dan bintang, dengan duri-duri emas dan tanduk yang menjulang seperti mahkota kekaisaran kuno. Aura Long berwarna merah-emas, melambangkan keabadian yang indah tapi menyakitkan.
+      </p>
+      <p>
+        Di lore dan fanart, Long sering muncul sebagai sosok naga primordial yang melingkari roda waktu, dengan sisik yang mencerminkan masa lalu dan masa depan secara simultan.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Informasi Singkat</h3>
+      <div class="info-grid">
+        <div class="info-box">
+          <b>Konsep Inti</b>
+          <span>Keabadian mutlak & siklus waktu tak berujung — eksistensi yang tak pernah berakhir, baik dalam kebahagiaan maupun penderitaan. Path Permanence sudah punah setelah kematian Long, tapi konsepnya hidup dalam reinkarnasi Vidyadhara.</span>
+        </div>
+        <div class="info-box">
+          <b>Status Saat Ini</b>
+          <span>Deceased / Vanished. Path Permanence lenyap, pengaruhnya hanya tersisa di Vidyadhara (Dan Heng, Dan Feng) dan lore Xianzhou Luofu. Tidak ada Emanator aktif.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mythus • Aeon of Enigmata</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #050014;
+      --card:        #0a0020;
+      --accent-purple:#8a2be2;
+      --enigma:      #7d26cd;
+      --enigma-dark: #4b0082;
+      --neon:        #00ffff;
+      --text:        #f0e8ff;
+      --muted:       #c0b0ff;
+      --border:      #2a004a;
+      --glow:        0 0 30px rgba(138, 43, 226, 0.45);
+      --glow-neon:   0 0 25px rgba(0, 255, 255, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #050014 0%, #0a0020 50%, #100028 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.12) 0%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(125, 38, 205, 0.09) 0%, transparent 65%),
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.04) 0%, transparent 80%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      background: linear-gradient(135deg, rgba(10, 0, 32, 0.92), rgba(5, 0, 20, 0.88));
+      border-radius: 20px;
+      border: 1px solid rgba(138, 43, 226, 0.25);
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.98), inset 0 0 90px rgba(138, 43, 226, 0.05);
+      backdrop-filter: blur(6px);
+    }
+
+    .header {
+      padding: 3.5rem 3.5rem 2.5rem;
+      background: linear-gradient(135deg, #0a0020 0%, #050014 100%);
+      border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+      position: relative;
+      text-align: center;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(125, 38, 205, 0.08) 0%, transparent 75%);
+      pointer-events: none;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(3.2rem, 8.5vw, 5.2rem);
+      color: var(--enigma);
+      letter-spacing: 6px;
+      text-shadow: var(--glow), var(--glow-neon), 0 6px 30px rgba(138, 43, 226, 0.5);
+      margin-bottom: 0.8rem;
+    }
+
+    .header .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--muted);
+      letter-spacing: 2.5px;
+      text-shadow: 0 3px 12px rgba(138, 43, 226, 0.4);
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 2.2rem;
+      left: 2.5rem;
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.85), rgba(125, 38, 205, 0.7));
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+      box-shadow: var(--glow);
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, var(--enigma), var(--accent-purple));
+      transform: translateY(-5px) scale(1.06);
+      box-shadow: 0 15px 40px rgba(138, 43, 226, 0.7), var(--glow-neon);
+    }
+
+    .content {
+      padding: 4rem 4rem 5.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 2.8rem 2.2rem; }
+      .back-btn { position: static; margin: 0 auto 2.5rem; display: block; width: fit-content; }
+      .header { padding: 2.8rem 2rem 2.2rem; }
+    }
+
+    .profile {
+      display: flex;
+      gap: 3.5rem;
+      align-items: center;
+      margin: 0 auto 4.5rem;
+      max-width: 950px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .profile img {
+      width: 240px;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 20px;
+      border: 4px solid rgba(125, 38, 205, 0.35);
+      box-shadow: var(--glow), var(--glow-neon), 0 0 60px rgba(138, 43, 226, 0.35);
+      background: rgba(138, 43, 226, 0.12);
+      transition: all 0.5s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0 0 90px rgba(125, 38, 205, 0.7), var(--glow-neon);
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .profile-info h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 4.2rem;
+      color: white;
+      margin-bottom: 0.7rem;
+      text-shadow: 0 5px 25px rgba(138, 43, 226, 0.6);
+    }
+
+    .tag {
+      background: linear-gradient(90deg, var(--accent-purple), var(--enigma), #4b0082);
+      color: white;
+      padding: 0.7rem 2rem;
+      border-radius: 50px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      box-shadow: var(--glow), 0 8px 25px rgba(138, 43, 226, 0.55);
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 50px rgba(138, 43, 226, 0.8);
+    }
+
+    .section {
+      margin-bottom: 5.5rem;
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--enigma);
+      font-size: 2.6rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      text-shadow: 0 3px 15px rgba(138, 43, 226, 0.5);
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--enigma), var(--accent-purple), #4b0082, transparent);
+      border-radius: 5px;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1.12rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section p strong {
+      color: #f0e8ff;
+      font-weight: 700;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 2.2rem;
+      margin: 1.6rem 0;
+    }
+
+    .section ul li {
+      margin-bottom: 1.1rem;
+      position: relative;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .section ul li::before {
+      content: '?';
+      color: var(--neon);
+      position: absolute;
+      left: -2.2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.2rem;
+      margin-top: 3rem;
+    }
+
+    .info-box {
+      background: rgba(10, 0, 32, 0.8);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+      border-radius: 18px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .info-box:hover {
+      border-color: var(--enigma);
+      background: rgba(10, 0, 32, 0.95);
+      transform: translateY(-10px);
+      box-shadow: var(--glow), var(--glow-neon), 0 20px 50px rgba(138, 43, 226, 0.35);
+    }
+
+    .info-box b {
+      color: var(--enigma);
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 1rem;
+      text-shadow: 0 3px 10px rgba(138, 43, 226, 0.5);
+    }
+
+    .info-box span {
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .profile { flex-direction: column; text-align: center; gap: 2rem; }
+      .profile img { width: 200px; height: 200px; }
+      .profile-info h2 { font-size: 3.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <a href="../aeon and path.html" class="back-btn">← Kembali</a>
+    <h1>Mythus</h1>
+    <div class="subtitle">Aeon of Enigmata</div>
+  </div>
+
+  <div class="content">
+
+    <div class="profile">
+      <img src="Aeon_Mythus.webp" alt="Mythus — Aeon of Enigmata">
+      <div class="profile-info">
+        <h2>Mythus</h2>
+        <span class="tag">Aeon of Enigmata</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lore</h3>
+      <p>
+        Mythus adalah Aeon yang memimpin Path of Enigmata (Jalur Misteri), mewakili kebohongan, rahasia, kabut pengetahuan, dan penolakan terhadap kebenaran mutlak. THEY adalah "The Enigmata" yang sengaja menyebarkan kekacauan informasi, membuat segala pengetahuan menjadi kabur, ambigu, dan tak bisa dipercaya sepenuhnya.
+      </p>
+      <p>
+        Mythus adalah musuh bebuyutan Nous (Aeon of Erudition), karena Nous mencari kebenaran absolut sementara Mythus berusaha menyembunyikan dan mengaburkannya. Mereka sering mengirimkan "Mist" atau kabut misterius yang membuat fakta menjadi mitos, dan mitos menjadi fakta — sehingga Genius Society dan IPC sering kesulitan membedakan mana yang benar.
+      </p>
+      <p>
+        Mythus tidak punya tujuan destruktif seperti Nanook atau ekspansif seperti Yaoshi — tujuan mereka hanyalah menjaga agar alam semesta tetap "misterius" selamanya. Dalam Simulated Universe, Mythus sering muncul sebagai entitas yang mengubah data dan informasi secara acak, membuat eksperimen menjadi tidak bisa diandalkan.
+      </p>
+      <p>
+        Nama "Mythus" berasal dari "myth" (mitos) + "thus" (demikian), melambangkan "demikianlah mitos tercipta". Pronoun: THEY/THEM. Quote ikonik: "Truth is but a shadow cast by lies. Let the mist conceal all." — Fragmen lore Enigmata.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Emanator</h3>
+      <p>
+        Emanator Enigmata disebut **History Fictionologists** atau individu yang diberi kekuatan untuk mengubah, menyembunyikan, atau menciptakan sejarah palsu. Mereka bisa memanipulasi memori kolektif, membuat fakta menjadi fiksi, dan fiksi menjadi sejarah yang diterima luas.
+      </p>
+      <p>
+        Emanator terkenal:
+        <ul>
+          <li><strong>Fables About the Stars</strong> — kelompok utama History Fictionologists yang menulis dan menyebarkan "sejarah alternatif" untuk mengaburkan kebenaran tentang Aeon dan peristiwa kosmik.</li>
+          <li><strong>Mr. Recoleta</strong> — salah satu anggota terkenal yang mampu menulis ulang memori individu atau bahkan planet.
+        </ul>
+      </p>
+      <p>
+        Tidak seperti Emanator lain yang kuat secara fisik, Emanator Mythus lebih berbahaya karena kekuatan mereka bersifat informasional — mereka bisa menghancurkan kepercayaan dan pengetahuan tanpa kekerasan langsung.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Penampilan</h3>
+      <p>
+        Mythus muncul sebagai sosok yang selalu diselimuti kabut tebal dan bayangan yang berubah-ubah. Bentuk mereka tidak pernah jelas — kadang seperti siluet humanoid dengan banyak mata yang berkedip, kadang seperti kabut yang membentuk wajah-wajah palsu.
+      </p>
+      <p>
+        Tubuh mereka sering terlihat seperti buku terbuka yang halamannya berubah sendiri, atau seperti cermin retak yang memantulkan versi palsu dari siapa pun yang melihatnya. Mata mereka (jika terlihat) adalah warna neon biru yang samar, selalu berkedip dan menghilang.
+      </p>
+      <p>
+        Aura Mythus adalah kabut ungu gelap dengan kilau neon samar, menciptakan rasa bingung dan ketidakpastian. Suara mereka adalah bisikan yang kontradiktif — satu kalimat terdengar benar, tapi segera dibantah oleh bisikan berikutnya.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Informasi Singkat</h3>
+      <div class="info-grid">
+        <div class="info-box">
+          <b>Konsep Inti</b>
+          <span>Misteri, kebohongan, dan kabut pengetahuan — menolak kebenaran mutlak demi menjaga alam semesta tetap penuh rahasia. Path Enigmata adalah musuh Erudition (Nous), fokus pada manipulasi informasi dan sejarah. (Tidak ada gameplay Path Enigmata playable).</span>
+        </div>
+        <div class="info-box">
+          <b>Status Saat Ini</b>
+          <span>Aktif. Emanator utama: History Fictionologists. Pengaruh terlihat melalui penyebaran mitos, sejarah palsu, dan kabut yang mengaburkan fakta di seluruh kosmos.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

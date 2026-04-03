@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fuli • Aeon of The Remembrance</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #0a111a;
+      --card:        #0f1625;
+      --accent-ice:  #a5d8ff;
+      --cyan:        #7dd3fc;
+      --ice-dark:    #60a5fa;
+      --text:        #f0f9ff;
+      --muted:       #bfdbfe;
+      --border:      #1e3a5f;
+      --glow:        0 0 20px rgba(165, 216, 255, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 25%, rgba(165, 216, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(125, 211, 252, 0.09) 0%, transparent 55%);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      background: linear-gradient(to bottom, var(--card), #0a0f1f);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.9), inset 0 0 60px rgba(165, 216, 255, 0.05);
+    }
+
+    .header {
+      padding: 2.5rem 3rem 2rem;
+      background: linear-gradient(135deg, #0f1a2e 0%, #0a111f 100%);
+      border-bottom: 1px solid rgba(165, 216, 255, 0.2);
+      position: relative;
+      text-align: center;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(125, 211, 252, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.8rem, 7vw, 4.2rem);
+      color: var(--cyan);
+      letter-spacing: 3px;
+      text-shadow: var(--glow), 0 4px 20px rgba(165, 216, 255, 0.3);
+      margin-bottom: 0.6rem;
+    }
+
+    .header .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 1.8rem;
+      left: 2rem;
+      background: rgba(165, 216, 255, 0.8);
+      color: #0a111a;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(125, 211, 252, 0.3);
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-ice);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 25px rgba(165, 216, 255, 0.45);
+    }
+
+    .content {
+      padding: 3rem 3.5rem 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 2.5rem 1.8rem; }
+      .back-btn { position: static; margin-bottom: 1.5rem; display: inline-block; }
+      .header { padding: 2rem 1.5rem 1.5rem; text-align: center; }
+    }
+
+    .profile {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      margin: 0 auto 3.5rem;
+      max-width: 800px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .profile img {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 3px solid rgba(125, 211, 252, 0.25);
+      box-shadow: var(--glow), 0 0 40px rgba(165, 216, 255, 0.25);
+      background: rgba(165, 216, 255, 0.08);
+      transition: transform 0.4s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .profile-info h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.2rem;
+      color: white;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 3px 15px rgba(125, 211, 252, 0.4);
+    }
+
+    .tag {
+      background: linear-gradient(90deg, var(--accent-ice), #60a5fa);
+      color: #0a111a;
+      padding: 0.5rem 1.4rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(165, 216, 255, 0.5);
+    }
+
+    .section {
+      margin-bottom: 4rem;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--cyan);
+      font-size: 2.1rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent-ice), transparent);
+      border-radius: 3px;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .section p strong {
+      color: #f0f9ff;
+      font-weight: 600;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 1.8rem;
+      margin: 1.2rem 0;
+    }
+
+    .section ul li {
+      margin-bottom: 0.9rem;
+      position: relative;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .section ul li::before {
+      content: '❄';
+      color: var(--cyan);
+      position: absolute;
+      left: -1.8rem;
+      font-size: 1.3rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-box {
+      background: rgba(15, 22, 37, 0.7);
+      border: 1px solid rgba(125, 211, 252, 0.12);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .info-box:hover {
+      border-color: var(--cyan);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(165, 216, 255, 0.2);
+    }
+
+    .info-box b {
+      color: var(--cyan);
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 0.7rem;
+    }
+
+    .info-box span {
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .profile { flex-direction: column; text-align: center; }
+      .profile img { width: 160px; height: 160px; }
+      .profile-info h2 { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <a href="../aeon and path.html" class="back-btn">← Kembali</a>
+    <h1>Fuli</h1>
+    <div class="subtitle">Fuli • Aeon of The Remembrance</div>
+  </div>
+
+  <div class="content">
+
+    <div class="profile">
+      <img src="Aeon_Fuli.webp" alt="Fuli — Aeon of The Remembrance">
+      <div class="profile-info">
+        <h2>Fuli</h2>
+        <span class="tag">Aeon of The Remembrance</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lore</h3>
+      <p>
+        Fuli adalah Aeon yang memimpin Path of Remembrance (Jalur Kenangan), bertugas merekam segala peristiwa di alam semesta untuk mempersiapkan kelahiran kembali setelah kehancuran akhir. Fuli mewujudkan konsep "mengingat" secara mutlak—semua sejarah, momen, dan kebenaran harus diabadikan agar tidak hilang selamanya.
+      </p>
+      <p>
+        Yang paling misterius: Fuli "belum ada" secara penuh di masa sekarang. Mereka hanya akan naik menjadi Aeon di akhir waktu (end of time), ketika seluruh sejarah alam semesta telah selesai. Kemunculan Fuli di masa lalu sebenarnya adalah hasil dari perjalanan balik waktu mereka sendiri—mereka "mengedit" memori untuk muncul dan merekam peristiwa penting, menciptakan loop kausal yang rumit.
+      </p>
+      <p>
+        Di Simulated Universe dan cerita Amphoreus/Evernight, Fuli terlihat sebagai sosok yang muncul hanya saat peristiwa besar terjadi. Herta dan yang lain mencatat bahwa Fuli sangat enigmatis—tidak ada yang tahu kapan mereka "lahir", seolah mereka selalu ada di annal sejarah. Kemunculan Fuli sering menandakan peristiwa krusial, tapi sebenarnya sebaliknya: Fuli muncul untuk merekamnya.
+      </p>
+      <p>
+        Nama "Fuli" (浮黎) berarti "mengapung di kegelapan" atau terkait kristal memori. Pronoun: THEY/THEM (uppercase sejak update awal). Quote ikonik: "Fragments of memories flash before you until they get too fast to be recognizable."
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Emanator</h3>
+      <p>
+        Emanator Remembrance disebut **Pure Children of Anāsrava** (Anak Murni Anāsrava) atau Child of Remembrance. Mereka adalah Emanator spesial yang lahir dari pecahan tubuh ilahi Fuli yang hancur. Meski berasal dari latar belakang, ras, dan pengalaman hidup berbeda, mereka semua memiliki kesamaan: telah menapaki Path of Remembrance dan memiliki penampilan yang mirip (sering seperti wanita dengan fitur kristal/es).
+      </p>
+      <p>
+        Setiap Pure Child adalah kandidat potensial untuk menjadi Fuli di akhir waktu—mereka adalah "shard" yang akan berkumpul kembali menjadi Aeon penuh. Mereka bisa menciptakan dreamscape dari memoria dan memiliki kekuatan manipulasi memori yang kuat.
+      </p>
+      <p>
+        Contoh terkenal: **March 7th** (kemungkinan besar salah satunya, karena ditemukan dalam es kristal tanpa memori, dan terkait erat dengan Remembrance). **Cyrene** juga disebut sebagai Pure Child. **Black Swan** dan anggota Garden of Recollection (Memo Keeper) sering dianggap Emanator karena akses langsung ke kekuatan Fuli, meski bukan Pure Child.
+      </p>
+      <p>
+        Tidak ada Emanator baru confirmed secara eksplisit di luar Pure Children hingga update terbaru. Garden of Recollection adalah organisasi utama pengikut Fuli, mencari memori berharga di seluruh kosmos.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Penampilan</h3>
+      <p>
+        Fuli muncul sebagai sosok humanoid yang diukir dari material kristal reflektif transparan, seperti patung es atau kristal memori yang berkilau. Wajahnya tidak jelas/tidak bisa dibedakan, ditutupi mianguan (topi kerajaan kuno) dengan tirai mutiara yang menjuntai, memberikan aura abadi dan tak terjangkau.
+      </p>
+      <p>
+        Tubuhnya memantulkan fragmen memori seperti kilatan cahaya cepat, sering terlihat retak atau pecah di representasi tertentu (seperti di trailer Myriad Celestia "Evernight"). Kemunculan mereka selalu disertai efek kilau es dan suara samar seperti pecahan kristal.
+      </p>
+      <p>
+        Di Simulated Universe, Fuli jarang muncul langsung—hanya fragmen atau bayangan kristal. Bentuk "rusak" di beberapa cerita menandakan bahwa Fuli saat ini adalah "versi masa depan" yang belum lengkap.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Informasi Singkat</h3>
+      <div class="info-grid">
+        <div class="info-box">
+          <b>Konsep Inti</b>
+          <span>Path Remembrance fokus pada pengabdian tanpa pamrih untuk mengingat segalanya—merekam sejarah agar kebenaran abadi. Memberikan efek Freeze, DMG tambahan ke musuh Frozen, dan scaling dari DEF/Shield. Fuli hanya naik di akhir waktu, menciptakan loop memori di mana mereka "selalu ada" untuk merekam peristiwa.</span>
+        </div>
+        <div class="info-box">
+          <b>Pengikut yang Dapat Dimainkan (Remembrance)</b>
+          <span>March 7th (Ice), Black Swan (Wind), dan potensi karakter masa depan terkait Garden of Recollection atau Pure Children.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

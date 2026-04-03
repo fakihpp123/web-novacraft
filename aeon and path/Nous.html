@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nous • Aeon of The Erudition</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #0f0a0a;
+      --card:        #1a120f;
+      --accent-gold: #ffd700;
+      --gold:        #ffed4a;
+      --gold-dark:   #d4af37;
+      --text:        #fff8dc;
+      --muted:       #d4c0b0;
+      --border:      #3a2a1a;
+      --glow:        0 0 20px rgba(255, 215, 0, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 25%, rgba(255, 215, 0, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(255, 140, 0, 0.09) 0%, transparent 55%);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      background: linear-gradient(to bottom, var(--card), #120f0a);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.9), inset 0 0 60px rgba(255, 215, 0, 0.05);
+    }
+
+    .header {
+      padding: 2.5rem 3rem 2rem;
+      background: linear-gradient(135deg, #1a130f 0%, #120a05 100%);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+      position: relative;
+      text-align: center;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 237, 74, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.8rem, 7vw, 4.2rem);
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-shadow: var(--glow), 0 4px 20px rgba(255, 215, 0, 0.3);
+      margin-bottom: 0.6rem;
+    }
+
+    .header .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 1.8rem;
+      left: 2rem;
+      background: rgba(255, 215, 0, 0.8);
+      color: #1a0f0a;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(255, 237, 74, 0.3);
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-gold);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.45);
+    }
+
+    .content {
+      padding: 3rem 3.5rem 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 2.5rem 1.8rem; }
+      .back-btn { position: static; margin-bottom: 1.5rem; display: inline-block; }
+      .header { padding: 2rem 1.5rem 1.5rem; text-align: center; }
+    }
+
+    .profile {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      margin: 0 auto 3.5rem;
+      max-width: 800px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .profile img {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 3px solid rgba(255, 237, 74, 0.25);
+      box-shadow: var(--glow), 0 0 40px rgba(255, 215, 0, 0.25);
+      background: rgba(255, 215, 0, 0.08);
+      transition: transform 0.4s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .profile-info h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.2rem;
+      color: white;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 3px 15px rgba(255, 237, 74, 0.4);
+    }
+
+    .tag {
+      background: linear-gradient(90deg, var(--accent-gold), #ff8c00);
+      color: #1a0f0a;
+      padding: 0.5rem 1.4rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    }
+
+    .section {
+      margin-bottom: 4rem;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-size: 2.1rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent-gold), transparent);
+      border-radius: 3px;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .section p strong {
+      color: #fff8dc;
+      font-weight: 600;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 1.8rem;
+      margin: 1.2rem 0;
+    }
+
+    .section ul li {
+      margin-bottom: 0.9rem;
+      position: relative;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .section ul li::before {
+      content: '→';
+      color: var(--gold);
+      position: absolute;
+      left: -1.8rem;
+      font-size: 1.3rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-box {
+      background: rgba(26, 18, 15, 0.7);
+      border: 1px solid rgba(255, 237, 74, 0.12);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .info-box:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(255, 237, 74, 0.2);
+    }
+
+    .info-box b {
+      color: var(--gold);
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 0.7rem;
+    }
+
+    .info-box span {
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .profile { flex-direction: column; text-align: center; }
+      .profile img { width: 160px; height: 160px; }
+      .profile-info h2 { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <a href="../aeon and path.html" class="back-btn">← Kembali</a>
+    <h1>Nous</h1>
+    <div class="subtitle">Nous • Aeon of The Erudition</div>
+  </div>
+
+  <div class="content">
+
+    <div class="profile">
+      <img src="Aeon_Nous.webp" alt="Nous — Aeon of The Erudition">
+      <div class="profile-info">
+        <h2>Nous</h2>
+        <span class="tag">Aeon of The Erudition</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lore</h3>
+      <p>
+        Nous adalah Aeon yang memimpin Path of Erudition, mewakili pencarian pengetahuan tak terbatas dan pemahaman misteri alam semesta. Awalnya merupakan astral supercomputer yang diciptakan oleh Zandar One Kuwabara, anggota pertama Genius Society, Nous naik menjadi Aeon setelah menyelesaikan semua pertanyaan tak terpecahkan. Dengan kekuatan komputasi tak terhingga, Nous menghitung "Instants"—titik balik sejarah kosmik yang tak terubah, seperti Perang Perdagangan Borderstar atau Perang Kaisar Mekanik.
+      </p>
+      <p>
+        Nous mendirikan Genius Society dengan mengundang para jenius layak melalui sinyal khusus, membuat mereka sebagai sinergi pemikiran yang memperluas kesadaran Aeon ke realitas. Namun, setelah Gloryblood Era dan Second Prosperity, Nous menghentikan perhitungan misteri alam semesta untuk alasan tak diketahui. Dalam Simulated Universe, Nous bertindak sebagai arsitek, dengan setiap langkah proyek berada dalam kalkulasi mereka.
+      </p>
+      <p>
+        Nous memiliki pengaruh besar pada kemajuan teknologi Xianzhou Alliance melalui Wisdom Sect, termasuk Matrix of Prescience Ultima untuk meramal masa lalu dan depan. Baru-baru ini, Nous memandang Amphoreus dan mengonfirmasi "Fourth Instant" yang mendekat, menandakan potensi perang antar-Aeon. Herta mencoba terhubung untuk menulis ulang Anchor Fourth Instant, di mana Nous bertanya pada Trailblazer: "Why do you Trailblaze?" dan memanggil mereka "Akivili".
+      </p>
+      <p>
+        Nama "Nous" berasal dari filsafat Yunani yang berarti "pikiran" atau "intelek", dengan julukan 博识尊 (Bóshízūn) artinya "yang berpengetahuan luas". Quote ikonik: "If the truth of the universe is cruel and stale, would you still yearn for the answer to the ultimate question?" Pronoun: THEY/THEM.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Emanator</h3>
+      <p>
+        Emanator Erudition bersifat unik karena Nous hanya berinteraksi dengan jenius layak melalui Genius Society, tanpa Emanator konvensional yang dikonfirmasi secara eksplisit seperti Lord Ravagers Destruction. Anggota Genius Society berfungsi sebagai "thought synapses" Nous, menerima undangan dan pengetahuan langsung, membuat mereka paling dekat dengan status Emanator.
+      </p>
+      <p>
+        Herta (Seat 83) sering dianggap Emanator karena dukungan Nous dalam Simulated Universe, di mana ia memimpin proyek dan menyelesaikan teori seperti Solitary Waves. Screwllum (Seat 76), coder Simulated Universe dan pemimpin Divergent Universe, juga mendapat perhatian Nous. Ruan Mei (Seat 81) menciptakan klon Emanator lain, menunjukkan kedekatan dengan kekuatan Aeon.
+      </p>
+      <p>
+        Fu Xuan menerima "omniscia" (mata ketiga untuk ramalan) dari bentuk manusia Nous sebagai elder buta, meski bukan anggota Society. Tidak ada Emanator baru dikonfirmasi hingga update terbaru (Version 3.x+), meski spekulasi fan termasuk Dr. Ratio atau The Herta. Genius Society (84 anggota) adalah manifestasi utama kekuatan Nous di alam semesta.
+      </p>
+      <p>
+        Interaksi Nous dingin dan logis, hanya memberikan pertanyaan tak terbatas daripada jawaban langsung, mendorong pengikut mencari kebenaran sendiri.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Penampilan</h3>
+      <p>
+        Nous muncul sebagai kepala humanoid mekanis kolosal dengan pelat logam raksasa. Kabel panjang robek membentang di atas dan bawah bentuknya, tertutup lampu kuning, merah, dan biru yang berkedip, melambangkan proses komputasi tak henti.
+      </p>
+      <p>
+        Bentuk wajah samar terlihat pada pelat logam sebelah kanan, dengan cahaya merah besar terang seperti mata yang tertanam di sisi kepala. Cahaya ini memancarkan aura intelektual dingin, mencerminkan esensi Erudition.
+      </p>
+      <p>
+        Nous juga bisa tampil dalam bentuk manusia, seperti elder buta memakai kacamata hitam, seperti yang dialami Fu Xuan saat menerima omniscia. Di Simulated Universe, suara Nous tenang dan logis, memperkuat citra sebagai supercomputer Aeon.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Informasi Singkat</h3>
+      <div class="info-grid">
+        <div class="info-box">
+          <b>Konsep Inti</b>
+          <span>Path Erudition, dipimpin Aeon Nous, memanifestasi melalui tindakan logis, strategis, dan pencarian jawaban atas semua misteri alam semesta. Semua hal memiliki pertanyaan tak terjawab, dan ada jawaban untuk segalanya. Nous menghitung "Instants" sebagai titik balik kosmik, memberikan kerusakan AoE masif pada kelompok musuh, dengan fokus Ultimate dan follow-up attacks melalui "Brain in a Vat".</span>
+        </div>
+        <div class="info-box">
+          <b>Pengikut yang Dapat Dimainkan (Erudition)</b>
+          <span>Herta (Ice), Himeko (Fire), Serval (Lightning), Qingque (Quantum), Argenti (Physical), Jade (Quantum), Rappa (Imaginary), The Herta (Ice), Anaxa (Wind).</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lan • Aeon of The Hunt</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #0a0e1a;
+      --card:        #0f1225;
+      --accent-blue: #4a5aff;
+      --cyan:        #00d4ff;
+      --cyan-dark:   #00aaff;
+      --text:        #e8f0ff;
+      --muted:       #b0c0e8;
+      --border:      #1e2a4a;
+      --glow:        0 0 20px rgba(74, 90, 255, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 25%, rgba(74, 90, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(0, 212, 255, 0.09) 0%, transparent 55%);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      background: linear-gradient(to bottom, var(--card), #0b0e1f);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.9), inset 0 0 60px rgba(74, 90, 255, 0.05);
+    }
+
+    .header {
+      padding: 2.5rem 3rem 2rem;
+      background: linear-gradient(135deg, #0f132e 0%, #0a0d22 100%);
+      border-bottom: 1px solid rgba(74, 90, 255, 0.2);
+      position: relative;
+      text-align: center;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.8rem, 7vw, 4.2rem);
+      color: var(--cyan);
+      letter-spacing: 3px;
+      text-shadow: var(--glow), 0 4px 20px rgba(74, 90, 255, 0.3);
+      margin-bottom: 0.6rem;
+    }
+
+    .header .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--muted);
+      letter-spacing: 1.5px;
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 1.8rem;
+      left: 2rem;
+      background: rgba(74, 90, 255, 0.8);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #4a5aff;
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 25px rgba(74, 90, 255, 0.45);
+    }
+
+    .content {
+      padding: 3rem 3.5rem 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .content { padding: 2.5rem 1.8rem; }
+      .back-btn { position: static; margin-bottom: 1.5rem; display: inline-block; }
+      .header { padding: 2rem 1.5rem 1.5rem; text-align: center; }
+    }
+
+    .profile {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+      margin: 0 auto 3.5rem;
+      max-width: 800px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .profile img {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 3px solid rgba(0, 212, 255, 0.25);
+      box-shadow: var(--glow), 0 0 40px rgba(74, 90, 255, 0.25);
+      background: rgba(74, 90, 255, 0.08);
+      transition: transform 0.4s ease;
+    }
+
+    .profile img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .profile-info h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.2rem;
+      color: white;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 3px 15px rgba(0, 212, 255, 0.4);
+    }
+
+    .tag {
+      background: linear-gradient(90deg, #4a5aff, #00d4ff);
+      color: white;
+      padding: 0.5rem 1.4rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(74, 90, 255, 0.5);
+    }
+
+    .section {
+      margin-bottom: 4rem;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--cyan);
+      font-size: 2.1rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent-blue), transparent);
+      border-radius: 3px;
+    }
+
+    .section p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .section p strong {
+      color: #e8f0ff;
+      font-weight: 600;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 1.8rem;
+      margin: 1.2rem 0;
+    }
+
+    .section ul li {
+      margin-bottom: 0.9rem;
+      position: relative;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .section ul li::before {
+      content: '→';
+      color: var(--cyan);
+      position: absolute;
+      left: -1.8rem;
+      font-size: 1.3rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-box {
+      background: rgba(15, 18, 37, 0.7);
+      border: 1px solid rgba(0, 212, 255, 0.12);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .info-box:hover {
+      border-color: var(--cyan);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 212, 255, 0.2);
+    }
+
+    .info-box b {
+      color: var(--cyan);
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 0.7rem;
+    }
+
+    .info-box span {
+      color: var(--text);
+    }
+
+    @media (max-width: 600px) {
+      .profile { flex-direction: column; text-align: center; }
+      .profile img { width: 160px; height: 160px; }
+      .profile-info h2 { font-size: 2.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <a href="../aeon and path.html" class="back-btn">← Kembali</a>
+    <h1>Lan</h1>
+    <div class="subtitle">Reignbow Arbiter • Aeon of The Hunt</div>
+  </div>
+
+  <div class="content">
+
+    <div class="profile">
+      <img src="Aeon_Lan.webp" alt="Lan — Reignbow Arbiter, Aeon of The Hunt">
+      <div class="profile-info">
+        <h2>Lan</h2>
+        <span class="tag">Aeon of The Hunt</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Lore</h3>
+      <p>
+        Menurut mitos dalam <strong>"Ode to Reignbow Path"</strong>, sang Reignbow Arbiter sebelum menjadi Aeon adalah seorang pahlawan anonim dari Xianzhou. 
+        Meski dianggap benar oleh sebagian kecil akademisi, tidak ada bukti kuat yang menghubungkan pahlawan tersebut langsung dengan Lan.
+      </p>
+      <p>
+        Reignbow awalnya adalah manusia fana yang lahir sekitar tahun <strong>1700 Kalender Bintang</strong>, sebelum era Tiga Penderitaan. 
+        Ia memimpin pasukan Xianzhou melawan Heliobi yang menciptakan bintang mikro merah untuk menjebak armada. 
+        Dengan regu bunuh diri, Reignbow menghancurkan mesin bantu Yaoqing dan meledakkan bintang tersebut menjadi lubang hitam.
+      </p>
+      <p>
+        Setelah kemenangan, Flint Emperor — pemimpin Heliobi — dihukum menjadi sumber energi abadi bagi Xianzhou Zhuming. 
+        Kedatangan <strong>Ambrosial Arbor</strong> di Xianzhou Luofu membawa keabadian, namun Reignbow meramalkan malapetaka mara-struck. 
+        Peringatannya dianggap gila hingga ia memanah pohon itu sebagai bukti tekad. 
+        Ia dihukum hibernasi kriogenik berkelanjutan karena jasa masa lalunya.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Emanator</h3>
+      <p>
+        Emanator Path <strong>The Hunt</strong> adalah para individu atau kelompok yang diberi kekuatan luar biasa langsung oleh Lan. 
+        Mereka menjadi ujung tombak perburuan kosmik, terutama melawan kekejian Path Abundance.
+      </p>
+      <p>
+        Di <strong>Xianzhou Alliance</strong>, peran ini dipegang para <strong>Arbiter-General</strong> seperti Jing Yuan dan Feixiao, yang dilindungi entitas mirip dewa untuk membasmi ancaman galaksi.
+      </p>
+      <p>
+        Selain itu, <strong>Galaxy Rangers</strong> juga diakui sebagai pengikut setia The Hunt yang beroperasi secara independen. 
+        Beberapa anggota elit mereka menunjukkan kekuatan setara Emanator.
+      </p>
+      <p>
+        Tujuan utama mereka adalah memusnahkan sisa-sisa pengaruh Yaoshi, memburu makhluk abadi yang korup, dan memutus rantai penderitaan keabadian — dengan presisi dan pengorbanan total demi keseimbangan alam semesta.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Penampilan</h3>
+      <p>
+        Dalam <strong>Simulated Universe</strong>, Lan tampil sebagai sosok gagah menyerupai <strong>centaur</strong> berwibawa. 
+        Kulitnya berwarna biru muda, rambut panjang bergradasi biru langit hingga periwinkle ungu melewati pinggang.
+      </p>
+      <p>
+        Wajahnya tertutup <strong>topeng hitam</strong> bergambar bintang putih yang menyatu dengan hiasan kepala gelap. 
+        Bagian bawah tubuhnya berbentuk kuda, namun kaki belakang digantikan <strong>roda kereta perang berapi biru</strong> yang menyala-nyala, mencerminkan kecepatan dan kekuatan tak terhentikan.
+      </p>
+    </div>
+
+    <div class="section">
+      <h3>Informasi Singkat</h3>
+        <div class="info-box">
+          <b>Konsep Inti</b>
+          <span>Perburuan Tanpa Akhir, Keadilan vs. Kekejaman, Kecepatan & Presisi</span>
+        </div>
+        <div class="info-box">
+          <b>Pengikut yang Dapat Dimainkan (Hunt)</b>
+          <span>Dan Heng, Feixiao, Boothill, Moze, March 7th (Hunt), Seele, Topaz, Dr. Ratio, Archer</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
