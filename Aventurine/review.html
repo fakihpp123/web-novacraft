@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aventurine • Review - Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #C9A961;
+      --accent-light: #E8D4A0;
+      --glow: 0 0 20px rgba(201, 169, 97, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(217, 83, 79, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link {
+      display: inline-block;
+      background: rgba(201, 169, 97, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(201, 169, 97, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1 class="header-title">Aventurine</h1>
+        <p class="header-subtitle">Character Review & Analysis</p>
+      </div>
+      <a href="character-aventurine.html" class="back-link">← Kembali ke Profile</a>
+    </div>
+
+    <!-- CHARACTER OVERVIEW -->
+    <div class="section">
+      <h2 class="section-title">Character Overview</h2>
+      <div style="background: rgba(201, 169, 97, 0.08); border: 1px solid rgba(201, 169, 97, 0.15); border-radius: 10px; padding: 1.5rem;">
+        <p style="color: var(--text); font-size: 1.05rem; line-height: 1.8; margin: 0;">
+          <strong style="color: var(--accent);">Aventurine</strong> adalah character Preservation Path Imaginary yang berperan sebagai <strong style="color: var(--accent);">protector dan buffer team</strong> dengan mekanisme shield stacking yang powerful dan DEF scaling. Dengan kemampuan untuk memberikan shield multi-layer, meningkatkan CRIT DMG sekutu, dan memberikan debuff resistansi kepada musuh, Aventurine adalah pilihan terbaik untuk team yang membutuhkan sustainability dan protection sambil meningkatkan overall team damage output secara signifikan.
+        </p>
+      </div>
+    </div>
+
+    <!-- STRENGTHS & WEAKNESSES -->
+    <div class="section">
+      <h2 class="section-title">Strengths & Weaknesses</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+        
+        <!-- STRENGTHS -->
+        <div style="background: rgba(70, 214, 207, 0.05); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #46d6cf; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✓</span> Strengths
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Multi-Layer Shield Stacking</strong> - Memberikan shield kepada semua sekutu yang dapat ditumpuk hingga 200%, menciptakan durability luar biasa untuk team survival
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Team CRIT DMG Enhancement</strong> - Ultimate memberikan 15% CRIT DMG boost untuk seluruh team terhadap Unnerved target, meningkatkan overall team damage output
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">High DEF Scaling & CRIT Rate</strong> - Trace A2 memberikan 48% CRIT Rate bonus di cap (1600+ DEF), memungkinkan Aventurine mencapai CRIT Rate tinggi tanpa sacrifice stats lain
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Follow-Up Attack (FUA) Scaling</strong> - Talent memberikan 7-hit FUA yang scales dengan DEF, providing additional damage output sambil maintaining protective capability
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Excellent Buffer Support</strong> - Memberikan Effect RES +50% kepada sekutu yang memiliki shield, improving team ccresistance dan making team lebih stable
+            </li>
+          </ul>
+        </div>
+
+        <!-- WEAKNESSES -->
+        <div style="background: rgba(255, 107, 107, 0.05); border: 1px solid rgba(255, 107, 107, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #ff6b6b; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✗</span> Weaknesses
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">DEF-Dependent Scaling</strong> - Semua damage dan shield mechanics scale dengan DEF, memerlukan heavy DEF investment yang mengorbankan offensive stats
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Support Role Only</strong> - Meskipun dapat dealing damage via FUA, fokus utama adalah protection. Tidak cocok untuk players yang menginginkan main DPS aggressive playstyle
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Eidolon Scaling Impact</strong> - Performa meningkat signifikan di E1 (CRIT DMG), E4 (DEF buff), dan E6 (DMG scaling), E0 kurang optimal untuk endgame content
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Limited Damage Output</strong> - Sebagai Preservation, damage Aventurine terbatas. Primary role adalah protection bukan offense, dapat terasa slow di solo content
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Shield Dependent Mechanics</strong> - Effect RES buff require shield active pada sekutu, jika shield break maka buff akan hilang dan team vulnerability meningkat
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- USAGE RATING -->
+    <div class="section">
+      <h2 class="section-title">Usage Rating</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(201, 169, 97, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(201, 169, 97, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Memory of Chaos</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">9.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Excellent Support</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(201, 169, 97, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(201, 169, 97, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Pure Fiction</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">9.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Top Tier Protection</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(201, 169, 97, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(201, 169, 97, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Apocalyptic Shadow</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">9.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Strong Viability</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(201, 169, 97, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(201, 169, 97, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Open World</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">7.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Great Sustain</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDED EIDOLONS -->
+    <div class="section">
+      <h2 class="section-title">Eidolon Recommendations</h2>
+      
+      <div style="display: grid; gap: 1.2rem; margin-top: 1.5rem;">
+        <div style="background: rgba(201, 169, 97, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(201, 169, 97, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">💡 E0 (No Eidolons)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">Aventurine E0 viable untuk casual dan semi-endgame dengan shield mechanics yang sudah sangat solid. DEF scaling yang fundamental sudah memberikan protection yang adequate. Namun untuk optimasi maksimal dengan consistent shield uptime dan team buff coverage, progression ke E1+ memberikan significant improvement.</p>
+        </div>
+
+        <div style="background: rgba(201, 169, 97, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(201, 169, 97, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">⭐ E1 (Recommended First)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E1 memberikan power spike dengan peningkatan shield strength dan Effect RES yang lebih konsisten untuk team buff. Ini adalah minimal sweet spot untuk balanced protection dan team support dengan damage contribution yang improved. Worth untuk serious players yang want optimal shield uptime management.</p>
+        </div>
+
+        <div style="background: rgba(201, 169, 97, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(201, 169, 97, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">🌟 E2 (Major Breakpoint)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E2 memberikan enhancement ke Shield strength mechanics dengan improved damage mitigation ratio. Dikombinasikan dengan E1, E2 Aventurine mencapai near-peak protection coverage untuk team dengan excellent sustainability scaling. Strong value untuk players pursuing maximum defensive capabilities.</p>
+        </div>
+
+        <div style="background: rgba(201, 169, 97, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(201, 169, 97, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">♔ E6 (Absolute Peak)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E6 adalah ultimate pinnacle dengan massive scaling ke DEF dan shield interaction mechanics. Memberikan monumental protection ceiling dengan unparalleled team durability dan support effectiveness. Absolute end-game optimization untuk whale players pursuing maximum defensive coverage dan team sustainability dominance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Last updated: February 2026 | Aventurine • Honkai: Star Rail</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Argenti • Review - Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #23262b;
+      --card-bg: #2d3036;
+      --text: #e0e0e0;
+      --muted: #b0b3b8;
+      --border: #44474d;
+      --accent: #bdbdbd;
+      --accent-light: #e0e0e0;
+      --glow: 0 0 20px rgba(180, 180, 180, 0.18);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(217, 83, 79, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(124, 58, 237, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1 class="header-title">Argenti</h1>
+        <p class="header-subtitle">Character Review & Analysis</p>
+      </div>
+      <a href="character-argenti.html" class="back-link">← Kembali ke Profile</a>
+    </div>
+
+    <!-- CHARACTER OVERVIEW -->
+    <div class="section">
+      <h2 class="section-title">Character Overview</h2>
+      <div style="background: rgba(217, 83, 79, 0.08); border: 1px solid rgba(217, 83, 79, 0.15); border-radius: 10px; padding: 1.5rem;">
+        <p style="color: var(--text); font-size: 1.05rem; line-height: 1.8; margin: 0;">
+          <strong style="color: var(--accent);">Argenti</strong> adalah character Erudition Physical yang memanfaatkan <strong style="color: var(--accent);">Apotheosis stacking dan ATK scaling</strong> untuk memberikan damage yang massive dan konsisten. Dengan kemampuan untuk membangun Apotheosis stacks hingga 12 (E4+), Argenti mampu mencapai CRIT Rate hingga 30% dan CRIT DMG scaling yang sangat tinggi pada end-game content dengan proper team synergy dan equipment optimization.
+        </p>
+      </div>
+    </div>
+
+    <!-- STRENGTHS & WEAKNESSES -->
+    <div class="section">
+      <h2 class="section-title">Strengths & Weaknesses</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+        
+        <!-- STRENGTHS -->
+        <div style="background: rgba(70, 214, 207, 0.05); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #46d6cf; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✓</span> Strengths
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #d9534f; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Apotheosis Stacking Mechanics</strong> - Talent memberikan CRIT Rate per enemy hit, dengan E4 meningkatkan max stacks menjadi 12 untuk pemaksimalan CRIT potential
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #d9534f; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Exceptional ATK Scaling</strong> - E1 memberikan CRIT DMG scaling per Apotheosis stack, untuk total 48% CRIT DMG bonus di cap potential
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #d9534f; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Multi-Hit Skill Design</strong> - Justice, Hereby Blooms memberikan AoE damage per swing, memaksimalkan Apotheosis generation dari hits
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #d9534f; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Physical Penetration (E6)</strong> - Ultimate memberikan 30% DEF ignore pada E6, meningkatkan consistent damage output significantly
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #d9534f; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">AoE Capability</strong> - Dapat menangani multi-enemy scenarios dengan efisien berkat Skill AoE dan Ultimate multi-hits
+            </li>
+          </ul>
+        </div>
+
+        <!-- WEAKNESSES -->
+        <div style="background: rgba(255, 107, 107, 0.05); border: 1px solid rgba(255, 107, 107, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #ff6b6b; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✗</span> Weaknesses
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Ramp-Up Time Required</strong> - Membutuhkan multiple turns dan enemies untuk membangun Apotheosis stacks optimal, kalah di short battles
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Eidolon Scaling Heavy</strong> - Performa signifikan meningkat di E1, E2, E4, dan E6 untuk unlock full potential dan competitiveness
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Low Base Speed</strong> - SPD 103 adalah terendah di class-nya, memerlukan SPD support untuk turn optimization yang maksimal
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Single Element Dependency</strong> - Physical element only, tidak ada flexibility untuk element switching atau situational adaptation
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Limited Defensive Mechanics</strong> - Tidak ada self-sustain atau defensive buffs, memerlukan external healer/shielder support untuk survival
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- USAGE RATING -->
+    <div class="section">
+      <h2 class="section-title">Usage Rating</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(217, 83, 79, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(217, 83, 79, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Memory of Chaos</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">6.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Solid Pick</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(217, 83, 79, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(217, 83, 79, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Pure Fiction</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">8.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Decent Option</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(217, 83, 79, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(217, 83, 79, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Apocalyptic Shadow</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">6.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Average Viability</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(217, 83, 79, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(217, 83, 79, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Open World</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">7.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Good DPS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDED EIDOLONS -->
+    <div class="section">
+      <h2 class="section-title">Eidolon Recommendations</h2>
+      
+      <div style="display: grid; gap: 1.2rem; margin-top: 1.5rem;">
+        <div style="background: rgba(217, 83, 79, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(217, 83, 79, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">💡 E0 (No Eidolons)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">Argenti E0 viable untuk casual content dengan ATK scaling yang solid dan Apotheosis generation dari Sublime Object. Namun untuk endgame content seperti MoC dan PF, scalability yang terbatas tanpa E1 CRIT DMG bonus membuat performa kurang optimal dibanding higher eidolons.</p>
+        </div>
+
+        <div style="background: rgba(217, 83, 79, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(217, 83, 79, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">⭐ E1 (Recommended First)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E1 memberikan power spike signifikan dengan 4% CRIT DMG per Apotheosis stack, total 48% CRIT DMG di cap. Ini adalah minimal sweet spot untuk serious players yang ingin competitive damage output dengan CRIT scaling efficiency yang maksimal.</p>
+        </div>
+
+        <div style="background: rgba(217, 83, 79, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(217, 83, 79, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">🌟 E2 (Major Breakpoint)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E2 memberikan 40% ATK boost saat 3+ enemies di field, dengan AoE Ultimate triggers. Dikombinasikan dengan E1, E2 Argenti mencapai near-peak performance untuk AoE scenarios dengan excellent value proposition dan flexible team building.</p>
+        </div>
+
+        <div style="background: rgba(217, 83, 79, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(217, 83, 79, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">♔ E6 (Absolute Peak)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E6 adalah ultimate pinnacle dengan 30% DEF ignore pada Ultimate dan Apotheosis stack limit increase ke 12. Memberikan monumental damage ceiling dengan DEF penetration yang scales perfectly dengan ATK-based mechanics. Absolute end-game optimization untuk whale players pursuing maximum sustained damage performance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Last updated: February 2026 | Argenti • Honkai: Star Rail</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aglaea • Builds & Teams - Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #d4af37;
+      --accent-light: #e8c548;
+      --glow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(212, 175, 55, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .stat-item {
+      background: rgba(212, 175, 55, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .stat-item .label {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-item .value {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .team-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .team-card h4 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+
+    .team-member {
+      background: rgba(212, 175, 55, 0.08);
+      padding: 0.8rem;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .team-member-name {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .team-member-role {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .relic-item {
+      display: flex;
+      gap: 1.5rem;
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+      align-items: flex-start;
+    }
+
+    .relic-item:hover {
+      background: rgba(10, 14, 20, 0.7);
+      border-color: var(--accent);
+    }
+
+    .relic-image-box {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(212, 175, 55, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .relic-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .relic-content {
+      flex: 1;
+    }
+
+    .relic-title-section {
+      margin-bottom: 1rem;
+    }
+
+    .relic-name {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin: 0 0 0.2rem 0;
+      font-weight: 700;
+    }
+
+    .relic-type {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .relic-bonuses {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .relic-bonus {
+      background: rgba(212, 175, 55, 0.06);
+      padding: 0.8rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .relic-bonus-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .relic-bonus-text {
+      color: var(--text);
+      line-height: 1.4;
+      font-size: 0.85rem;
+    }
+
+    .relic-reason {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      border-top: 1px solid var(--border);
+      padding-top: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1 class="header-title">Aglaea</h1>
+        <p class="header-subtitle">Build & Teams Guide</p>
+      </div>
+      <a href="character-aglaea.html" class="back-link">← Kembali ke Profile</a>
+    </div>
+
+    <!-- BUILDS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Recommended Builds</h2>
+      
+      <h3 style="color: var(--accent); margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 700;">Build Details</h3>
+      
+      <div style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem;">
+        <h4 style="color: var(--text); font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">Main Stats Priority</h4>
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="label">Body</div>
+            <div class="value">Crit Rate = Crit Damage %</div>
+          </div>
+          <div class="stat-item">
+            <div class="label">Feet</div>
+            <div class="value">SPD </div>
+          </div>
+          <div class="stat-item">
+            <div class="label">Planar Sphere</div>
+            <div class="value">Lightning DMG %</div>
+          </div>
+          <div class="stat-item">
+            <div class="label">Link Rope</div>
+            <div class="value">Energy Regen > ATK %</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 10px; padding: 1.5rem;">
+        <h4 style="color: var(--text); font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">Recommended Endgame Stats (Level 80)</h4>
+        <ol style="list-style: decimal; list-style-position: inside; color: var(--text); font-size: 0.95rem; line-height: 2;">
+          <li><strong>ATK:</strong> 1900-2200+ (sebelum combat)</li>
+          <li><strong>HP:</strong> 2800-3100+</li>
+          <li><strong>DEF:</strong> 900+</li>
+          <li><strong>SPD:</strong> 160+</li>
+          <li><strong>CRIT Rate:</strong> 80 - 100%</li>
+          <li><strong>CRIT DMG:</strong> 100 - 140%</li>
+          <li><strong>Energy regen:</strong> 119.4%</li>
+        </ol>
+      </div> 
+    </div>
+
+    <!-- RELIC SETS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Relic Sets (Body/Feet)</h2>
+      
+      <div style="margin-top: 1.5rem;">
+        <!-- Hero of Triumphant Song -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/set-hero.webp" alt="Hero of Triumphant Song">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">(4) Hero of Triumphant Song</h3>
+              <div class="relic-type">Best Relic Set • 4-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">Meningkatkan ATK sebesar 12%.</div>
+              </div>
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">4-Piece</div>
+                <div class="relic-bonus-text">Selama memosprite pengguna berada di medan tempur, meningkatkan SPD pengguna sebesar 6%. Saat memosprite pengguna menyerang, meningkatkan CRIT DMG pengguna dan memosprite sebesar 30% selama 2 giliran.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Set terbaik untuk Aglaea dengan selisih yang signifikan, memberikan bonus ATK% dan CRIT DMG% yang besar bagi dirinya maupun Memosprite-nya. Set ini juga hadir dengan bonus tambahan yang membantunya mencapai target ambang batas (breakpoint) Kecepatan yang lebih tinggi.
+            </div>
+          </div>
+        </div>
+
+        <!-- Scholar Lost in Erudition -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/set-scholar.webp" alt="Scholar Lost in Erudition">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">(4) Scholar Lost in Erudition</h3>
+              <div class="relic-type">4-Piece Alternative</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">Meningkatkan CRIT Rate sebesar 8%.</div>
+              </div>
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">4-Piece</div>
+                <div class="relic-bonus-text">Meningkatkan DMG yang dihasilkan oleh Skill dan Ultimate sebesar 20%. Setelah menggunakan Ultimate, meningkatkan lagi DMG yang dihasilkan oleh Skill berikutnya sebesar 25%.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              "Jika Anda tidak dapat menyusun set 4P (4-potong) rekomendasi utama dengan sub-stat atau main stat yang memuaskan. Set ini memberikan peningkatan CRIT Rate yang baik dan meningkatkan damage Skill serta Ultimate Aglaea, meskipun tidak seoptimal Genius of Brilliant Stars."
+            </div>
+          </div>
+        </div>
+
+        <!-- Musketeer of Wild Wheat -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/set-musketeer.webp" alt="Musketeer of Wild Wheat">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">(4) Musketeer of Wild Wheat</h3>
+              <div class="relic-type">4-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">Meningkatkan ATK sebesar 12%.</div>
+              </div>
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">4-Piece</div>
+                <div class="relic-bonus-text">SPD pengguna meningkat sebesar 6% dan DMG Basic ATK meningkat sebesar 10%.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Alternatif yang masuk akal dibandingkan menggunakan kombinasi 2P/2P (2-set/2-set), karena adanya bonus ATK%, DMG Basic ATK%, dan SPD%. Namun, ini hanya disarankan jika sub-stat-nya sebanding atau lebih unggul, atau jika set ini memungkinkan Aglaea untuk mencapai ambang batas (breakpoint) SPD yang krusial.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLANAR SPHERE SECTION -->
+    <div class="section">
+      <h2 class="section-title">Planar Sphere Sets (Planar Sphere/Link Rope)</h2>
+      
+      <div style="margin-top: 1.5rem;">
+        <!-- The Wondrous Banana Amusement Park -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/planar-the wondrous.webp" alt="The Wondrous BananAmusement Park">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">The Wondrous Banana Amusement Park</h3>
+              <div class="relic-type">Best • 2-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus" style="grid-column: 1 / -1;">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">Meningkatkan CRIT DMG pengguna sebesar 16%. Ketika target yang dipanggil (summoned target) oleh pengguna berada di medan tempur, CRIT DMG meningkat tambahan sebesar 32%.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Boost CRIT DMG untuk karakter Summoner, tapi bonus tambahan 32% tidak berlaku untuk Memosprite. Meski begitu, tetap pilihan solid untuk Aglaea.
+            </div>
+          </div>
+        </div>
+
+        <!-- Rutilant Arena -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/planar-rutilant.webp" alt="Rutilant Arena">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">Rutilant Arena</h3>
+              <div class="relic-type">2-Piece Alternative</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus" style="grid-column: 1 / -1;">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">Meningkatkan CRIT Rate pengguna sebesar 8%. Ketika CRIT Rate pengguna saat ini mencapai 70% atau lebih tinggi, DMG Basic ATK dan Skill pengguna meningkat sebesar 20%.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Set solid untuk CRIT build. Bonus 20% DMG tidak berlaku ke Garmentmaker, tapi tetap kompetitif untuk Aglaea.
+            </div>
+          </div>
+        </div>
+
+        <!-- Firmament Frontline: Glamoth -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/planar-firmament.webp" alt="Firmament Frontline: Glamoth">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">Firmament Frontline: Glamoth</h3>
+              <div class="relic-type">2-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus" style="grid-column: 1 / -1;">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">Meningkatkan ATK pengguna sebesar 12%. Ketika SPD pengguna sama dengan atau lebih tinggi dari 135/160, pengguna mengakibatkan 12%/18% DMG tambahan.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Cocok untuk SPD-focused build. Mudah mencapai 160 SPD untuk bonus 18% DMG tambahan.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHT CONES SECTION -->
+    <div class="section">
+      <h2 class="section-title">Light Cones</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        
+        <div style="background: rgba(10, 14, 20, 0.5); border: 2px solid rgba(212, 175, 55, 0.4); border-radius: 12px; padding: 1.5rem; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(212, 175, 55, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="width: 100%; height: 160px; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(212, 175, 55, 0.1);">
+            <img src="../../asset/lc-aglaea.webp" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="color: #d4af37; font-size: 1.2rem; margin: 0; margin-bottom: 0.3rem; font-weight: 700;">Time Woven Into Gold</h3>
+              <div style="color: var(--muted); font-size: 0.85rem;">5★ Remembrance (Signature) | S1</div>
+            </div>
+            <span style="background: #d4af37; color: #0a0e14; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">Event Warp (limited)</span>
+          </div>
+          <p style="color: var(--text); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Signature Aglaea. Multiplier damage luar biasa dan SPD boost memudahkan mencapai breakpoint 160 SPD.
+          </p>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 1.5rem; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(212, 175, 55, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="width: 100%; height: 160px; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(212, 175, 55, 0.1);">
+            <img src="../../asset/lc-memory curtain.webp" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="color: #d4af37; font-size: 1.2rem; margin: 0; margin-bottom: 0.3rem; font-weight: 700;">Memory's Curtain Never Falls</h3>
+              <div style="color: var(--muted); font-size: 0.85rem;">5★ Remembrance | S5</div>
+            </div>
+            <span style="background: #46d6cf; color: white; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">Herta Shop</span>
+          </div>
+          <p style="color: var(--text); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Best 5★ untuk budget. SPD boost dan Skill DMG cocok untuk Aglaea. Mudah S5.
+          </p>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 1.5rem; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(212, 175, 55, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="width: 100%; height: 160px; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(212, 175, 55, 0.1);">
+            <img src="../../asset/lc-sweat  now.webp" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="color: #d4af37; font-size: 1.2rem; margin: 0; margin-bottom: 0.3rem; font-weight: 700;">Sweat Now</h3>
+              <div style="color: var(--muted); font-size: 0.85rem;">4★ Remembrance | S5</div>
+            </div>
+            <span style="background: #46d6cf; color: white; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">Nameless Glory</span>
+          </div>
+          <p style="color: var(--text); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            4★ solid untuk CRIT build. Bonus berlaku untuk Aglaea dan Garmentmaker.
+          </p>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 2px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 1.5rem; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(212, 175, 55, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="width: 100%; height: 160px; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(212, 175, 55, 0.1);">
+            <img src="../../asset/lc-geniuses.webp" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="color: #d4af37; font-size: 1.2rem; margin: 0; margin-bottom: 0.3rem; font-weight: 700;">Geniuses' Greetings</h3>
+              <div style="color: var(--muted); font-size: 0.85rem;">4★ Remembrance | S5</div>
+            </div>
+            <span style="background: #46d6cf; color: white; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">Event Warp (limited)</span>
+          </div>
+          <p style="color: var(--text); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Niche untuk Action Advancement-heavy team. Buff habis cepat di ultimate-nya.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEAMS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Team Compositions</h2>
+      
+      <div style="margin-top: 1.5rem;">
+        <h3 style="color: var(--muted); text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1.5rem;">Recommended Teams</h3>
+        
+        <div class="team-container">
+          
+          <!-- TEAM 1 -->
+          <div class="team-card">
+            <h4>OPTIMAL TEAM (SPD-Focus)</h4>
+            <div class="team-members" style="gap: 1rem; grid-template-columns: repeat(4, 1fr);">
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-aglaea.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Aglaea</div>
+                <div class="team-member-role">Main DPS</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-cyrene.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Cyrene</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-sunday.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Sunday</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-dan heng permansor terrae.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Dan Heng: Permansor Terrae</div>
+                <div class="team-member-role">Sustain</div>
+              </div>
+            </div>
+            <p style="color: var(--text); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">
+              Optimal team dengan SPD scaling (Cyrene) dan support (Sunday). Sustain dari Dan Heng.
+            </p>
+          </div>
+
+          <!-- TEAM 2 -->
+          <div class="team-card">
+            <h4>Energy TEAM</h4>
+            <div class="team-members" style="gap: 1rem; grid-template-columns: repeat(4, 1fr);">
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-aglaea.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Aglaea</div>
+                <div class="team-member-role">Main DPS</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-robin.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Robin</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-sunday.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Sunday</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-huohuo.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Huohuo</div>
+                <div class="team-member-role">Healer</div>
+              </div>
+            </div>
+            <p style="color: var(--text); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">
+              Energy-focused team dengan Robin dan Sunday. Huohuo untuk healing dan support tambahan.
+            </p>
+          </div>
+
+          <!-- TEAM 3 -->
+          <div class="team-card">
+            <h4> F2P TEAM</h4>
+            <div class="team-members" style="gap: 1rem; grid-template-columns: repeat(4, 1fr);">
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-aglaea.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Aglaea</div>
+                <div class="team-member-role">Main DPS</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-trailblazer remembrance.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Trailblazer: Remembrance</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-tingyun.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Tingyun</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-gallagher.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Gallagher</div>
+                <div class="team-member-role">Sustain</div>
+              </div>
+            </div>
+            <p style="color: var(--text); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">
+              F2P-friendly dengan Trailblazer Remembrance. Tingyun energy battery dan Gallagher untuk sustain.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Last updated: February 2026 | Aglaea • Honkai: Star Rail</p>
+    </footer>
+  </div>
+
+  <script>
+    // Placeholder for future functionality
+  </script>
+</body>
+</html>

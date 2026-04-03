@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aglaea • Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #d4af37;
+      --accent-light: #e8c548;
+      
+      --lightning: #ffc730;
+      --abundance: #d4af37;
+      --erudition: #8365ff;
+      
+      --glow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* HEADER SECTION */
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .header-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .header-image {
+      width: 280px;
+      height: 380px;
+      background: rgba(212, 175, 55, 0.1);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+    }
+
+    .header-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .character-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .char-tags {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .tag.rarity {
+      background: rgba(255, 200, 50, 0.2);
+      border-color: #ffc832;
+      color: #ffc832;
+    }
+
+    .tag.element {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--abundance);
+      color: var(--abundance);
+    }
+
+    .tag.path {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--abundance);
+      color: var(--abundance);
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .video-link {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .video-link:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    }
+
+    /* TAB NAVIGATION */
+    .tabs-nav {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* PROFILE SECTION */
+    .section {
+      background: linear-gradient(135deg, var(--card-bg), #0a0f1a);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    /* SKILLS */
+    .skill-list {
+      display: grid;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .skill {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .skill:hover {
+      border-left-color: var(--accent);
+      background: rgba(212, 175, 55, 0.05);
+      transform: translateX(4px);
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill-name {
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .skill-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .skill-meta-item {
+      font-size: 0.9rem;
+      color: var(--muted);
+      background: rgba(212, 175, 55, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    .skill-description {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .skill-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+      font-size: 0.9rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-value {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* TRACES SECTION */
+    .traces-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .trace-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .trace-card:hover {
+      border-color: var(--accent);
+      background: rgba(10, 14, 20, 0.8);
+    }
+
+    .trace-name {
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .trace-level {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .trace-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* EIDOLONS SECTION */
+    .eidolon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .eidolon-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 2px solid rgba(212, 175, 55, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .eidolon-card:hover {
+      border-color: var(--accent);
+      background: rgba(10, 14, 20, 0.8);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    }
+
+    .eidolon-title {
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .eidolon-name {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .eidolon-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* STATS & MATERIALS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-box {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-box-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .stat-box-value {
+      color: var(--accent);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .materials-section {
+      margin-top: 3rem;
+    }
+
+    .material-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .material-item {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .material-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(212, 175, 55, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .material-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .material-info {
+      flex: 1;
+    }
+
+    .material-name {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .material-quantity {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 1.5rem;
+      }
+
+      .header-top {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .header-image {
+        width: 100%;
+        height: 300px;
+      }
+
+      .character-name {
+        font-size: 2.5rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .tabs-nav {
+        gap: 0.5rem;
+      }
+
+      .tab-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="../../characters.html" class="back-btn">← Kembali ke Home</a>
+
+  <!-- HEADER SECTION -->
+  <div class="header">
+    <div class="header-top">
+      <div class="header-info">
+        <h1 class="character-name">Aglaea</h1>
+        
+        <div class="char-tags">
+          <span class="tag rarity">★★★★★ 5-Star</span>
+          <span class="tag element">Lightning ⚡</span>
+          <span class="tag path">Path of Remembrance 思忆</span>
+        </div>
+
+        <p class="description">
+          Aglaea adalah Karakter dari Path of Remembrance yang menjadi Keturunan Chrysos.
+          Dengan ketangkasan dan kecerdasan yang tajam, dia membimbing para pahlawan menuju takdir mereka.
+          Sebagai Goldweaver yang berdedikasi, Aglaea membawa harapan pembaruan dunia yang sekarat.
+        </p>
+
+        <a href="#" class="video-link">▶ Tonton Video Guide</a>
+      </div>
+
+      <div class="header-image">
+        <img src="../../asset/hsr-aglaea.webp" alt="Aglaea">
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB NAVIGATION -->
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab('profile')">Profile</button>
+    <a href="review.html" style="display: inline-block; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem; cursor: pointer;">Review</a>
+    <a href="builds.html" style="display: inline-block; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem; cursor: pointer;">Build & Teams</a>
+  </div>
+
+  <!-- PROFILE TAB -->
+  <div id="profile" class="tab-content active">
+
+    <!-- SKILLS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Skills</h2>
+      
+      <div class="skill-list">
+        <!-- Basic ATK -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Basic Attack: Thorned Nectar</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Single Target</span>
+              <span class="skill-meta-item">Break: 10</span>
+              <span class="skill-meta-item">Energy: 20</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Menghasilkan Lightning DMG sebesar 100% ATK Aglaea kepada satu musuh target.
+          </p>
+          <div class="skill-stats">
+            <div class="stat-item">
+              <span class="stat-label">Damage %</span>
+              <span class="stat-value">100%</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Break Value</span>
+              <span class="stat-value">10</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Basic ATK -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Enhanced Basic Attack: Slash by a Thousandfold Kiss</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Single Target</span>
+              <span class="skill-meta-item">Break: 20</span>
+              <span class="skill-meta-item">Energy: 20 + 10 adjacent</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Aglaea dan Garmentmaker meluncurkan Joint ATK (Serangan Gabungan) pada target, masing-masing mengakibatkan Lightning DMG sebesar 200% dari ATK Aglaea dan 200% dari ATK Garmentmaker kepada target tersebut.
+             Selain itu, mengakibatkan Lightning DMG sebesar 90% dari ATK Aglaea dan 90% dari ATK Garmentmaker kepada target di sekitarnya (adjacent targets).
+            "Slash by a Thousandfold Kiss" tidak dapat memulihkan Skill Point.
+          </p>
+          <div class="skill-stats">
+            <div class="stat-item">
+              <span class="stat-label">Damage %</span>
+              <span class="stat-value">200%</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Break Value</span>
+              <span class="stat-value">20 + 10 adjacent</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Skill: Rise, Exalted Renown</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Summon</span>
+              <span class="skill-meta-item">Break: —</span>
+              <span class="skill-meta-item">Energy: 20</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Memulihkan HP Garmentmaker sebesar 50% dari Max HP-nya. Jika Garmentmaker tidak hadir, memanggil memosprite Garmentmaker dan unit ini segera bertindak.
+          </p>
+          <div class="skill-stats">
+            <div class="stat-item">
+              <span class=\"stat-label\">Energy</span>
+              <span class="stat-value">20</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ultimate -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Ultimate: Dance, Destined Weaveress</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Enhance</span>
+              <span class="skill-meta-item">Break: —</span>
+              <span class="skill-meta-item">Energy: 350</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Memanggil memosprite Garmentmaker. Jika Garmentmaker sudah berada di medan tempur, maka akan memulihkan HP-nya hingga penuh. Aglaea memasuki status "Supreme Stance" dan segera beraksi (immediate action).
+            Selama dalam status "Supreme Stance", Aglaea mendapatkan tumpukan (stack) SPD Boost dari Talent Memosprite Garmentmaker, di mana setiap tumpukan meningkatkan SPD-nya sebesar 15%. Basic ATK diperkuat menjadi "Slash by a Thousandfold Kiss", dan Aglaea tidak dapat menggunakan Skill. Garmentmaker menjadi kebal terhadap debuff Crowd Control (CC).
+            Sebuah hitung mundur (countdown) muncul di urutan aksi (Action Order), dengan SPD awal sebesar 100. Menggunakan Ultimate kembali saat hitung mundur masih ada di urutan aksi akan mengatur ulang (reset) hitung mundur tersebut. Saat giliran hitung mundur dimulai, Garmentmaker akan hancur sendiri. Ketika Garmentmaker menghilang, status "Supreme Stance" Aglaea akan berakhir.
+          </p>
+
+        </div>
+
+        <!-- Talent -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Talent: Rosy-Fingered</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Passive</span>
+              <span class="skill-meta-item">Break: —</span>
+              <span class="skill-meta-item">Energy: 10</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Memosprite Garmentmaker memiliki SPD awal sebesar 35% dari SPD Aglaea dan Max HP sebesar 66% dari Max HP Aglaea ditambah 720. Saat Garmentmaker berada di lapangan, serangan Aglaea mengenai target dengan status "Seam Stitch". Setelah menyerang musuh dalam status tersebut, memberikan Lightning Additional DMG sebesar 30% ATK Aglaea.
+          </p>
+          <div class="skill-stats">
+            <div class="stat-item">
+              <span class="stat-label">Max HP (Garmentmaker)</span>
+              <span class="stat-value">66% HP + 720</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Additional DMG</span>
+              <span class="stat-value">30% ATK</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technique -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Technique: Meteoric Sunder</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Technique</span>
+              <span class="skill-meta-item">Break: 20</span>
+              <span class="skill-meta-item">Energy: 0</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Memanggil memosprite Garmentmaker dan meluncurkan serangan gabungan ke depan. Setelah memasuki pertempuran, memulihkan 30 Energi dan mengakibatkan Lightning DMG sebesar 100% dari ATK Aglaea kepada seluruh musuh. Kemudian, memberikan status "Seam Stitch" kepada satu musuh secara acak.
+          </p>
+          <div class="skill-stats">
+            <div class="stat-item">
+              <span class="stat-label">Energy</span>
+              <span class="stat-value">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MEMOSPRITE SKILLS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Memosprite Skills (念想神魂)</h2>
+      
+      <div class="skill-list">
+        <!-- Memosprite Skill -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Memosprite Skill: Thorned Snare</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Blast</span>
+              <span class="skill-meta-item">Break: 10 + 5 adjacent</span>
+              <span class="skill-meta-item">Energy: 10</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Mengeluarkan Lightning DMG sebesar 110% ATK kepada satu musuh dan Lightning DMG sebesar 66% ATK kepada target yang berdekatan.
+          </p>
+        </div>
+
+        <!-- Memosprite Talent 1 -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Memosprite Talent: A Body Brewed by Tears</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Passive</span>
+              <span class="skill-meta-item">Break: —</span>
+              <span class="skill-meta-item">Energy: 0</span>
+            </div>
+          </div>
+          <p class="skill-description">
+           Setelah menyerang musuh yang terkena status 'Seam Stitch', meningkatkan SPD unit ini sebesar 55, dapat ditumpuk hingga 6 kali. Saat Garmentmaker beraksi, ia secara otomatis menggunakan 'Thorned Snare', dengan memprioritaskan musuh yang berada dalam status 'Seam Stitch'.
+          </p>
+          </div>
+        </div>
+
+        <!-- Memosprite Talent 2 -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Memosprite Talent: The Speeding Summer</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Passive</span>
+              <span class="skill-meta-item">Break: —</span>
+              <span class="skill-meta-item">Energy: 0</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Saat Garmentmaker dipanggil, turn unit ini maju sebesar 100%.
+          </p>
+        </div>
+
+        <!-- Memosprite Talent 3 -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Memosprite Talent: Bloom of Drying Grass</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Passive</span>
+              <span class="skill-meta-item">Break: —</span>
+              <span class="skill-meta-item">Energy: 0</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Saat Garmentmaker menghilang, meregenerasi 20 Energy untuk Aglaea.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACES SECTION -->
+    <div class="section">
+      <h2 class="section-title">Traces (天赋)</h2>
+      
+      <h3 style="color: var(--accent); margin: 1.5rem 0 1rem; font-size: 1.3rem;">Major Traces</h3>
+      <div class="traces-grid">
+        <div class="trace-card">
+          <div class="trace-name">A2 • The Myopic's Doom</div>
+          <div class="trace-level">Ascension 2</div>
+          <p class="trace-effect">
+            Saat dalam "Supreme Stance", meningkatkan ATK Aglaea dan Garmentmaker sebesar 720% SPD Aglaea ditambah 360% SPD Garmentmaker.
+          </p>
+        </div>
+
+        <div class="trace-card">
+          <div class="trace-name">A4 • Last Thread of Fate</div>
+          <div class="trace-level">Ascension 4</div>
+          <p class="trace-effect">
+            Saat Garmentmaker menghilang, dapat mempertahankan hingga 1 stack SPD Boost dari Memosprite Talent. Saat Garmentmaker dipanggil kembali, memperoleh stacks SPD Boost yang sesuai.
+          </p>
+        </div>
+
+        <div class="trace-card">
+          <div class="trace-name">A6 • The Speeding Sol</div>
+          <div class="trace-level">Ascension 6</div>
+          <p class="trace-effect">
+            Di awal pertempuran, jika Energy unit ini kurang dari 50%, mengembalikan Energy ke 50%.
+          </p>
+        </div>
+      </div>
+
+      <h3 style="color: var(--accent); margin: 2rem 0 1rem; font-size: 1.3rem;">Minor Traces (Total Bonuses)</h3>
+      <div class="stats-grid" style="margin-top: 1rem;">
+        <div class="stat-box">
+          <div class="stat-box-label">CRIT Rate</div>
+          <div class="stat-box-value">+12%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">Lightning DMG</div>
+          <div class="stat-box-value">+22.4%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">DEF</div>
+          <div class="stat-box-value">+12.5%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EIDOLONS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Eidolons (星魂)</h2>
+      
+      <div class="eidolon-grid">
+        <div class="eidolon-card">
+          <div class="eidolon-title">E1</div>
+          <div class="eidolon-name">Drift at the Whim of Venus</div>
+          <p class="eidolon-effect">
+            Musuh yang mengalami "Seam Stitch" menerima 15% increased DMG. Setelah Aglaea atau Garmentmaker menyerang target ini, tambahan meregenerasi 20 Energy.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E2</div>
+          <div class="eidolon-name">Sail on the Raft of Eyelids</div>
+          <p class="eidolon-effect">
+            Saat Aglaea atau Garmentmaker bertindak, memungkinkan DMG yang dihasilkan mereka untuk mengabaikan 14% DEF target. Efek ini dapat bertumpuk hingga 3 kali dan berlaku hingga unit lain selain Aglaea atau Garmentmaker secara aktif menggunakan ability.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E3</div>
+          <div class="eidolon-name">Bequeath in the Coalescence of Dew</div>
+          <p class="eidolon-effect">
+            Skill Lv. +2, maksimal Lv. 15. <br>
+            Basic ATK Lv. +1, maksimal Lv. 10. <br>
+            Memosprite Talent Lv. +1, maksimal Lv. 10.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E4</div>
+          <div class="eidolon-name">Flicker Below the Surface of Marble</div>
+          <p class="eidolon-effect">
+            Efek SPD Boost dari Memosprite Talent memiliki batas stack maksimal yang ditingkatkan sebesar 1. Setelah Aglaea menyerang, dapat membuat Garmentmaker memperoleh efek SPD Boost dari Memosprite Talent.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E5</div>
+          <div class="eidolon-name">Weave Under the Shroud of Woe</div>
+          <p class="eidolon-effect">
+            Ultimate Lv. +2, maksimal Lv. 15. <br>
+            Talent Lv. +2, maksimal Lv. 15. <br>
+            Memosprite Skill Lv. +1, maksimal Lv. 10.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E6</div>
+          <div class="eidolon-name">Fluctuate in the Tapestry of Fates</div>
+          <p class="eidolon-effect">
+            Saat Aglaea dalam "Supreme Stance", meningkatkan Lightning RES PEN Aglaea dan Garmentmaker sebesar 20%. Saat SPD Aglaea atau Garmentmaker lebih besar dari 160/240/320, Joint ATK DMG yang dihasilkan meningkat sebesar 10%/30%/60%.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS & MATERIALS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Stats & Materials (Level 80)</h2>
+      
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-box-label">HP</div>
+          <div class="stat-box-value">1241</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">ATK</div>
+          <div class="stat-box-value">698</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">DEF</div>
+          <div class="stat-box-value">485</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">SPD</div>
+          <div class="stat-box-value">102</div>
+        </div>
+      </div>
+
+      <div class="materials-section">
+        <h3 style="color: var(--accent); margin-bottom: 1.5rem; font-size: 1.3rem;">Ascension Materials (Level 1 → 80)</h3>
+        <div class="material-list">
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/credit.webp" alt="Credit"></div>
+            <div class="material-info">
+              <div class="material-name">Credit</div>
+              <div class="material-quantity">308,000x</div>
+            </div>
+          </div>
+
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/Fear-Stomped Flesh.webp" alt="Fear-Stomped Flesh"></div>
+            <div class="material-info">
+              <div class="material-name">Fear-Stomped Flesh</div>
+              <div class="material-quantity">15x</div>
+            </div>
+          </div>
+
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/Courage-Torn Chest.webp" alt="Courage-Torn Chest"></div>
+            <div class="material-info">
+              <div class="material-name">Courage-Torn Chest</div>
+              <div class="material-quantity">15x</div>
+            </div>
+          </div>
+
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/Nail of the Beast Coffin.webp" alt="Nail of the Beast Coffin"></div>
+            <div class="material-info">
+              <div class="material-name">Nail of the Beast Coffin</div>
+              <div class="material-quantity">65x</div>
+            </div>
+          </div>
+
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/Gl Torso.webp" alt="Glory-Aspersed Torso"></div>
+            <div class="material-info">
+              <div class="material-name">Glory-Aspersed Torso</div>
+              <div class="material-quantity">15x</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- REVIEW TAB - MOVED TO review.html -->
+
+  <!-- BUILD & TEAMS TAB - MOVED TO builds.html -->
+
+  <!-- STATISTICS TAB -->
+  <div id="statistics" class="tab-content" style="display: none;">
+    <div class="section">
+      <h2 class="section-title">MoC/PF Statistics Coming Soon</h2>
+      <p style="color: var(--muted); padding: 2rem 0;">
+        Section ini akan menampilkan statistik usage Acheron di Memory of Chaos, 
+        Pure Fiction, dan Apocalyptic Shadow.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(tabName) {
+    // Hide all tab contents
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(content => {
+      content.classList.remove('active');
+    });
+
+    // Remove active class from all buttons
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(button => {
+      button.classList.remove('active');
+    });
+
+    // Show selected tab content
+    const selectedTab = document.getElementById(tabName);
+    if (selectedTab) {
+      selectedTab.classList.add('active');
+    }
+
+    // Add active class to clicked button
+    event.target.classList.add('active');
+  }
+
+  // Handle Relic image upload
+  function handleRelicImageUpload(input, imgId, placeholderSpan) {
+    const file = input.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.getElementById(imgId);
+        img.src = e.target.result;
+        img.style.display = 'block';
+        if (placeholderSpan) {
+          placeholderSpan.style.display = 'none';
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // Handle Light Cone image upload
+  function handleLightConeImageUpload(input, imgId, placeholderSpan) {
+    const file = input.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.getElementById(imgId);
+        img.src = e.target.result;
+        img.style.display = 'block';
+        if (placeholderSpan) {
+          placeholderSpan.style.display = 'none';
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feixiao • Builds & Teams - Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #2ecc71;
+      --accent-light: #58d968;
+      --glow: 0 0 20px rgba(46, 204, 113, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(46, 204, 113, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(46, 204, 113, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(46, 204, 113, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .stat-item {
+      background: rgba(46, 204, 113, 0.05);
+      border: 1px solid rgba(46, 204, 113, 0.1);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .stat-item .label {
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-item .value {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .team-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .team-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .team-card h4 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+
+    .team-member {
+      background: rgba(255, 45, 85, 0.08);
+      padding: 0.8rem;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .team-member-name {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .team-member-role {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .relic-item {
+      display: flex;
+      gap: 1.5rem;
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+      align-items: flex-start;
+    }
+
+    .relic-item:hover {
+      background: rgba(10, 14, 20, 0.7);
+      border-color: var(--accent);
+    }
+
+    .relic-image-box {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(46, 204, 113, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .relic-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .relic-content {
+      flex: 1;
+    }
+
+    .relic-title-section {
+      margin-bottom: 1rem;
+    }
+
+    .relic-name {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin: 0 0 0.2rem 0;
+      font-weight: 700;
+    }
+
+    .relic-type {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .relic-bonuses {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .relic-bonus {
+      background: rgba(255, 45, 85, 0.06);
+      padding: 0.8rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .relic-bonus-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .relic-bonus-text {
+      color: var(--text);
+      line-height: 1.4;
+      font-size: 0.85rem;
+    }
+
+    .relic-reason {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+      border-top: 1px solid var(--border);
+      padding-top: 0.8rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1 class="header-title">Feixiao</h1>
+        <p class="header-subtitle">Build & Teams Guide</p>
+      </div>
+      <a href="character-feixiao.html" class="back-link">← Kembali ke Profile</a>
+    </div>
+
+    <!-- BUILDS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Recommended Builds</h2>
+      
+      <h3 style="color: var(--accent); margin-bottom: 1.5rem; font-size: 1.3rem; font-weight: 700;">Build Details</h3>
+      
+      <div style="background: rgba(255, 45, 85, 0.08); border: 1px solid rgba(46, 204, 113, 0.15); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem;">
+        <h4 style="color: var(--text); font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">Main Stats Priority</h4>
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="label">Body</div>
+            <div class="value">CRIT Rate % >= CRIT DMG %</div>
+          </div>
+          <div class="stat-item">
+            <div class="label">Feet</div>
+            <div class="value">SPD = ATK %</div>
+          </div>
+          <div class="stat-item">
+            <div class="label">Planar Sphere</div>
+            <div class="value">Wind DMG % > ATK %</div>
+          </div>
+          <div class="stat-item">
+            <div class="label">Link Rope</div>
+            <div class="value">ATK %</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: rgba(255, 45, 85, 0.08); border: 1px solid rgba(46, 204, 113, 0.15); border-radius: 10px; padding: 1.5rem;">
+        <h4 style="color: var(--text); font-size: 1.1rem; margin-bottom: 1rem; font-weight: 700;">Recommended endgame stats</h4>
+        <ol style="list-style: decimal; list-style-position: inside; color: var(--text); font-size: 0.95rem; line-height: 2;">
+          <li><strong>HP:</strong> - 2800+</li>
+          <li><strong>ATK:</strong> - 2700 - 3300+ (tergantung apakah Anda menggunakan Boots [Sepatu] SPD atau ATK%)</li>
+          <li><strong>CRIT Rate:</strong> - 85-100%</li>
+          <li><strong>CRIT DMG:</strong> - 134-154%</li>
+          <li><strong>SPD</strong> - 112+ (Build yang fokus pada ATK dengan mengandalkan rekan tim untuk mengumpulkan poin Aureus),Berikut adalah terjemahannya:
+                                      134+ (Untuk mencapai breakpoint Cycle di MoC tanpa buff — dengan adanya beberapa buff Speed, Anda bisa Build SPD lebih rendah).</li>
+        </ol>
+      </div> 
+    </div>
+
+    <!-- RELIC SETS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Relic Sets (Body/Feet)</h2>
+      
+      <div style="margin-top: 1.5rem;">
+        <!-- WIND-SOARING VALOROUS -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/set-the wind.webp" alt="Wind-Soaring Valorous">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">(4) Wind-Soaring Valorous</h3>
+              <div class="relic-type">Best Relic Set • 4-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">+12% ATK</div>
+              </div>
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">4-Piece</div>
+                <div class="relic-bonus-text">+6% CRIT RATE. Follow-up ATK: +36% Ult DMG (1 turn).</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Sebagian besar DMG Feixiao berasal dari Ultimate-nya, dan Talent-nya dapat dengan mudah mengaktifkan Ultimate DMG Boost, menjadikannya pilihan terbaik secara keseluruhan.
+            </div>
+          </div>
+        </div>
+
+        <!-- LONGEVOUS -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/set-the ashblazing.webp" alt="The Ashblazing Grand Duke">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">(4) The Ashblazing Grand Duke</h3>
+              <div class="relic-type">Alternate Relic Set • 4-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">Follow-up Attack DMG +20%</div>
+              </div>
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">4-Piece</div>
+                <div class="relic-bonus-text">Follow-up ATK: +6% ATK per hit (max 8 stacks, 3 turns). Clears on next FUA.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Pilihan teratas kedua berkat mayoritas DMG Feixiao dianggap sebagai Follow-Up Attack. Bonus 4P mudah di-stack dengan multi-hit Ultimate.
+            </div>
+          </div>
+        </div>
+
+        <!-- SPRIGHTLY KABOOMERS -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/set-eagle.webp" alt="Eagle of Twilight Line">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">(4) Eagle of Twilight Line</h3>
+              <div class="relic-type">Energy/Spam Build • 4-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">Meningkatkan Wind damage 10%</div>
+              </div>
+              <div class="relic-bonus">
+                <div class="relic-bonus-label">4-Piece</div>
+                <div class="relic-bonus-text">Setelah pemakai menggunakan Ultimate, aksi mereka dimajukan sebesar 25%.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Set yang bagus untuk endgame content di mana Feixiao dapat menghabiskan banyak energi dengan cepat dan mempertahankan buff ATK%.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLANAR SPHERE SECTION -->
+    <div class="section">
+      <h2 class="section-title">Planar Sphere Sets (Planar Sphere/Link Rope)</h2>
+      
+      <div style="margin-top: 1.5rem;">
+        <!-- Duran, Dynasty of Running Wolves -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/planar-duran.webp" alt="Duran, Dynasty of Running Wolves">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">Duran, Dynasty of Running Wolves</h3>
+              <div class="relic-type">2-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus" style="grid-column: 1 / -1;">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">Saat sekutu melakukan FUA, pemakai mendapat +1 stack Merit (max 5). Tiap stack: +5% FUA DMG. 5 stack: +25% CRIT DMG.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Opsi planar terbaik mutlak untuk Feixiao karena semua timnya memiliki jumlah trigger Follow-Up attack yang absurd. Ini berarti bonus penuh set ini sering efektif segera, memberikan 25% CRIT DMG dan 25% DMG serangan Follow-Up yang luar biasa.
+            </div>
+          </div>
+        </div>
+
+        <!-- Izumo Gensei and Takama Divine Realm -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/planar-izumo.webp" alt="Izumo Gensei and Takama Divine Realm">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">Izumo Gensei and Takama Divine Realm</h3>
+              <div class="relic-type">Alternate Planar Set • 2-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus" style="grid-column: 1 / -1;">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">+12% ATK. Path sama (Hunt): +12% CRIT RATE saat masuk battle.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Alternatif solid untuk Duran dengan stat yang lumayan. Cocok untuk tim Hunt path dengan tambahan 12% CRIT RATE saat awal battle.
+            </div>
+          </div>
+        </div>
+
+        <!-- Inert Salsotto -->
+        <div class="relic-item">
+          <div class="relic-image-box">
+            <img src="../../asset/planar-inert.webp" alt="Inert Salsotto">
+          </div>
+          <div class="relic-content">
+            <div class="relic-title-section">
+              <h3 class="relic-name">Inert Salsotto</h3>
+              <div class="relic-type">Budget Planar Set • 2-Piece</div>
+            </div>
+            <div class="relic-bonuses">
+              <div class="relic-bonus" style="grid-column: 1 / -1;">
+                <div class="relic-bonus-label">2-Piece</div>
+                <div class="relic-bonus-text">+8% CRIT RATE. Jika CRIT RATE ≥50%: +15% Ultimate & Follow-Up DMG.</div>
+              </div>
+            </div>
+            <div class="relic-reason">
+              Alternatif untuk Duran dengan performa setara Izumo tapi tanpa restriksi path. Memberikan +15% Follow-Up DMG dengan syarat CRIT RATE ≥50%.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIGHT CONES SECTION -->
+    <div class="section">
+      <h2 class="section-title">Light Cones</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        
+        <div style="background: rgba(10, 14, 20, 0.5); border: 2px solid rgba(255, 199, 48, 0.4); border-radius: 12px; padding: 1.5rem; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(255, 199, 48, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="width: 100%; height: 160px; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(255, 199, 48, 0.1);">
+            <img src="../../asset/lc-feixiao.webp" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="color: #ffc730; font-size: 1.2rem; margin: 0; margin-bottom: 0.3rem; font-weight: 700;">I Venture Forth to Hunt</h3>
+              <div style="color: var(--muted); font-size: 0.85rem;">5★ Hunt (Signature) | S1</div>
+            </div>
+            <span style="background: #ffc730; color: #0a0e14; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">⭐ BEST</span>
+          </div>
+          <p style="color: var(--text); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Light Cone Signature Feixiao adalah pilihan terbaik karena memungkinkan DMG Ultimate mengabaikan 54% DEF target, setara dengan peningkatan DMG sebesar ~40%. Buff mudah di-stack melalui Skill, Talent, dan Ultimate.
+          </p>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 2px solid rgba(255, 199, 48, 0.3); border-radius: 12px; padding: 1.5rem; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(255, 199, 48, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="width: 100%; height: 160px; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(255, 199, 48, 0.1);">
+            <img src="../../asset/lc-ratio.webp" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="color: #ffc730; font-size: 1.2rem; margin: 0; margin-bottom: 0.3rem; font-weight: 700;">Baptism of Pure Thought</h3>
+              <div style="color: var(--muted); font-size: 0.85rem;">5★ Hunt | S1</div>
+            </div>
+            <span style="background: #46d6cf; color: white; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">✓</span>
+          </div>
+          <p style="color: var(--text); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Alternatif 5★ limited yang kompetitif. Memberikan DMG +36% pada semua serangan dan memungkinkan Ultimate/Follow-up mengabaikan 24% DEF. Bisa meningkatkan CRIT DMG hingga 44% dengan debuff tim seperti Topaz/Aventurine.
+          </p>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 2px solid rgba(70, 214, 207, 0.3); border-radius: 12px; padding: 1.5rem; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(70, 214, 207, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="width: 100%; height: 160px; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(70, 214, 207, 0.1);">
+            <img src="../../asset/lc-topaz.webp" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="color: #46d6cf; font-size: 1.2rem; margin: 0; margin-bottom: 0.3rem; font-weight: 700;">Worrisome, Blissful</h3>
+              <div style="color: var(--muted); font-size: 0.85rem;">5★ Hunt | S1</div>
+            </div>
+            <span style="background: #46d6cf; color: #0a0e14; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">💰</span>
+          </div>
+          <p style="color: var(--text); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+            Alternatif yang lebih lemah dari signature cone. Memberikan DMG%, CRIT RATE, dan CRIT DMG yang solid. Lebih baik digunakan pada support teammates yang bisa memanfaatkan skill support-nya.
+          </p>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 2px solid rgba(70, 214, 207, 0.3); border-radius: 12px; padding: 1.5rem; overflow: hidden; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 32px rgba(70, 214, 207, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="width: 100%; height: 160px; margin-bottom: 1rem; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(70, 214, 207, 0.1);">
+            <img src="../../asset/sword play.webp" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="color: #46d6cf; font-size: 1.2rem; margin: 0; margin-bottom: 0.3rem; font-weight: 700;">Swordplay</h3>
+              <div style="color: var(--muted); font-size: 0.85rem;">4★ Hunt | S5</div>
+            </div>
+            <span style="background: #46d6cf; color: #0a0e14; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">F2P</span>
+          </div>
+          <p style="color: var(--text); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+           Alternatif non-limited terbaik untuk F2P. Buff mudah di-stack dengan serangan sering dan ultimate multi-hit. Kekurangan: perlu ramp-up saat berganti target.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEAMS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Team Compositions</h2>
+      
+      <div style="margin-top: 1.5rem;">
+        <h3 style="color: var(--muted); text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1.5rem;">Recommended Teams</h3>
+        
+        <div class="team-container">
+          
+          <!-- TEAM 1 -->
+          <div class="team-card">
+            <h4>BEST Team</h4>
+            <div class="team-members" style="gap: 1rem; grid-template-columns: repeat(4, 1fr);">
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr_card_fei.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Feixiao</div>
+                <div class="team-member-role">Main DPS</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-ashveil.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Cipher</div>
+                <div class="team-member-role">Sub-DPS</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-robin.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Robin</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-aventurine.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Aventurine</div>
+                <div class="team-member-role">Sustain</div>
+              </div>
+            </div>
+            <p style="color: var(--text); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">
+              Tim optimal untuk wind damage. Cipher memberikan DMG buff dan enemy debuff, 
+              Robin support, Aventurine shield defense. High synergy untuk max damage output.
+            </p>
+          </div>
+
+          <!-- TEAM 2 -->
+          <div class="team-card">
+            <h4>Hyper Carry Team</h4>
+            <div class="team-members" style="gap: 1rem; grid-template-columns: repeat(4, 1fr);">
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(70, 214, 207, 0.1); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr_card_fei.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Feixiao</div>
+                <div class="team-member-role">Main DPS</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(70, 214, 207, 0.1); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-sunday.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Sunday</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(70, 214, 207, 0.1); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-robin.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Robin</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(70, 214, 207, 0.1); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-dan heng permansor terrae.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Dan Heng permansor Terrae</div>
+                <div class="team-member-role">Sustain</div>
+              </div>
+            </div>
+            <p style="color: var(--text); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">
+              Tim bagus untuk hyper carry feixiao tanpa ada sub-dps</p>
+          </div>
+
+          <!-- TEAM 3 -->
+          <div class="team-card">
+            <h4>F2P team</h4>
+            <div class="team-members" style="gap: 1rem; grid-template-columns: repeat(4, 1fr);">
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(255, 199, 48, 0.1); border: 1px solid rgba(255, 199, 48, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr_card_fei.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Feixiao</div>
+                <div class="team-member-role">DPS</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(255, 199, 48, 0.1); border: 1px solid rgba(255, 199, 48, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-march7th imaginary.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">March7th : Hunt</div>
+                <div class="team-member-role">Sub-DPS</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(255, 199, 48, 0.1); border: 1px solid rgba(255, 199, 48, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-trailblazer remembrance.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Trailblazer</div>
+                <div class="team-member-role">Support</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="width: 100%; height: 140px; background: rgba(255, 199, 48, 0.1); border: 1px solid rgba(255, 199, 48, 0.2); border-radius: 6px; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                  <img src="../../asset/hsr-gallagher.webp" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="team-member-name">Gallagher</div>
+                <div class="team-member-role">Sustain</div>
+              </div>
+            </div>
+            <p style="color: var(--text); font-size: 0.9rem; margin-top: 1rem; margin-bottom: 0;">
+              Team comp murah untuk Feixiao dengan sub-dps dan sustain yang baik.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Last updated: February 2026 | Feixiao • Honkai: Star Rail</p>
+    </footer>
+  </div>
+
+  <script>
+    // Placeholder for future functionality
+  </script>
+</body>
+</html>

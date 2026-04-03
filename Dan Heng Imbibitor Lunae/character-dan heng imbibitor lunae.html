@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aventurine • Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #C9A961;
+      --accent-light: #E8D4A0;
+      --glow: 0 0 20px rgba(201, 169, 97, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .header-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .header-image {
+      width: 280px;
+      height: 380px;
+      background: rgba(201, 169, 97, 0.1);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(201, 169, 97, 0.15);
+    }
+
+    .header-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .character-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .char-tags {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(201, 169, 97, 0.2);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .tag.element {
+      background: rgba(255, 215, 0, 0.2);
+      border-color: #FFD700;
+      color: #FFD700;
+    }
+
+    .tag.path {
+      background: rgba(232, 212, 160, 0.2);
+      border-color: #E8D4A0;
+      color: #E8D4A0;
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .video-link {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0e14;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .video-link:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .section {
+      background: linear-gradient(135deg, var(--card-bg), #0a0f1a);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .skill-list { display: grid; gap: 2rem; margin-bottom: 2rem; }
+
+    .skill {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(201, 169, 97, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .skill:hover { background: rgba(201, 169, 97, 0.05); transform: translateX(4px); }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill-name {
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .skill-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .skill-meta-item {
+      font-size: 0.9rem;
+      color: var(--muted);
+      background: rgba(201, 169, 97, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    .skill-description {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .skill-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item { font-size: 0.9rem; }
+    .stat-label { color: var(--muted); display: block; margin-bottom: 0.3rem; }
+    .stat-value { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+
+    .traces-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .trace-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(201, 169, 97, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .trace-card:hover { border-color: var(--accent); background: rgba(10, 14, 20, 0.8); }
+
+    .trace-name {
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .trace-level {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .trace-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .eidolon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .eidolon-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 2px solid rgba(201, 169, 97, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .eidolon-card:hover {
+      border-color: var(--accent);
+      background: rgba(10, 14, 20, 0.8);
+      box-shadow: 0 10px 30px rgba(201, 169, 97, 0.2);
+    }
+
+    .eidolon-title {
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .eidolon-name {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .eidolon-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-box {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(201, 169, 97, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-box-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .stat-box-value {
+      color: var(--accent);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .materials-section { margin-top: 3rem; }
+
+    .material-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .material-item {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(201, 169, 97, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .material-item:hover {
+      background: rgba(201, 169, 97, 0.08);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(201, 169, 97, 0.15);
+    }
+
+    .material-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(201, 169, 97, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .material-name {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .material-quantity {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0e14;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .header { padding: 1.5rem; }
+      .header-top { flex-direction: column; gap: 2rem; }
+      .header-image { width: 100%; height: 300px; }
+      .character-name { font-size: 2.5rem; }
+      .section { padding: 1.5rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="../../home menu hsr.html" class="back-btn">← Kembali ke Home</a>
+
+  <div class="header">
+    <div class="header-top">
+      <div class="header-info">
+        <h1 class="character-name">Dan Heng • Imbibitor Lunae</h1>
+        <div class="char-tags">
+          <span class="tag">★★★★★ 5-Star</span>
+          <span class="tag element">Imaginary 虚数</span>
+          <span class="tag path">Path of Destruction 毁灭</span>
+        </div>
+        <p class="description">
+          Wujud sejati Dan Heng dari garis keturunan Vidyadhara, membawa kekuatan residual dari inkarnasi masa lalunya, Imbibitor Lunae. Setelah menerima tanduk megah di kepalanya, ia harus menerima semua kelebihan dan kekurangan yang diwariskan dari "sang pendosa". Karakter DPS utama dengan elemen Imaginary dan Path of Destruction.
+        </p>
+        <a href="https://www.youtube.com/results?search_query=imbibitor+lunae+guide" class="video-link" target="_blank">▶ Tonton Video Guide</a>
+      </div>
+      <div class="header-image">
+        <img src="../../asset/hsr-dan heng imbibitor lunae.webp" alt="Dan Heng Imbibitor Lunae">
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab('profile')">Profile</button>
+    <a href="review.html" style="display: inline-block; background: rgba(201, 169, 97, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem;">Review</a>
+    <a href="builds.html" style="display: inline-block; background: rgba(201, 169, 97, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem;">Build & Teams</a>
+  </div>
+
+  <div id="profile" class="tab-content active">
+    <div class="section">
+      <h2 class="section-title">Skills</h2>
+      <div class="skill-list">
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Basic ATK: Beneficent Lotus</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Tipe: Single Target</span>
+              <span class="skill-meta-item">Break: 10</span>
+              <span class="skill-meta-item">Energy: 20</span>
+            </div>
+          </div>
+          <p class="skill-description">Serangan 2-hit, memberikan Imaginary DMG sebesar 100% ATK ke satu musuh.</p>
+          <div class="skill-stats">
+            <div class="stat-item"><span class="stat-label">Damage %</span><span class="stat-value">100% ATK</span></div>
+            <div class="stat-item"><span class="stat-label">Break Value</span><span class="stat-value">10</span></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Basic ATK (Enhanced): Transcendence</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Tipe: Single Target</span>
+              <span class="skill-meta-item">Break: 20</span>
+              <span class="skill-meta-item">Energy: 30</span>
+            </div>
+          </div>
+          <p class="skill-description">Serangan 3-hit, memberikan Imaginary DMG sebesar 260% ATK ke satu musuh.</p>
+          <div class="skill-stats">
+            <div class="stat-item"><span class="stat-label">Damage %</span><span class="stat-value">260% ATK</span></div>
+            <div class="stat-item"><span class="stat-label">Break Value</span><span class="stat-value">20</span></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Basic ATK (Enhanced): Divine Spear</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Tipe: Blast</span>
+              <span class="skill-meta-item">Break: 30 + 10 adjacent</span>
+              <span class="skill-meta-item">Energy: 35</span>
+            </div>
+          </div>
+          <p class="skill-description">Serangan 5-hit, memberikan Imaginary DMG sebesar 380% ATK ke satu musuh. Mulai hit ke-4, juga memberikan Imaginary DMG sebesar 60% ATK ke musuh di samping.</p>
+          <div class="skill-stats">
+            <div class="stat-item"><span class="stat-label">Damage %</span><span class="stat-value">380% ATK</span></div>
+            <div class="stat-item"><span class="stat-label">Break Value</span><span class="stat-value">30 + 10</span></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Basic ATK (Enhanced): Fulgurant Leap</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Tipe: Blast</span>
+              <span class="skill-meta-item">Break: 40 + 20 adjacent</span>
+              <span class="skill-meta-item">Energy: 40</span>
+            </div>
+          </div>
+          <p class="skill-description">Serangan 7-hit, memberikan Imaginary DMG sebesar 500% ATK ke satu musuh. Mulai hit ke-4, juga memberikan Imaginary DMG sebesar 180% ATK ke musuh di samping.</p>
+          <div class="skill-stats">
+            <div class="stat-item"><span class="stat-label">Damage %</span><span class="stat-value">500% ATK</span></div>
+            <div class="stat-item"><span class="stat-label">Break Value</span><span class="stat-value">40 + 20</span></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Skill: Dracore Libre</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Tipe: Enhance</span>
+              <span class="skill-meta-item">Break: -</span>
+              <span class="skill-meta-item">Energy: 0</span>
+            </div>
+          </div>
+          <p class="skill-description">Meng-enhance Basic ATK hingga 3 kali berturut-turut. Tidak mengonsumsi Skill Point.</p>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Ultimate: Azure's Aqua Ablutes All</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Tipe: Blast</span>
+              <span class="skill-meta-item">Break: 20 + 20 adjacent</span>
+              <span class="skill-meta-item">Energy Cost: 140</span>
+            </div>
+          </div>
+          <p class="skill-description">Serangan 3-hit, memberikan Imaginary DMG sebesar 300% ATK ke satu musuh dan 140% ATK ke musuh di samping. Mendapatkan 2 Squama Sacrosancta (maks 3).</p>
+          <div class="skill-stats">
+            <div class="stat-item"><span class="stat-label">Damage %</span><span class="stat-value">300% ATK / 140% ATK</span></div>
+            <div class="stat-item"><span class="stat-label">Break Value</span><span class="stat-value">20 + 20</span></div>
+          </div>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Talent: Righteous Heart</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Tipe: Enhance</span>
+            </div>
+          </div>
+          <p class="skill-description">Setiap hit, Dan Heng mendapatkan 1 stack Righteous Heart (maks 6), meningkatkan DMG sebesar 10% hingga akhir turn.</p>
+        </div>
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Teknik: Heaven-Quelling Prismadrakon</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Tipe: Enhance</span>
+            </div>
+          </div>
+          <p class="skill-description">Setelah menggunakan Teknik, masuk ke Leaping Dragon state selama 20 detik. Serangan ke musuh dalam state ini memberikan Imaginary DMG sebesar 120% ATK ke semua musuh dan mendapat 1 Squama Sacrosancta.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Major Traces</h2>
+      <div class="traces-grid">
+        <div class="trace-card">
+          <div class="trace-name">Star Veil</div>
+          <div class="trace-level">A2 • Major Trace</div>
+          <div class="trace-effect">Di awal pertempuran, langsung meregenerasi 15 Energy.</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-name">Aqua Reign</div>
+          <div class="trace-level">A4 • Major Trace</div>
+          <div class="trace-effect">Meningkatkan peluang resist Crowd Control debuff sebesar 35%.</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-name">Jolt Anew</div>
+          <div class="trace-level">A6 • Major Trace</div>
+          <div class="trace-effect">CRIT DMG meningkat 24% saat menyerang musuh dengan Imaginary Weakness.</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-name">Minor Trace</div>
+          <div class="trace-level">Bonus</div>
+          <div class="trace-effect">Imaginary DMG +22.4%, CRIT Rate +12%, HP +10%.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Eidolons</h2>
+      <div class="eidolon-grid">
+        <div class="eidolon-card">
+          <div class="eidolon-title">E1</div>
+          <div class="eidolon-name">Tethered to Sky</div>
+          <div class="eidolon-effect">Jumlah stack Righteous Heart bertambah 4, dan mendapat 1 stack ekstra setiap hit.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E2</div>
+          <div class="eidolon-name">Imperium On Cloud Nine</div>
+          <div class="eidolon-effect">Setelah menggunakan Ultimate, giliran Dan Heng maju 100% dan mendapat 1 Squama Sacrosancta ekstra.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E3</div>
+          <div class="eidolon-name">Clothed in Clouds</div>
+          <div class="eidolon-effect">Skill +2, maksimal Lv. 15. Basic ATK +1, maksimal Lv. 10.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E4</div>
+          <div class="eidolon-name">Zephyr's Bliss</div>
+          <div class="eidolon-effect">Buff Outroar bertahan hingga akhir turn berikutnya.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E5</div>
+          <div class="eidolon-name">Fall is the Pride</div>
+          <div class="eidolon-effect">Ultimate +2, maksimal Lv. 15. Talent +2, maksimal Lv. 15.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E6</div>
+          <div class="eidolon-name">Reign, Returned</div>
+          <div class="eidolon-effect">Setelah ally lain menggunakan Ultimate, Imaginary RES PEN Fulgurant Leap berikutnya meningkat 20%, maksimal 3 stack.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Level 80 Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-box-label">HP</div>
+          <div class="stat-box-value">1241</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">ATK</div>
+          <div class="stat-box-value">698</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">DEF</div>
+          <div class="stat-box-value">363</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">SPD</div>
+          <div class="stat-box-value">102</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Ascension Materials</h2>
+      <div class="materials-section">
+        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 700;">Level 1 → 80</h3>
+        <div class="material-list">
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/Credit.webp" alt="Credit" style="width:64px;height:64px;object-fit:contain;"></div>
+            <div class="material-name">Credit</div>
+            <div class="material-quantity">308.000</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/Immortal Scionette.webp" alt="Immortal Scionette" style="width:64px;height:64px;object-fit:contain;"></div>
+            <div class="material-name">Immortal Scionette</div>
+            <div class="material-quantity">×15</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/Immortal Aeroblossom.webp" alt="Immortal Aeroblossom" style="width:64px;height:64px;object-fit:contain;"></div>
+            <div class="material-name">Immortal Aeroblossom</div>
+            <div class="material-quantity">×15</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/supressing edict.webp" alt="Suppressing Edict" style="width:64px;height:64px;object-fit:contain;"></div>
+            <div class="material-name">Suppressing Edict</div>
+            <div class="material-quantity">×65</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon"><img src="../../asset/Immortal Lumintwig.webp" alt="Immortal Lumintwig" style="width:64px;height:64px;object-fit:contain;"></div>
+            <div class="material-name">Immortal Lumintwig</div>
+            <div class="material-quantity">×15</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>        

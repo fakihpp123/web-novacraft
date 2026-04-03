@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blade • Review - Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #46d6cf;
+      --accent-light: #6fe7e0;
+      --glow: 0 0 20px rgba(70, 214, 207, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(217, 83, 79, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link {
+      display: inline-block;
+      background: rgba(201, 169, 97, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(201, 169, 97, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1 class="header-title">Blade</h1>
+        <p class="header-subtitle">5★ Wind • Destruction Path • Self-Harm Burst DPS</p>
+      </div>
+      <a href="character-blade.html" class="back-link">← Kembali ke Profile</a>
+    </div>
+
+    <!-- CHARACTER OVERVIEW -->
+    <div class="section">
+      <h2 class="section-title">Character Overview</h2>
+      <div style="background: rgba(70, 214, 207, 0.08); border: 1px solid rgba(70, 214, 207, 0.15); border-radius: 10px; padding: 1.5rem;">
+        <p style="color: var(--text); font-size: 1.05rem; line-height: 1.8; margin: 0;">
+          <strong style="color: var(--accent);">Blade</strong> adalah <strong>Wind Destruction Path DPS</strong> yang mengedepankan mekanik <strong>HP manipulation dengan Follow-Up Attack (FUA)</strong> sebagai core damage source. Dengan talent yang memberikan instant AoE Follow-Up ketika Blade menerima damage atau lose HP, dikombinasikan dengan Ultimate yang massive dmg scaling dari accumulated HP loss, Blade menciptakan burst window yang devastating. Role-nya sebagai self-harming DPS memerlukan proper team building dengan sustain/shield support, namun ketika disetup dengan baik, Blade adalah salah satu <strong>top-tier Wind DPS dengan excellent AoE coverage dan self-healing mechanism</strong> yang membuat dia sustainable untuk extended battles.
+        </p>
+      </div>
+    </div>
+
+    <!-- STRENGTHS & WEAKNESSES -->
+    <div class="section">
+      <h2 class="section-title">Strengths & Weaknesses</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+        
+        <!-- STRENGTHS -->
+        <div style="background: rgba(70, 214, 207, 0.05); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #46d6cf; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✓</span> Strengths
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Massive Burst Damage</strong> - Ultimate scales dari accumulated HP loss + Max HP damage multiplier (150% Max HP + HP loss tally), menciptakan devastating burst potential ketika dikombinasikan dengan team synergy
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Consistent FUA Proc Mechanism</strong> - Talent memberikan instant AoE Follow-Up setiap kali Blade receive damage atau consume HP, dengan self-heal 25% Max HP, creating sustained damage output dan survival tool
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Excellent AoE Coverage</strong> - Skill dan Ultimate memberikan AoE damage dengan adjacent target scaling, ideal untuk multi-enemy encounters dan AoE-heavy content seperti MoC dengan multiple enemies
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Max HP Scaling Flexibility</strong> - Karena damage scales dari Max HP bukan ATK/DEF, Blade dapat dibangun dengan offensive Light Cones sambil prioritas Max HP relic tuning, providing flexible build optimization
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Self-Healing & Sustainability</strong> - Built-in self-heal dari Talent FUA (25% Max HP per trigger) combined dengan healing-scaling Trace A4, Blade dapat maintain sustainability tanpa heavy reliance pada healer rotations
+            </li>
+          </ul>
+        </div>
+
+        <!-- WEAKNESSES -->
+        <div style="background: rgba(255, 107, 107, 0.05); border: 1px solid rgba(255, 107, 107, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #ff6b6b; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✗</span> Weaknesses
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Self-Harm Mechanic Risk</strong> - Skill consume 30% Max HP, Ultimate set HP ke 50%, memerlukan reliable sustain dalam team. Tanpa proper healer/support, Blade bisa cepat die especially di tough encounters dengan burst damage
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">FUA Damage Not Guaranteed</strong> - Follow-Up depends pada team receiving damage atau Blade consuming HP via Skill. Jika enemy tidak attack atau Blade avoid using Skill, FUA procs berkurang, reducing damage consistency
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Team Dependency</strong> - Memerlukan Abundance Path healer atau shield support untuk optimal performance. Blade E0 less forgiving di solo scenarios, relatif restricted dalam team composition flexibility
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Limited Defensive Mechanics</strong> - Tidak memiliki built-in CRIT Rate/DMG scaling seperti DPS lain, DEF growth minimal, rely fully pada team protection. Vulnerable ketika support unavailable atau enemy target shift
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Single Target Ultimate Setup</strong> - Meskipun Ultimate AoE adjacent, primary damage concentrated pada single target. Dapat kurang optimal dalam full-AoE scenarios dibanding specialized AoE DPS characters
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- USAGE RATING -->
+    <div class="section">
+      <h2 class="section-title">Usage Rating</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(70, 214, 207, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(70, 214, 207, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Memory of Chaos</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">8.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Strong DPS Viability</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(70, 214, 207, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(70, 214, 207, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Pure Fiction</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">8.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Excellent Burst Potential</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(70, 214, 207, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(70, 214, 207, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Apocalyptic Shadow</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">7.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Solid Wind DPS</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(70, 214, 207, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(70, 214, 207, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Open World</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">9.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Self-Sustaining Boss</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDED EIDOLONS -->
+    <div class="section">
+      <h2 class="section-title">Eidolon Recommendations</h2>
+      
+      <div style="display: grid; gap: 1.2rem; margin-top: 1.5rem;">
+        <div style="background: rgba(70, 214, 207, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(70, 214, 207, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">💡 E0 (No Eidolons)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">Blade E0 fully playable dengan damage mechanics dan FUA yang sudah functional. Max HP scaling dan Follow-Up trigger mechanism memberikan solid damage output. Cocok untuk casual players atau sambil farming eidolons, namun di endgame content E0 requires more careful sustain management.</p>
+        </div>
+
+        <div style="background: rgba(70, 214, 207, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(70, 214, 207, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">⭐ E1 (Recommended First)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E1 memberikan significant damage increase dengan bonus damage scaling terhadap designated enemies (150% Max HP accumulated loss). Ini power spike pertama dimana Blade damage output jadi lebih consistent dan threatening. Worth untuk serious players targeting optimized performance.</p>
+        </div>
+
+        <div style="background: rgba(70, 214, 207, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(70, 214, 207, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">🌟 E2 (Major Breakpoint)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E2 memberikan CRIT Rate enhancement ketika di Hellscape state (+15%), improving damage consistency dan reducing reliance pada CRIT Rate relic tuning. Major breakpoint untuk DPS scaling dengan E1, reaching apex performance untuk burst rotations. Strong value investment.</p>
+        </div>
+
+        <div style="background: rgba(70, 214, 207, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(70, 214, 207, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">♔ E6 (Absolute Peak)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E6 adalah ultimate finisher dengan Charge stack reduction (4 max instead of 5) dan massive Follow-Up ATK damage scaling (+50% Max HP). Combined dengan E2 CRIT Rate buff, E6 Blade mencapai unmatched damage ceiling dengan sustained FUA spam. Whale-tier optimization untuk absolute peak performance dominance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Last updated: February 2026 | Blade • Honkai: Star Rail</p>
+    </footer>
+  </div>
+</body>
+</html>

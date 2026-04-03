@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Black Swan • Review - Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #8A6DB0;
+      --accent-light: #AA8FCC;
+      --glow: 0 0 20px rgba(138, 109, 176, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(138, 109, 176, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(138, 109, 176, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(138, 109, 176, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1 class="header-title">Black Swan</h1>
+        <p class="header-subtitle">Character Review & Analysis</p>
+      </div>
+      <a href="character-black-swan.html" class="back-link">← Kembali ke Profile</a>
+    </div>
+
+    <!-- CHARACTER OVERVIEW -->
+    <div class="section">
+      <h2 class="section-title">Character Overview</h2>
+      <div style="background: rgba(138, 109, 176, 0.08); border: 1px solid rgba(138, 109, 176, 0.15); border-radius: 10px; padding: 1.5rem;">
+        <p style="color: var(--text); font-size: 1.05rem; line-height: 1.8; margin: 0;">
+          <strong style="color: var(--accent);">Black Swan</strong> adalah character Nihility Path Quantum yang berperan sebagai <strong style="color: var(--accent);">debuffer dan DoT enabler</strong> dengan mekanisme Curse yang scalable. Dengan kemampuan untuk menerapkan Curse pada musuh yang meningkatkan Quantum DMG yang mereka terima, memberikan DEF penalty, dan scaling dengan Effect Hit Rate, Black Swan adalah pilihan terbaik untuk team yang membutuhkan strong debuffing dan synergy dengan Quantum DPS characters sambil memberikan consistent damage output sendiri.
+        </p>
+      </div>
+    </div>
+
+    <!-- STRENGTHS & WEAKNESSES -->
+    <div class="section">
+      <h2 class="section-title">Strengths & Weaknesses</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+        
+        <!-- STRENGTHS -->
+        <div style="background: rgba(70, 214, 207, 0.05); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #46d6cf; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✓</span> Strengths
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Universal Curse Application</strong> - Dapat menerapkan Curse pada semua musuh via Ultimate, meningkatkan Quantum DMG yang mereka terima sebesar 30% untuk seluruh team
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Strong Effect Hit Rate Scaling</strong> - Damage output meningkat 60% dari Effect Hit Rate Black Swan, incentivizing Effect Hit Rate stacking untuk maximum performance
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Curse Scaling & Enhanced State</strong> - Talent memberikan +5% Quantum DMG per cursed enemy (up to 48%) dengan 50% trigger rate untuk Enhanced State yang doubles damage
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Enemy Debuffing & DEF Reduction</strong> - Ultimate applies DEF Down -15% terhadap semua musuh, meningkatkan team damage output secara signifikan untuk ally follow-up attacks
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: var(--accent); font-weight: bold;">•</span>
+              <strong style="color: var(--text);">AoE Quantum DMG Output</strong> - Ultimate mengeluarkan 120% ATK DMG per musuh, providing respectable damage contribution sambil maintaining debuff utility
+            </li>
+          </ul>
+        </div>
+
+        <!-- WEAKNESSES -->
+        <div style="background: rgba(255, 107, 107, 0.05); border: 1px solid rgba(255, 107, 107, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #ff6b6b; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✗</span> Weaknesses
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Effect Hit Rate Dependent</strong> - Curse application requires 65% base probability, memerlukan Effect Hit Rate investment yang significant untuk consistency
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Limited Team Flexibility</strong> - Best performance dengan Quantum DPS characters yang dapat leverage Curse debuff, kurang optimal dengan mono-element atau hybrid teams
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Curse Duration Limitation</strong> - Curse hanya bertahan 2 turn (3 turn di E1), memerlukan reapplication yang frequent untuk sustained debuffing effectiveness
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Moderate Direct Damage</strong> - Damage output sebagai debuffer lebih moderate dibanding pure DPS, bergantung pada team synergy untuk maximize effectiveness
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Eidolon-Dependent Scaling</strong> - Performa meningkat signifikan dengan E1 (Curse duration) dan E2 (cooldown reduction), E0 kurang optimal untuk challenging content
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- USAGE RATING -->
+    <div class="section">
+      <h2 class="section-title">Usage Rating</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(138, 109, 176, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(138, 109, 176, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Memory of Chaos</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">10/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Excellent Debuffer</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(138, 109, 176, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(138, 109, 176, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Pure Fiction</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">10/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Strong Synergy</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(138, 109, 176, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(138, 109, 176, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Apocalyptic Shadow</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">10/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Versatile Support</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(138, 109, 176, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(138, 109, 176, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Open World</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">10/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Reliable Debuff</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDED EIDOLONS -->
+    <div class="section">
+      <h2 class="section-title">Eidolon Recommendations</h2>
+      
+      <div style="display: grid; gap: 1.2rem; margin-top: 1.5rem;">
+        <div style="background: rgba(138, 109, 176, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(138, 109, 176, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">💡 E0 (No Eidolons)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">Black Swan E0 viable untuk casual dan semi-endgame content dengan solid Curse mechanics dan debuffing. Effect Hit Rate scaling sudah cukup untuk consistent Curse application di Lv 80. Namun untuk endgame optimization, E1+ memberikan significant improvement dalam consistency dan damage output scaling.</p>
+        </div>
+
+        <div style="background: rgba(138, 109, 176, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(138, 109, 176, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">⭐ E1 (Recommended First)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E1 memberikan quality-of-life improvement dengan memperpanjang Curse duration menjadi 3 turn dan meningkatkan Quantum DMG bonus menjadi +30%. Ini adalah recommended first eidolon yang meningkatkan consistency dan effectiveness tanpa major stat requirements, making it sweet spot untuk serious players.</p>
+        </div>
+
+        <div style="background: rgba(138, 109, 176, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(138, 109, 176, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">🌟 E2 (Major Breakpoint)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E2 adalah major power spike dengan instant Quantum DMG terhadap semua cursed enemies setiap 2 turn plus Skill CD reduction. Dikombinasikan dengan E1, E2 Black Swan mencapai peak performance dengan exceptional debuffing coverage dan consistent damage output. Excellent value untuk endgame optimization.</p>
+        </div>
+
+        <div style="background: rgba(138, 109, 176, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='var(--accent-light)'; this.style.boxShadow='0 4px 12px rgba(138, 109, 176, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">♔ E6 (Absolute Peak)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E6 adalah ultimate pinnacle dengan massive +60% Quantum DMG per cursed enemy (up to +300%) dan guaranteed Enhanced State triggers. Memberikan monumental damage ceiling dengan scaling yang exponential. Absolute end-game optimization untuk whale players pursuing maximum debuffer effectiveness dan team synergy dominance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Last updated: February 2026 | Black Swan • Honkai: Star Rail</p>
+    </footer>
+  </div>
+</body>
+</html>

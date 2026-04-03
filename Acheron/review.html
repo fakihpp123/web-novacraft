@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acheron • Review - Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #9d4edd;
+      --accent-light: #b366ff;
+      --glow: 0 0 20px rgba(157, 78, 221, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(157, 78, 221, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(157, 78, 221, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(157, 78, 221, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1 class="header-title">Acheron</h1>
+        <p class="header-subtitle">Character Review & Analysis</p>
+      </div>
+      <a href="character-acheron.html" class="back-link">← Kembali ke Profile</a>
+    </div>
+
+    <!-- CHARACTER OVERVIEW -->
+    <div class="section">
+      <h2 class="section-title">Character Overview</h2>
+      <div style="background: rgba(157, 78, 221, 0.08); border: 1px solid rgba(157, 78, 221, 0.15); border-radius: 10px; padding: 1.5rem;">
+        <p style="color: var(--text); font-size: 1.05rem; line-height: 1.8; margin: 0;">
+          <strong style="color: var(--accent);">Acheron</strong> adalah character Nihility Lightning yang fokus pada <strong style="color: var(--accent);">debuff application dan damage amplification</strong>. Dengan mekanisme Crimson Knot dan Slashed Dream, dia mampu memberikan damage yang meningkat seiring dengan durasi pertempuran. Kemampuannya untuk mengurangi All-Type RES sebesar 20% membuatnya menjadi amplifier yang sangat valuable untuk tim.
+        </p>
+      </div>
+    </div>
+
+    <!-- STRENGTHS & WEAKNESSES -->
+    <div class="section">
+      <h2 class="section-title">Strengths & Weaknesses</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+        
+        <!-- STRENGTHS -->
+        <div style="background: rgba(70, 214, 207, 0.05); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #46d6cf; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✓</span> Strengths
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">All-Type RES Reduction</strong> - Turunkan enemy RES 20% untuk seluruh tim, meningkatkan damage output
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Weakness Break Efficiency</strong> - Ultimate dapat break enemies regardless of weakness type
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Synergy dengan Debuffer</strong> - Scaling meningkat dengan setiap debuff yang diaplikasi tim
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">AoE Capability</strong> - Ultimate bisa hit multiple targets dengan damage yang solid
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">High ATK Stat</strong> - Base ATK yang tinggi memberikan foundation damage yang kuat
+            </li>
+          </ul>
+        </div>
+
+        <!-- WEAKNESSES -->
+        <div style="background: rgba(255, 107, 107, 0.05); border: 1px solid rgba(255, 107, 107, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #ff6b6b; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✗</span> Weaknesses
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Team Composition Dependent</strong> - Membutuhkan tim debuffer untuk damage maksimal
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Skill Point Hungry</strong> - Membutuhkan skill point yang signifikan untuk performa optimal
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Ramp-up Time</strong> - Damage meningkat seiring battle, kurang ideal untuk quick clears
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Lower Speed Stats</strong> - SPD relatif rendah dibanding DPS lain, mempengaruhi turn order
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Energy Generation</strong> - Bergantung pada skill point spending untuk energy generation
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- USAGE RATING -->
+    <div class="section">
+      <h2 class="section-title">Usage Rating</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(157, 78, 221, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(157, 78, 221, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Memory of Chaos</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">8.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Best DPS In certain situations</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(157, 78, 221, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(157, 78, 221, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Pure Fiction</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">8.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Excellent Choice</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(157, 78, 221, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(157, 78, 221, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Apocalyptic Shadow</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">8.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Very Strong</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(157, 78, 221, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(157, 78, 221, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Open World</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">8.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Excellent Utility</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDED EIDOLONS -->
+    <div class="section">
+      <h2 class="section-title">Eidolon Recommendations</h2>
+      
+      <div style="display: grid; gap: 1.2rem; margin-top: 1.5rem;">
+        <div style="background: rgba(157, 78, 221, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#b366ff'; this.style.boxShadow='0 4px 12px rgba(157, 78, 221, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">💡 E0 (No Eidolons)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">Acheron masih viable di E0 untuk casual content. Namun untuk harder content seperti MoC, E0 kurang optimal karena kurangnya damage scaling.</p>
+        </div>
+
+        <div style="background: rgba(70, 214, 207, 0.1); border-left: 4px solid #46d6cf; border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#6fe6e0'; this.style.boxShadow='0 4px 12px rgba(70, 214, 207, 0.15)'" onmouseout="this.style.borderLeftColor='#46d6cf'; this.style.boxShadow='none'">
+          <div style="color: #46d6cf; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">⭐ E2 (Recommended)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E2 memberikan breakpoint penting dengan mengurangi requirement Nihility character dari 2 menjadi 1 untuk bonus damage maksimal. Ini adalah sweet spot untuk F2P players yang ingin significant damage boost.</p>
+        </div>
+
+        <div style="background: rgba(255, 199, 48, 0.1); border-left: 4px solid #ffc730; border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#ffd966'; this.style.boxShadow='0 4px 12px rgba(255, 199, 48, 0.15)'" onmouseout="this.style.borderLeftColor='#ffc730'; this.style.boxShadow='none'">
+          <div style="color: #ffc730; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">🌟 E6 (Whale Territory)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E6 memberikan ultimate power spike dengan RES penetration 20% dan reclassification Basic ATK & Skill sebagai Ultimate DMG. End-game optimization untuk players yang ingin absolute peak performance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Last updated: February 2026 | Acheron • Honkai: Star Rail</p>
+    </footer>
+  </div>
+</body>
+</html>

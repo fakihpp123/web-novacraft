@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bronya • Review - Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #1e3a2a;
+      --accent: #3ddc84;
+      --accent-light: #5ee89a;
+      --glow: 0 0 20px rgba(61, 220, 132, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(61, 220, 132, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(61, 220, 132, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(61, 220, 132, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1 class="header-title">Bronya</h1>
+        <p class="header-subtitle">Character Review & Analysis</p>
+      </div>
+      <a href="character-bronya.html" class="back-link">← Kembali ke Profile</a>
+    </div>
+
+    <!-- CHARACTER OVERVIEW -->
+    <div class="section">
+      <h2 class="section-title">Character Overview</h2>
+      <div style="background: rgba(61, 220, 132, 0.08); border: 1px solid rgba(61, 220, 132, 0.15); border-radius: 10px; padding: 1.5rem;">
+        <p style="color: var(--text); font-size: 1.05rem; line-height: 1.8; margin: 0;">
+          <strong style="color: var(--accent);">Bronya</strong> adalah karakter Wind Harmony 5-bintang yang berfokus pada <strong style="color: var(--accent);">buffing dan memberikan Extra Turn kepada rekan setim</strong>. Sebagai pemimpin Belobog Underground, Bronya memiliki mekanisme unik yang memungkinkan rekan setim yang ditarget untuk langsung bertindak setelah menerima Skill-nya. Melalui <strong style="color: var(--accent);">Combat Redeployment</strong>, ia dapat menghapus debuff, memberikan buff DMG, dan memberikan Extra Turn — menjadikannya salah satu support terbaik untuk karakter single-target. Ultimate-nya memberikan buff ATK masif berdasarkan ATK Bronya sendiri, sehingga membangun ATK tinggi pada Bronya secara langsung meningkatkan damage DPS. Bronya adalah pilihan support yang sangat solid dan versatile untuk hampir semua konten.
+        </p>
+      </div>
+    </div>
+
+    <!-- STRENGTHS & WEAKNESSES -->
+    <div class="section">
+      <h2 class="section-title">Strengths & Weaknesses</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+        
+        <!-- STRENGTHS -->
+        <div style="background: rgba(70, 214, 207, 0.05); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #46d6cf; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✓</span> Strengths
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Extra Turn Mechanic</strong> - Skill Bronya memberikan Extra Turn kepada rekan setim yang ditarget, memungkinkan DPS untuk bertindak lebih sering dan meningkatkan output damage secara signifikan
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Massive ATK Buff</strong> - Ultimate memberikan buff ATK berdasarkan ATK Bronya sendiri, yang berarti semakin tinggi ATK Bronya, semakin besar buff yang diberikan kepada seluruh tim
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Debuff Cleanse</strong> - Skill secara otomatis menghapus 1 debuff dari rekan setim yang ditarget, memberikan utilitas tambahan yang sangat berguna di konten dengan banyak debuff
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">SPD Buff via Trace</strong> - Trace A2 memberikan buff SPD 30% kepada rekan setim yang ditarget selama 1 giliran, memungkinkan DPS untuk bertindak lebih cepat
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">CRIT DMG Buff</strong> - Trace A6 memberikan buff CRIT DMG 20% kepada rekan setim yang ditarget, sangat berharga untuk karakter CRIT-focused
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Versatile Support</strong> - Dapat digunakan dengan hampir semua DPS karena buff-nya bersifat universal dan tidak bergantung pada elemen atau path tertentu
+            </li>
+          </ul>
+        </div>
+
+        <!-- WEAKNESSES -->
+        <div style="background: rgba(255, 107, 107, 0.05); border: 1px solid rgba(255, 107, 107, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #ff6b6b; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✗</span> Weaknesses
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Single-Target Focused</strong> - Skill hanya dapat menargetkan satu rekan setim, sehingga kurang efektif dalam tim yang membutuhkan buff untuk banyak karakter sekaligus
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">High Energy Cost</strong> - Ultimate membutuhkan 120 Energy, yang cukup tinggi dan memerlukan manajemen energy yang baik atau Light Cone dengan ERR
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Skill Point Hungry</strong> - Bronya membutuhkan banyak Skill Point untuk memaksimalkan penggunaan Skill-nya, yang dapat menjadi masalah dalam tim yang juga membutuhkan banyak SP
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Outdated by Newer Supports</strong> - Karakter support yang lebih baru seperti Sparkle, Sunday, dan Robin menawarkan buff yang lebih kuat atau lebih versatile, membuat Bronya kurang optimal di meta terkini
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">ATK-Dependent Buff</strong> - Buff ATK dari Ultimate bergantung pada ATK Bronya sendiri, sehingga memerlukan investasi relic yang baik untuk memaksimalkan buff yang diberikan
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- USAGE RATING -->
+    <div class="section">
+      <h2 class="section-title">Usage Rating</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(61, 220, 132, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(61, 220, 132, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Memory of Chaos</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">7.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Good Support</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(61, 220, 132, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(61, 220, 132, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Pure Fiction</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">6.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Situational</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(61, 220, 132, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(61, 220, 132, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Apocalyptic Shadow</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">7.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Solid Choice</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(61, 220, 132, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(61, 220, 132, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Open World</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">8.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Very Strong</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDED EIDOLONS -->
+    <div class="section">
+      <h2 class="section-title">Eidolon Recommendations</h2>
+      
+      <div style="display: grid; gap: 1.2rem; margin-top: 1.5rem;">
+        <div style="background: rgba(61, 220, 132, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#5ee89a'; this.style.boxShadow='0 4px 12px rgba(61, 220, 132, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">💡 E0 (No Eidolons)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">Bronya di E0 sudah sangat efektif sebagai support. Kombinasi Extra Turn, ATK buff dari Ultimate, dan debuff cleanse dari Skill sudah cukup untuk menjadikannya support yang sangat berharga. E0 adalah titik awal yang solid untuk semua konten, terutama untuk tim single-target.</p>
+        </div>
+
+        <div style="background: rgba(70, 214, 207, 0.1); border-left: 4px solid #46d6cf; border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#6fe6e0'; this.style.boxShadow='0 4px 12px rgba(70, 214, 207, 0.15)'" onmouseout="this.style.borderLeftColor='#46d6cf'; this.style.boxShadow='none'">
+          <div style="color: #46d6cf; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">⭐ E1 (Recommended)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E1 meningkatkan buff DMG dari Skill sebesar 10% tambahan, menjadikan total buff DMG dari Skill menjadi 43%. Ini adalah peningkatan yang signifikan dan cost-effective. Sangat direkomendasikan jika memungkinkan karena langsung meningkatkan damage DPS yang menerima buff Bronya.</p>
+        </div>
+
+        <div style="background: rgba(255, 199, 48, 0.1); border-left: 4px solid #ffc730; border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#ffd966'; this.style.boxShadow='0 4px 12px rgba(255, 199, 48, 0.15)'" onmouseout="this.style.borderLeftColor='#ffc730'; this.style.boxShadow='none'">
+          <div style="color: #ffc730; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">🌟 E4 (Notable)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E4 memberikan Bronya kemampuan untuk memulihkan 1 Skill Point saat menggunakan Skill, yang sangat membantu dalam manajemen SP tim. Ini memungkinkan Bronya untuk lebih sering menggunakan Skill-nya tanpa membebani tim dengan konsumsi SP yang berlebihan.</p>
+        </div>
+
+        <div style="background: rgba(255, 107, 107, 0.1); border-left: 4px solid #ff6b6b; border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#ff9090'; this.style.boxShadow='0 4px 12px rgba(255, 107, 107, 0.15)'" onmouseout="this.style.borderLeftColor='#ff6b6b'; this.style.boxShadow='none'">
+          <div style="color: #ff6b6b; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">💎 E6 (RATE OFF)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E6 memberikan buff DMG tambahan 20% dari Skill dan buff CRIT Rate 10% kepada rekan setim yang ditarget. Ini adalah power spike yang signifikan, terutama untuk karakter CRIT-focused. Namun, mengingat bahwa karakter support yang lebih baru sudah melampaui Bronya di meta terkini, investasi hingga E6 mungkin tidak sepadan kecuali Anda sangat menyukai karakter ini.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLAYSTYLE GUIDE -->
+    <div class="section">
+      <h2 class="section-title">Playstyle Guide</h2>
+      
+      <div style="display: grid; gap: 1.5rem; margin-top: 1.5rem;">
+        
+        <div style="background: rgba(61, 220, 132, 0.06); border: 1px solid rgba(61, 220, 132, 0.15); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: var(--accent); font-size: 1.2rem; margin-bottom: 1rem; font-weight: 700;">🎯 Rotasi Dasar</h3>
+          <ol style="list-style: decimal; list-style-position: inside; color: var(--text); font-size: 0.95rem; line-height: 2.2;">
+            <li>Gunakan <strong style="color: var(--accent);">Technique</strong> sebelum pertempuran untuk memberikan buff ATK 15% kepada seluruh tim di awal pertempuran</li>
+            <li>Gunakan <strong style="color: var(--accent);">Ultimate (The Belobog March)</strong> sesegera mungkin untuk memberikan buff ATK dan CRIT DMG kepada seluruh tim</li>
+            <li>Gunakan <strong style="color: var(--accent);">Skill (Combat Redeployment)</strong> pada DPS utama untuk memberikan Extra Turn, buff DMG, dan menghapus debuff</li>
+            <li>DPS akan langsung bertindak setelah menerima Skill Bronya — pastikan DPS menggunakan serangan terkuatnya saat mendapat buff</li>
+            <li>Gunakan <strong style="color: var(--accent);">Basic ATK</strong> saat tidak ada yang perlu di-buff untuk menghemat SP</li>
+            <li>Ulangi siklus Ultimate → Skill untuk memaksimalkan uptime buff pada DPS</li>
+          </ol>
+        </div>
+
+        <div style="background: rgba(61, 220, 132, 0.06); border: 1px solid rgba(61, 220, 132, 0.15); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: var(--accent); font-size: 1.2rem; margin-bottom: 1rem; font-weight: 700;">💡 Tips Penting</h3>
+          <ul style="list-style: none; padding: 0; color: var(--text); font-size: 0.95rem; line-height: 2;">
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              Prioritaskan <strong style="color: var(--accent);">ATK tinggi</strong> pada Bronya karena buff ATK dari Ultimate-nya bergantung pada ATK Bronya sendiri
+            </li>
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              Gunakan <strong style="color: var(--accent);">ERR Link Rope</strong> untuk memastikan Ultimate tersedia lebih sering — target minimal 130% ERR
+            </li>
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              <strong style="color: var(--accent);">SPD tuning</strong> sangat penting — Bronya harus bertindak tepat sebelum DPS untuk memaksimalkan uptime buff
+            </li>
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              Pasangkan dengan <strong style="color: var(--accent);">Jingliu, Blade, atau Seele</strong> untuk memaksimalkan manfaat dari Extra Turn dan buff Bronya
+            </li>
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              Gunakan <strong style="color: var(--accent);">Messenger Traversing Hackerspace (4pc)</strong> untuk memberikan SPD buff kepada seluruh tim saat menggunakan Ultimate
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Last updated: March 2026 | Bronya • Honkai: Star Rail</p>
+    </footer>
+  </div>
+</body>
+</html>

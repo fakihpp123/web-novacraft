@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boothill • Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #23262b;
+      --card-bg: #2d3036;
+      --text: #e0e0e0;
+      --muted: #b0b3b8;
+      --border: #44474d;
+      --accent: #bdbdbd;
+      --accent-light: #e0e0e0;
+      --glow: 0 0 20px rgba(180, 180, 180, 0.18);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(46, 204, 113, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .header-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .header-image {
+      width: 280px;
+      height: 380px;
+      background: rgba(201, 169, 97, 0.1);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(201, 169, 97, 0.15);
+    }
+
+    .header-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .character-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .char-tags {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(201, 169, 97, 0.2);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .tag.element {
+      background: rgba(212, 165, 116, 0.2);
+      border-color: #D4A574;
+      color: #D4A574;
+    }
+
+    .tag.path {
+      background: rgba(232, 200, 154, 0.2);
+      border-color: #E8C89A;
+      color: #E8C89A;
+    }
+
+    .profile-section {
+      background: linear-gradient(135deg, rgba(46, 204, 113, 0.05) 0%, rgba(88, 214, 141, 0.05) 100%);
+      border: 1px solid rgba(46, 204, 113, 0.3);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .profile-stat {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(46, 204, 113, 0.2);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .profile-stat:hover {
+      background: rgba(46, 204, 113, 0.1);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .profile-stat-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1rem;
+      background: rgba(46, 204, 113, 0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .profile-stat-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .profile-stat-value {
+      color: var(--accent);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .profile-description {
+      color: var(--text);
+      line-height: 1.8;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .profile-secondary-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(212, 165, 116, 0.2);
+    }
+
+    .info-block {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(212, 165, 116, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .info-content {
+      color: var(--text);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .video-link {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0e14;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .video-link:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .section {
+      background: linear-gradient(135deg, var(--card-bg), #0a0f1a);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .skill-list { display: grid; gap: 2rem; margin-bottom: 2rem; }
+
+    .skill {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(212, 165, 116, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .skill:hover { background: rgba(212, 165, 116, 0.05); transform: translateX(4px); }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill-name {
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .skill-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .skill-meta-item {
+      font-size: 0.9rem;
+      color: var(--muted);
+      background: rgba(212, 165, 116, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    .skill-description {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .skill-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item { font-size: 0.9rem; }
+    .stat-label { color: var(--muted); display: block; margin-bottom: 0.3rem; }
+    .stat-value { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+
+    .traces-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .trace-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(212, 165, 116, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .trace-card:hover { border-color: var(--accent); background: rgba(10, 14, 20, 0.8); }
+
+    .trace-name {
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .trace-level {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .trace-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .eidolon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .eidolon-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 2px solid rgba(201, 169, 97, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .eidolon-card:hover {
+      border-color: var(--accent);
+      background: rgba(10, 14, 20, 0.8);
+      box-shadow: 0 10px 30px rgba(201, 169, 97, 0.2);
+    }
+
+    .eidolon-title {
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .eidolon-name {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .eidolon-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-box {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(212, 165, 116, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-box-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .stat-box-value {
+      color: var(--accent);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .materials-section { margin-top: 3rem; }
+
+    .material-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .material-item {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(212, 165, 116, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .material-item:hover {
+      background: rgba(212, 165, 116, 0.08);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(212, 165, 116, 0.15);
+    }
+
+    .material-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(212, 165, 116, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .material-name {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .material-quantity {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0e14;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .header { padding: 1.5rem; }
+      .header-top { flex-direction: column; gap: 2rem; }
+      .header-image { width: 100%; height: 300px; }
+      .character-name { font-size: 2.5rem; }
+      .section { padding: 1.5rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="../../home menu hsr.html" class="back-btn">← Kembali ke Home</a>
+
+  <div class="header">
+    <div class="header-top">
+      <div class="header-info">
+        <h1 class="character-name">Boothill</h1>
+        <div class="char-tags">
+          <span class="tag">★★★★★ 5-Star</span>
+          <span class="tag element">Physical 物理</span>
+          <span class="tag path">Path of Preservation 巡猎</span>
+        </div>
+        <p class="description">
+         Dada Georios dan tubuh naga yang berjalan menopang bumi yang hancur, menahan penderitaan selama seribu tahun.
+        Dan Heng Tanpa Nama , Pewaris Chrysos yang menjaga Api Inti Bumi , engkau harus menstabilkan dunia saat ia jatuh, dan membimbing semua kehidupan di seluruh negeri menuju rumah baru di luar sana.
+        — Semua sungai mengalir ke laut, gunung-gunung bergema dalam paduan suara, jalan Keabadian akan membentang melampaui cakrawala.
+        </p>
+        <a href="#" class="video-link">▶ Tonton Video Guide</a>
+      </div>
+      <div class="header-image">
+        <img src="../../asset/hsr-dan heng permansor terrae.webp" alt="Boothill">
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab('profile')">Profile</button>
+    <a href="review.html" style="display: inline-block; background: rgba(212, 165, 116, 0.1); border: 1px solid #D4A574; color: #D4A574; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem;">Review</a>
+    <a href="builds.html" style="display: inline-block; background: rgba(212, 165, 116, 0.1); border: 1px solid #D4A574; color: #D4A574; padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem;">Build & Teams</a>
+  </div>
+
+    <div class="section">
+      <h2 class="section-title">Skills</h2>
+      <div class="skill-list">
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Basic ATK: Aegis Vitae</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Single Target</span>
+              <span class="skill-meta-item">Break: 10</span>
+              <span class="skill-meta-item">Energy gain: 20</span>
+            </div>
+          </div>
+          <p class="skill-description">Memberikan Physical DMG sebesar 100% dari ATK Dan Heng • Permansor Terrae kepada satu musuh yang ditargetkan.</p>
+          <div class="skill-stats">
+            <div class="stat-item"><span class="stat-label">Damage</span><span class="stat-value">100% ATK</span></div>
+            <div class="stat-item"><span class="stat-label">Break Value</span><span class="stat-value">10</span></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Skill: Terra Omnibus</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Defense</span>
+              <span class="skill-meta-item">Break: 0</span>
+              <span class="skill-meta-item">Energy gain: 30</span>
+            </div>
+          </div>
+          <p class="skill-description">Menunjuk satu rekan tim sebagai "Bondmate" dan memberikan Shield kepada seluruh rekan tim yang dapat menahan DMG sebesar 20% ATK Dan Heng • Permansor Terrae ditambah 400 selama 3 giliran. Saat menerima Shield dari Dan Heng • Permansor Terrae secara berulang, efek Shield dapat ditumpuk (stack), namun tidak akan melebihi 300% dari jumlah Shield awal yang diberikan oleh Skill.
+            "Bondmate" hanya berlaku pada target terbaru dari Skill Dan Heng • Permansor Terrae.</p>
+            <div class="skill-stats">
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Ultimate: A Dragon's Zenith Knows No Rue</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">AoE | 135 energy cost</span>
+              <span class="skill-meta-item">Break: 20</span>
+              <span class="skill-meta-item">Energy gain: 5</span>
+            </div>1
+          </div>
+          <p class="skill-description">Memberikan Physical DMG sebesar 300% ATK Dan Heng • Permansor Terrae kepada seluruh musuh, dan memberikan Shield kepada seluruh rekan tim yang dapat menahan DMG sebesar 20% ATK Dan Heng • Permansor Terrae ditambah 400, berlangsung selama 3 giliran. Saat menerima Shield dari Dan Heng • Permansor Terrae secara berulang, efek Shield dapat ditumpuk (stack), namun tidak akan melebihi 300% dari jumlah Shield awal yang diberikan oleh Skill.
+            "Souldragon" akan diperkuat. Saat "Souldragon" beraksi, ia melancarkan Follow-up ATK, memberikan Physical DMG kepada seluruh musuh sebesar 80% ATK Dan Heng • Permansor Terrae dan Additional DMG dengan tipe elemen yang sama dengan Bondmate kepada seluruh musuh sebesar 80% ATK milik Bondmate tersebut. Penguatan ini berlangsung selama 2 aksi "Souldragon".</p>
+          <div class="skill-stats">
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Talent: Of Virtue, Forms Unfold</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Defense</span>
+              <span class="skill-meta-item">Break: 20</span>
+              <span class="skill-meta-item">Energy gain: -</span>
+            </div>
+          </div>
+          <p class="skill-description">Saat seorang rekan tim menjadi "Bondmate", Dan Heng • Permansor Terrae memanggil "Souldragon" untuk mereka, yang memiliki SPD awal sebesar 165.
+            Saat "Souldragon" beraksi, ia menghapus 1 debuff dari seluruh rekan tim dan memberikan Shield yang dapat menahan DMG sebesar 10% ATK Dan Heng • Permansor Terrae ditambah 200 selama 3 giliran. Efek Shield yang diberikan oleh Dan Heng • Permansor Terrae dan "Souldragon" dapat ditumpuk (stack), namun tidak akan melebihi 300% dari Shield yang diberikan oleh Skill Dan Heng • Permansor Terrae.
+            Saat Dan Heng • Permansor Terrae atau "Bondmate" gugur, "Souldragon" akan menghilang.</p>
+          <div class="skill-stats">
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Technique: Earthrend</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Impair</span>
+              <span class="skill-meta-item">Break: 0</span>
+              <span class="skill-meta-item">Energy gain: -</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Setelah menggunakan Technique, memperoleh "Bondmate" dan memberikan status Daze kepada musuh di area tertentu selama 10 detik. Musuh dalam status Daze tidak akan menyerang target rekan tim secara aktif.
+            Saat berganti karakter aktif, "Bondmate" akan berpindah ke karakter yang sedang aktif saat ini. Di awal pertempuran berikutnya, secara otomatis menggunakan Skill sebanyak 1 kali pada karakter yang memiliki "Bondmate" tanpa mengonsumsi Skill Point.</p>
+          <div class="skill-stats">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Major Traces</h2>
+      <div class="traces-grid">
+        <div class="trace-card">
+          <div class="trace-name">Empyreanity</div>
+          <div class="trace-level">A2 • Major Trace</div>
+          <div class="trace-effect">Saat menggunakan Skill, meningkatkan ATK target yang menjadi "Bondmate" sebesar 15% dari ATK Dan Heng • Permansor Terrae.</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-name">Sylvanity</div>
+          <div class="trace-level">A4 • Major Trace</div>
+          <div class="trace-effect">Saat pertempuran dimulai, Dan Heng • Permansor Terrae mendahulukan aksi (Advance Forward) sebesar 40%. Saat "Bondmate" melancarkan serangan, Dan Heng • Permansor Terrae memulihkan 6 Energy dan aksi "Souldragon" didahulukan (Advance Forward) sebesar 15%.</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-name">Sublimity</div>
+          <div class="trace-level">A6 • Major Trace</div>
+          <div class="trace-effect">Saat "Souldragon" beraksi, memberikan Shield tambahan yang dapat menahan DMG sebesar 5% ATK Dan Heng • Permansor Terrae ditambah 100 kepada satu rekan tim dengan efek Shield terendah saat ini. Saat menerima Shield dari Dan Heng • Permansor Terrae secara berulang, efek Shield dapat ditumpuk (stack), namun tidak akan melebihi 300% dari jumlah Shield awal yang diberikan oleh Skill. Saat "Souldragon" yang diperkuat beraksi, ia memberikan 1 instansi Additional DMG tambahan dengan tipe elemen yang sama dengan Bondmate kepada satu target musuh dengan HP tertinggi saat ini, sebesar 40% dari ATK milik Bondmate tersebut.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Minor Traces</h2>
+      <div class="traces-grid">
+        <div class="trace-card">
+          <div class="trace-name">ATK</div>
+          <div class="trace-level">Minor Trace</div>
+          <div class="trace-effect">+28%</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-name">SPEED</div>
+          <div class="trace-level">Minor Trace</div>
+          <div class="trace-effect">+5/div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-name">DEF</div>
+          <div class="trace-level">Minor Trace</div>
+          <div class="trace-effect">+22.5%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Eidolons</h2>
+      <div class="eidolon-grid">
+        <div class="eidolon-card">
+          <div class="eidolon-title">E1</div>
+          <div class="eidolon-name">Shed Scales of Old</div>
+          <div class="eidolon-effect">Saat Dan Heng • Permansor Terrae menggunakan Ultimate, memulihkan 1 Skill Point dan meningkatkan All-Type RES PEN milik "Bondmate" sebesar 18% selama 3 giliran.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E2</div>
+          <div class="eidolon-name">Watch Trails to Blaze</div>
+          <div class="eidolon-effect"> Meningkatkan jumlah aksi "Souldragon" yang diperkuat dari Ultimate sebanyak 2 kali. Setelah Dan Heng • Permansor Terrae menggunakan Ultimate, aksi "Souldragon" didahulukan (Advance Forward) sebesar 100%. Saat "Souldragon" yang diperkuat beraksi, Additional DMG yang dihasilkan oleh "Bondmate" menjadi 200% dari DMG aslinya, dan efek Shield yang diberikan pada saat ini menjadi 200% dari efek Shield aslinya.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E3</div>
+          <div class="eidolon-name">Bear Weight of Worlds</div>
+          <div class="eidolon-effect">Ultimate Lv. +2, up to a maximum of Lv. 15. Basic ATK Lv. +1, up to a maximum of Lv. 10.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E4</div>
+          <div class="eidolon-name">By Oath, This Vessel Is I</div>
+          <div class="eidolon-effect">Mengurangi DMG yang diterima oleh "Bondmate" sebesar 20%.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E5</div>
+          <div class="eidolon-name">The Path of Permanence Sweeps Far</div>
+          <div class="eidolon-effect">Skill Lv. +2, up to a maximum of Lv. 15. Talent Lv. +2, up to a maximum of Lv. 15.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E6</div>
+          <div class="eidolon-name">One Dream to Enfold All Wilds</div>
+          <div class="eidolon-effect">Saat "Bondmate" berada di medan pertempuran, meningkatkan DMG yang diterima oleh seluruh musuh sebesar 20%. Saat "Bondmate" mengakibatkan DMG, mengabaikan 12% DEF target musuh. Saat Dan Heng • Permansor Terrae menggunakan Ultimate, "Bondmate" akan mengakibatkan Additional DMG dengan tipe elemen yang sama dengan Bondmate kepada seluruh musuh sebesar 330% dari ATK milik Bondmate tersebut.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Level 80 Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-box-label">HP</div>
+          <div class="stat-box-value">1047</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">ATK</div>
+          <div class="stat-box-value">582</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">DEF</div>
+          <div class="stat-box-value">776</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">SPD</div>
+          <div class="stat-box-value">97</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Ascension Materials</h2>
+      <div class="materials-section">
+        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 700;">Level 1 → 80</h3>
+        <div class="material-list">
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/credit.webp" alt="Credits">
+            </div>
+            <div class="material-name">Credits</div>
+            <div class="material-quantity">308,000</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/Fear-Stomped Flesh.webp" alt="Fear-Stomped Flesh">
+            </div>
+            <div class="material-name">Fear-Stomped Flesh</div>
+            <div class="material-quantity">×15</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/Courage-Torn Chest.webp" alt="Courage-Torn Chest">
+            </div>
+            <div class="material-name">Courage-Torn Chest</div>
+            <div class="material-quantity">×15</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/Invasive Cloth.webp" alt="Invasive Cloth">
+            </div>
+            <div class="material-name">Invasive Cloth</div>
+            <div class="material-quantity">×65</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/Glory-Aspersed Torso.webp" alt="Glory-Aspersed Torso">
+            </div>
+            <div class="material-name">Glory-Aspersed Torso</div>
+            <div class="material-quantity">×15</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    if (event.target) event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

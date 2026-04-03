@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Black Swan • Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #8A6DB0;
+      --accent-light: #AA8FCC;
+      --glow: 0 0 20px rgba(138, 109, 176, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(138, 109, 176, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .header-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .header-image {
+      width: 280px;
+      height: 380px;
+      background: rgba(138, 109, 176, 0.1);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(138, 109, 176, 0.15);
+    }
+
+    .header-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .character-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .char-tags {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(138, 109, 176, 0.2);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .tag.element {
+      background: rgba(138, 109, 176, 0.2);
+      border-color: #8A6DB0;
+      color: #8A6DB0;
+    }
+
+    .tag.path {
+      background: rgba(170, 143, 204, 0.2);
+      border-color: #AA8FCC;
+      color: #AA8FCC;
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .video-link {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0e14;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .video-link:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active { color: var(--accent); }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .section {
+      background: linear-gradient(135deg, var(--card-bg), #0a0f1a);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .skill-list { display: grid; gap: 2rem; margin-bottom: 2rem; }
+
+    .skill {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(138, 109, 176, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .skill:hover { background: rgba(138, 109, 176, 0.05); transform: translateX(4px); }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill-name {
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .skill-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .skill-meta-item {
+      font-size: 0.9rem;
+      color: var(--muted);
+      background: rgba(138, 109, 176, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    .skill-description {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .skill-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item { font-size: 0.9rem; }
+    .stat-label { color: var(--muted); display: block; margin-bottom: 0.3rem; }
+    .stat-value { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+
+    .traces-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .trace-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(138, 109, 176, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .trace-card:hover { border-color: var(--accent); background: rgba(10, 14, 20, 0.8); }
+
+    .trace-name {
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .trace-level {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .trace-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .eidolon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .eidolon-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 2px solid rgba(138, 109, 176, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .eidolon-card:hover {
+      border-color: var(--accent);
+      background: rgba(10, 14, 20, 0.8);
+      box-shadow: 0 10px 30px rgba(138, 109, 176, 0.2);
+    }
+
+    .eidolon-title {
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .eidolon-name {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .eidolon-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-box {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(138, 109, 176, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-box-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .stat-box-value {
+      color: var(--accent);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .materials-section { margin-top: 3rem; }
+
+    .material-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .material-item {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(138, 109, 176, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .material-item:hover {
+      background: rgba(138, 109, 176, 0.08);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(138, 109, 176, 0.15);
+    }
+
+    .material-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(138, 109, 176, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .material-name {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .material-quantity {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0a0e14;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover { background: var(--accent-light); transform: translateY(-2px); }
+
+    @media (max-width: 768px) {
+      .header { padding: 1.5rem; }
+      .header-top { flex-direction: column; gap: 2rem; }
+      .header-image { width: 100%; height: 300px; }
+      .character-name { font-size: 2.5rem; }
+      .section { padding: 1.5rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="../../home menu hsr.html" class="back-btn">← Kembali ke Home</a>
+
+  <div class="header">
+    <div class="header-top">
+      <div class="header-info">
+        <h1 class="character-name">Black Swan</h1>
+        <div class="char-tags">
+          <span class="tag">★★★★★ 5-Star</span>
+          <span class="tag element">Quantum 量子</span>
+          <span class="tag path">Path of Nihility 虚无</span>
+        </div>
+        <p class="description">
+          Seorang informant dengan mysterious identity yang bekerja untuk Masked Fools. Black Swan adalah mastermind dibalik berbagai plot yang terjadi di universe. Dia memiliki kemampuan supernatural untuk melihat masa depan dan memanipulasi fate dengan tujuan yang tidak selalu jelas.
+        </p>
+        <a href="#" class="video-link">▶ Tonton Video Guide</a>
+      </div>
+      <div class="header-image">
+        <img src="../../asset/hsr-black swan.webp" alt="Black Swan">
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab('profile')">Profile</button>
+    <a href="review.html" style="display: inline-block; background: rgba(138, 109, 176, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem;">Review</a>
+    <a href="builds.html" style="display: inline-block; background: rgba(138, 109, 176, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem;">Build & Teams</a>
+  </div>
+
+  <div id="profile" class="tab-content active">
+    <div class="section">
+      <h2 class="section-title">Skills</h2>
+      <div class="skill-list">
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Basic Attack: Percipience, Silent Dawn</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Single Target</span>
+              <span class="skill-meta-item">Break: 10</span>
+              <span class="skill-meta-item">Energy: 20</span>
+            </div>
+          </div>
+          <p class="skill-description">Mengakibatkan Wind DMG sebesar 100% ATK Black Swan kepada satu musuh.</p>
+          <div class="skill-stats">
+            <div class="stat-item"><span class="stat-label">Damage %</span><span class="stat-value">100% ATK</span></div>
+            <div class="stat-item"><span class="stat-label">Break Value</span><span class="stat-value">10</span></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Skill: Conspiracy</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Blast</span>
+              <span class="skill-meta-item">Break: 30</span>
+              <span class="skill-meta-item">Energy: 30</span>
+            </div>
+          </div>
+          <p class="skill-description">Mengakibatkan Wind DMG sebesar 90% ATK Black Swan kepada satu musuh yang ditargetkan dan musuh di sekitarnya. Di saat yang sama, terdapat 100% peluang dasar untuk mengurangi DEF musuh yang ditargetkan dan musuh di sekitarnya sebesar 20,8% selama 3 giliran.</p>
+          <div class="skill-stats">
+            <div class="stat-item"><span class="stat-label"> DAMAGE%</span><span class="stat-value">90% ATK</span></div>
+            <div class="stat-item"><span class="stat-label">Break value</span><span class="stat-value">30</span></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Ultimate: Bliss of Otherworld's Embrace</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: AoE </span>
+              <span class="skill-meta-item">Break: 20</span>
+              <span class="skill-meta-item">Energy Cost: 120</span>
+            </div>
+          </div>
+          <p class="skill-description">Memberikan status "Epiphany" kepada seluruh musuh selama 2 giliran. Kemudian, mengakibatkan Wind DMG kepada seluruh musuh sebesar 120% ATK Black Swan.Saat berada dalam status "Epiphany", target musuh menerima peningkatan DMG sebesar 25%. Untuk setiap 1 tumpukan (stack) "Arcana" yang diberikan, terdapat 50% peluang tetap (fixed chance) untuk menambah jumlah tumpukan "Arcana" sebanyak 1 secara tambahan. Selain itu, tumpukan "Arcana" tidak akan berkurang setengahnya setelah mengakibatkan DMG di awal giliran.</p>
+          <div class="skill-stats">
+            <div class="stat-item"><span class="stat-label">damage %</span><span class="stat-value">120%</span></div>
+            <div class="stat-item"><span class="stat-label">Energy Gain</span><span class="stat-value">5</span></div>
+            <div class="stat-item"><span class="stat-label">Break Value</span><span class="stat-value">20</span></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Talent: Decadent Blue</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Impair</span>
+            </div>
+          </div>
+          <p class="skill-description">Setiap kali target musuh menerima 1 instansi DoT (Damage over Time), terdapat 65% peluang dasar bagi musuh tersebut untuk terkena 1 tumpukan (stack) "Arcana".
+            Saat target musuh berada dalam status "Arcana", mereka juga dianggap secara bersamaan terkena status Wind Shear, Bleed, Burn, dan Shock. Target menerima Wind DoT sebesar 240% ATK Black Swan di awal setiap giliran, yang setelahnya jumlah tumpukan akan berkurang setengah. Setiap tumpukan "Arcana" meningkatkan pengganda (multiplier) DMG ini sebesar 12%. "Arcana" dapat menumpuk hingga 50 kali, dan dapat terus menumpuk melebihi batas ini, namun tumpukan berlebih tersebut akan dihapus setelah mengakibatkan DMG.
+            DMG dari "Arcana" mengabaikan 20% DEF target. Hanya ketika "Arcana" mengakibatkan DMG di awal giliran target musuh, target di sekitarnya akan menerima 1 instansi tambahan Wind DoT sebesar 180% ATK Black Swan.</p>
+        </div>
+
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Technique: From Façade to Vérité</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Enhance</span>
+            </div>
+          </div>
+          <p class="skill-description">Setelah Technique ini digunakan, terdapat 150% peluang dasar bagi setiap musuh untuk terkena 1 tumpukan Arcana pada awal pertempuran berikutnya. Untuk setiap keberhasilan pemberian Arcana pada satu target, berikan lagi satu tumpukan Arcana tambahan pada target yang sama. Proses ini akan terus berulang hingga Arcana gagal diberikan pada target tersebut. Untuk setiap pemberian Arcana yang berurutan pada satu target, peluang dasar keberhasilannya setara dengan 50% dari peluang dasar pemberian Arcana sebelumnya yang berhasil pada target tersebut.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Major Traces</h2>
+      <div class="traces-grid">
+        <div class="trace-card">
+          <div class="trace-name">Torment</div>
+          <div class="trace-level">A2 • Major Trace</div>
+          <div class="trace-effect">Saat target musuh diserang oleh Black Swan, terdapat 65% peluang dasar untuk memberikan 5 tumpukan Arcana kepada mereka.</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-name">Ominous Omen</div>
+          <div class="trace-level">A4 • Major Trace</div>
+          <div class="trace-effect">Saat target musuh memasuki pertempuran, terdapat 65% peluang dasar bagi musuh tersebut untuk terkena 1 tumpukan Arcana, dan 100% peluang dasar untuk terkena efek pengurangan DEF dari Skill yang berlangsung selama 3 giliran.Setelah menggunakan Basic ATK atau Ultimate, terdapat juga 100% peluang dasar untuk memberikan efek pengurangan DEF dari Skill kepada target musuh yang terkena serangan, yang berlangsung selama 3 giliran.</div>
+        </div>
+        <div class="trace-card">
+          <div class="trace-name">Predestined</div>
+          <div class="trace-level">A6 • Major Trace</div>
+          <div class="trace-effect">Meningkatkan DMG yang diakibatkan oleh seluruh rekan tim sebesar jumlah yang setara dengan 60% dari Effect Hit Rate Black Swan, hingga peningkatan DMG maksimum sebesar 72%.</div>
+        </div>
+      </div>
+
+      <h3 style="color: var(--accent); margin: 2rem 0 1rem; font-size: 1.3rem;">Minor Traces (Total Bonuses)</h3>
+      <div class="stats-grid" style="margin-top: 1rem;">
+        <div class="stat-box">
+          <div class="stat-box-label">ATK</div>
+          <div class="stat-box-value">+28%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label"> Wind DMG</div>
+          <div class="stat-box-value">+14.4%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">Effect HIT Rate</div>
+          <div class="stat-box-value">+10%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Eidolons</h2>
+      <div class="eidolon-grid">
+        <div class="eidolon-card">
+          <div class="eidolon-title">E1</div>
+          <div class="eidolon-name">Seven Pillars of Wisdom</div>
+          <div class="eidolon-effect">Saat Black Swan aktif dalam pertempuran, musuh yang terkena status Wind Shear, Bleed, Burn, atau Shock akan mengalami pengurangan RES (ketahanan) elemen terkait, yaitu Wind, Physical, Fire, atau Lightning, masing-masing sebesar 25%.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E2</div>
+          <div class="eidolon-name">Weep Not For Me, My Lamb</div>
+          <div class="eidolon-effect">Saat target musuh memasuki pertempuran, terdapat 100% peluang dasar untuk memberikan 30 tumpukan "Arcana" kepada mereka.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E3</div>
+          <div class="eidolon-name">As Above, So Below</div>
+          <div class="eidolon-effect">Skill Lv. +2, up to a maximum of Lv. 15. Talent Lv. +2, up to a maximum of Lv. 15.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E4</div>
+          <div class="eidolon-name">In Tears We Gift</div>
+          <div class="eidolon-effect">Saat berada dalam status "Epiphany", target musuh menerima peningkatan DMG sebesar 20%. Dan di awal setiap giliran atau saat mereka dikalahkan, memulihkan 8 Energy untuk Black Swan.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E5</div>
+          <div class="eidolon-name">Linnutee Flyway</div>
+          <div class="eidolon-effect">Ultimate Lv. +2, up to a maximum of Lv. 15. Basic ATK Lv. +1, up to a maximum of Lv. 10.</div>
+        </div>
+        <div class="eidolon-card">
+          <div class="eidolon-title">E6</div>
+          <div class="eidolon-name">Pantheon Merciful, Masses Pitiful</div>
+          <div class="eidolon-effect">Batas maksimal tumpukan "Arcana" meningkat sebanyak 30.
+            Saat target musuh diserang oleh rekan tim Black Swan, Black Swan memiliki 65% peluang dasar untuk memberikan 1 tumpukan "Arcana" kepada target tersebut.
+            Untuk setiap 1 tumpukan "Arcana" yang diberikan Black Swan kepada target musuh, jumlah tumpukan "Arcana" yang diberikan kali ini akan bertambah sebanyak 1 secara tambahan.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Level 80 Stats</h2>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-box-label">HP</div>
+          <div class="stat-box-value">1086</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">ATK</div>
+          <div class="stat-box-value">659</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">DEF</div>
+          <div class="stat-box-value">485</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">SPD</div>
+          <div class="stat-box-value">1072/div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Ascension Materials</h2>
+      <div class="materials-section">
+        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 700;">Level 1 → 80</h3>
+        <div class="material-list">
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/credit.webp" alt="Credits">
+            </div>
+            <div class="material-name">Credits</div>
+            <div class="material-quantity">308,000</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/extingushed core.webp" alt="Null Rod">
+            </div>
+            <div class="material-name">Extinguished Core</div>
+            <div class="material-quantity">×15</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/glimmering core.webp" alt="Blighted Bloom">
+            </div>
+            <div class="material-name">Glimmering Core</div>
+            <div class="material-quantity">×15</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/ascendant debris.webp" alt="Usurper's Scheme">
+            </div>
+            <div class="material-name">Ascendant Debris</div>
+            <div class="material-quantity">×65</div>
+          </div>
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/squirming core.webp" alt="Shards of Desires">
+            </div>
+            <div class="material-name">Squirming Core</div>
+            <div class="material-quantity">×15</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    if (event.target) event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>

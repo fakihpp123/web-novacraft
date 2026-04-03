@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anaxa • Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #2dd4bf;
+      --accent-light: #5eead4;
+      
+      --lightning: #ffc730;
+      --nihility: #9d4edd;
+      --erudition: #2dd4bf;
+      
+      --glow: 0 0 20px rgba(45, 212, 191, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* HEADER SECTION */
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(45, 212, 191, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+
+    .header-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .header-image {
+      width: 280px;
+      height: 380px;
+      background: rgba(45, 212, 191, 0.1);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(45, 212, 191, 0.15);
+    }
+
+    .header-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .character-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .char-tags {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: rgba(45, 212, 191, 0.2);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .tag.rarity {
+      background: rgba(255, 200, 50, 0.2);
+      border-color: #ffc832;
+      color: #ffc832;
+    }
+
+    .tag.element {
+      background: rgba(45, 212, 191, 0.2);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .tag.path {
+      background: rgba(45, 212, 191, 0.2);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .description {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .video-link {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .video-link:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(45, 212, 191, 0.4);
+    }
+
+    /* TAB NAVIGATION */
+    .tabs-nav {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* PROFILE SECTION */
+    .section {
+      background: linear-gradient(135deg, var(--card-bg), #0a0f1a);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    /* SKILLS */
+    .skill-list {
+      display: grid;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .skill {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(45, 212, 191, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    .skill:hover {
+      border-left-color: var(--accent);
+      background: rgba(45, 212, 191, 0.05);
+      transform: translateX(4px);
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill-name {
+      font-size: 1.4rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .skill-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .skill-meta-item {
+      font-size: 0.9rem;
+      color: var(--muted);
+      background: rgba(45, 212, 191, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    .skill-description {
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .skill-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .stat-item {
+      font-size: 0.9rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-value {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* TRACES SECTION */
+    .traces-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .trace-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(45, 212, 191, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .trace-card:hover {
+      border-color: var(--accent);
+      background: rgba(10, 14, 20, 0.8);
+    }
+
+    .trace-name {
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .trace-level {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .trace-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* EIDOLONS SECTION */
+    .eidolon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .eidolon-card {
+      background: rgba(10, 14, 20, 0.5);
+      border: 2px solid rgba(45, 212, 191, 0.15);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .eidolon-card:hover {
+      border-color: var(--accent);
+      background: rgba(10, 14, 20, 0.8);
+      box-shadow: 0 10px 30px rgba(45, 212, 191, 0.2);
+    }
+
+    .eidolon-title {
+      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .eidolon-name {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .eidolon-effect {
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* STATS & MATERIALS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-box {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(45, 212, 191, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-box-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .stat-box-value {
+      color: var(--accent);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .materials-section {
+      margin-top: 3rem;
+    }
+
+    .material-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .material-item {
+      background: rgba(10, 14, 20, 0.5);
+      border: 1px solid rgba(45, 212, 191, 0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .material-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(45, 212, 191, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .material-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .material-info {
+      flex: 1;
+    }
+
+    .material-name {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .material-quantity {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .section-subtitle {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 1.5rem;
+      }
+
+      .header-top {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .header-image {
+        width: 100%;
+        height: 300px;
+      }
+
+      .character-name {
+        font-size: 2.5rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .tabs-nav {
+        gap: 0.5rem;
+      }
+
+      .tab-btn {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="../../characters.html" class="back-btn">← Kembali ke Character List</a>
+
+  <!-- HEADER SECTION -->
+  <div class="header">
+    <div class="header-top">
+      <div class="header-info">
+        <h1 class="character-name">Anaxa</h1>
+        
+        <div class="char-tags">
+          <span class="tag rarity">★★★★★ 5-Star</span>
+          <span class="tag element">Wind 🌪</span>
+          <span class="tag path">Path of Erudition 博学</span>
+        </div>
+
+        <p class="description">
+          Anaxa adalah Erudition character yang menguasai chaos dan multi-weakness application.
+          Dengan kemampuan Weakness Implant dan Qualitative Disclosure mechanic, dia dapat meningkatkan
+          damage output tim secara signifikan melalui weakness stacking dan DEF ignore.
+        </p>
+
+        <a href="https://youtu.be/PY4XCxlEPy4?si=ahj3vSZw7bDoR5kn" class="video-link">▶ Tonton Video Guide</a>
+      </div>
+
+      <div class="header-image">
+        <img src="../../asset/hsr-anaxa.webp" alt="Anaxa">
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB NAVIGATION -->
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab('profile')">Profile</button>
+    <a href="review.html" style="display: inline-block; background: rgba(45, 212, 191, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem; cursor: pointer;">Review</a>
+    <a href="builds.html" style="display: inline-block; background: rgba(45, 212, 191, 0.1); border: 1px solid var(--accent); color: var(--accent); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; margin: 0 0.5rem; cursor: pointer;">Build & Teams</a>
+          </div>
+        </div>
+
+        <!-- Skill -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Skill: Fractal, Exiles Fallacy</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Bounce</span>
+              <span class="skill-meta-item">Break: 10 </span>
+              <span class="skill-meta-item">Energy: 6</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Mengakibatkan Wind DMG sebesar 70% ATK Anaxa kepada satu musuh yang ditargetkan dan memberikan tambahan 4 serangan (instances) DMG. Setiap serangan tambahan mengakibatkan Wind DMG sebesar 70% ATK Anaxa kepada satu musuh secara acak, dengan prioritas memantul (bouncing) ke target musuh yang belum terkena serangan dari Skill ini.
+            Saat digunakan, untuk setiap musuh di lapangan yang bisa diserang, DMG yang dihasilkan Skill ini meningkat sebesar 20%.
+          </p>
+          <div class="skill-stats">
+            <div class="stat-item">
+              <span class="stat-label">Damage %</span>
+              <span class="stat-value">110%</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Break Value</span>
+              <span class="stat-value">10</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ultimate -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Ultimate: Sprouting Life Sculpts Earth</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: AoE</span>
+              <span class="skill-meta-item">Break: 20</span>
+              <span class="skill-meta-item">Energy: 140</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Memberikan status 'Sublimation' kepada semua musuh, lalu mengakibatkan Wind DMG sebesar 160% dari ATK Anaxa kepada semua musuh.
+            Dalam status 'Sublimation', target akan secara bersamaan terkena Weakness Physical, Fire, Ice, Lightning, Wind, Quantum, dan Imaginary, yang bertahan hingga awal giliran target tersebut. Jika target tidak memiliki Control RES, mereka tidak akan dapat mengambil tindakan (unable to take action) selama berada dalam status 'Sublimation'
+          </p>
+          <div class="skill-stats">
+            <div class="stat-item">
+              <span class="stat-label">Base Damage %</span>
+              <span class="stat-value">160%</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Break Value</span>
+              <span class="stat-value">20</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Talent -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Talent: Tetrad Wisdom Reigns Thrice</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Impair</span>
+              <span class="skill-meta-item">Break: —</span>
+              <span class="skill-meta-item">Energy: 0</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Setiap kali Anaxa mendaratkan 1 hit pada target musuh, ia memberikan 1 Weakness dari tipe acak kepada target tersebut, bertahan selama 3 giliran, dengan prioritas pada tipe Weakness yang belum dimiliki oleh target.
+            Selama Anaxa berada di medan tempur, ia memberikan status 'Qualitative Disclosure' pada musuh yang memiliki setidaknya 5 tipe Weakness berbeda. Anaxa mengakibatkan 30% DMG tambahan kepada target yang terkena status 'Qualitative Disclosure'. Selain itu, setelah menggunakan Basic ATK atau Skill pada mereka, Anaxa melancarkan 1 serangan Skill tambahan pada target tersebut. Skill tambahan ini tidak mengonsumsi Skill Point dan tidak dapat memicu efek ini lagi. Jika target telah dikalahkan sebelum Skill tambahan digunakan, serangan tersebut akan dilepaskan ke satu musuh acak sebagai gantinya.
+          </p>
+          </div>
+        </div>
+
+        <!-- Technique -->
+        <div class="skill">
+          <div class="skill-header">
+            <span class="skill-name">Technique: Prism of the Pupil</span>
+            <div class="skill-meta">
+              <span class="skill-meta-item">Type: Impair</span>
+              <span class="skill-meta-item">Break: -</span>
+              <span class="skill-meta-item">Energy: 0</span>
+            </div>
+          </div>
+          <p class="skill-description">
+            Setelah menggunakan Technique, memberikan status Terrified pada musuh di area tertentu. Musuh yang berada dalam status Terrified akan melarikan diri menjauhi Anaxa selama 10 detik. Saat rekan tim memasuki pertempuran dengan menyerang musuh yang berstatus Terrified, serangan tersebut akan selalu dianggap sebagai menyerang Weakness (kelemahan). Setelah memasuki pertempuran, Anaxa memberikan 1 Weakness sesuai dengan tipe elemen penyerang kepada setiap musuh, bertahan selama 3 giliran.
+          5</p>
+          <div class="skill-stats">
+            <div class="stat-item">
+              <span class="stat-label">Energy Gen</span>
+              <span class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Break Value</span>
+              <span class="stat-value">-</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACES SECTION -->
+    <div class="section">
+      <h2 class="section-title">Traces (天赋)</h2>
+      
+      <h3 style="color: var(--accent); margin: 1.5rem 0 1rem; font-size: 1.3rem;">Major Traces</h3>
+      <div class="traces-grid">
+        <div class="trace-card">
+          <div class="trace-name">A2 • Roaming Signifier</div>
+          <div class="trace-level">Ascension 2</div>
+          <p class="trace-effect">
+            Saat menggunakan Basic ATK, regenerate 10 Energy. Di awal turn, jika tidak ada target dalam Qualitative Disclosure state, regenerate 30 Energy.
+          </p>
+        </div>
+
+        <div class="trace-card">
+          <div class="trace-name">A4 • Imperative Hiatus</div>
+          <div class="trace-level">Ascension 4</div>
+          <p class="trace-effect">
+            Berdasarkan jumlah karakter Erudition di tim: 1 karakter = CRIT DMG +140%, At least 2 karakter = DMG dari semua allies +50%.
+          </p>
+        </div>
+
+        <div class="trace-card">
+          <div class="trace-name">A6 • Qualitative Shift</div>
+          <div class="trace-level">Ascension 6</div>
+          <p class="trace-effect">
+            Untuk setiap tipe Weakness berbeda yang dimiliki target (max 7), DMG yang Anaxa hasilkan ke target itu mengabaikan 4% DEF mereka. DMG Anaxa juga naik 55% untuk setiap tipe Weakness yang berbeda dari target (max 385%).
+          </p>
+        </div>
+      </div>
+
+      <h3 style="color: var(--accent); margin: 2rem 0 1rem; font-size: 1.3rem;">Minor Traces (Total Bonuses)</h3>
+      <div class="stats-grid" style="margin-top: 1rem;">
+        <div class="stat-box">
+          <div class="stat-box-label">CRIT Rate</div>
+          <div class="stat-box-value">+12%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">HP</div>
+          <div class="stat-box-value">+10%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">Wind DMG</div>
+          <div class="stat-box-value">+22.4%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EIDOLONS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Eidolons (星魂)</h2>
+      
+      <div class="eidolon-grid">
+        <div class="eidolon-card">
+          <div class="eidolon-title">E1</div>
+          <div class="eidolon-name">Magician, Isolated by Stars</div>
+          <p class="eidolon-effect">
+            Setelah Skill pertama kali, recover 1 Skill Point. Saat Skill mengenai musuh, turunkan DEF mereka 16% selama 2 turn.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E2</div>
+          <div class="eidolon-name">Soul, True to History</div>
+          <p class="eidolon-effect">
+            Saat musuh memasuki pertempuran, trigger 1 Talent Weakness Implant effect dan kurangi All-Type RES mereka 20%.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E3</div>
+          <div class="eidolon-name">Pupil, Etched into Cosmos</div>
+          <p class="eidolon-effect">
+            Ultimate Level +2, maksimal Lv. 15. <br>
+            Basic ATK Level +1, maksimal Lv. 10.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E4</div>
+          <div class="eidolon-name">Blaze, Plunged to Canyon</div>
+          <p class="eidolon-effect">
+            Saat menggunakan Skill, ATK naik 30% selama 2 turn. Effect ini dapat stack hingga 2 kali.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E5</div>
+          <div class="eidolon-name">Embryo, Set Beyond Vortex</div>
+          <p class="eidolon-effect">
+            Skill Level +2, maksimal Lv. 15. <br>
+            Talent Level +2, maksimal Lv. 15.
+          </p>
+        </div>
+
+        <div class="eidolon-card">
+          <div class="eidolon-title">E6</div>
+          <div class="eidolon-name">Everything Is in Everything</div>
+          <p class="eidolon-effect">
+            DMG yang Anaxa hasilkan adalah 130% dari DMG original. 2 effects dari Trace 'Imperative Hiatus' trigger langsung tanpa tergantung jumlah Erudition characters.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS & MATERIALS SECTION -->
+    <div class="section">
+      <h2 class="section-title">Stats & Materials (Level 80)</h2>
+      
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-box-label">HP</div>
+          <div class="stat-box-value">970</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">ATK</div>
+          <div class="stat-box-value">756</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">DEF</div>
+          <div class="stat-box-value">557</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-label">SPD</div>
+          <div class="stat-box-value">97</div>
+        </div>
+      </div>
+
+      <div class="materials-section">
+        <h3 class="section-subtitle">Ascension Materials (Level 1 → 80)</h3>
+        <div class="material-list">
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/credit.webp" alt="Credit" />
+            </div>
+            <div class="material-info">
+              <div class="material-name">Credit</div>
+              <div class="material-quantity">308,000x</div>
+            </div>
+          </div>
+
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/Ethereal Omen.webp" alt="Ethereal Omen" />
+            </div>
+            <div class="material-info">
+              <div class="material-name">Ethereal Omen</div>
+              <div class="material-quantity">15x</div>
+            </div>
+          </div>
+
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/Echoing Wail.webp" alt="Echoing Wail" />
+            </div>
+            <div class="material-info">
+              <div class="material-name">Echoing Wail</div>
+              <div class="material-quantity">15x</div>
+            </div>
+          </div>
+
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/A Glass of the Besotted Era.webp" alt="A Glass of the Besotted Era" />
+            </div>
+            <div class="material-info">
+              <div class="material-name">A Glass of the Besotted Era</div>
+              <div class="material-quantity">65x</div>
+            </div>
+          </div>
+
+          <div class="material-item">
+            <div class="material-icon">
+              <img src="../../asset/Eternal Lament.webp" alt="Eternal Lament" />
+            </div>
+            <div class="material-info">
+              <div class="material-name">Eternal Lament</div>
+              <div class="material-quantity">15x</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- REVIEW TAB - MOVED TO review.html -->
+
+  <!-- BUILD & TEAMS TAB - MOVED TO builds.html -->
+
+  <!-- STATISTICS TAB -->
+  <div id="statistics" class="tab-content" style="display: none;">
+    <div class="section">
+      <h2 class="section-title">MoC/PF Statistics Coming Soon</h2>
+      <p style="color: var(--muted); padding: 2rem 0;">
+        Section ini akan menampilkan statistik usage Anaxa di Memory of Chaos, 
+        Pure Fiction, dan Apocalyptic Shadow.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(tabName) {
+    // Hide all tab contents
+    const contents = document.querySelectorAll('.tab-content');
+    contents.forEach(content => {
+      content.classList.remove('active');
+    });
+
+    // Remove active class from all buttons
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(button => {
+      button.classList.remove('active');
+    });
+
+    // Show selected tab content
+    const selectedTab = document.getElementById(tabName);
+    if (selectedTab) {
+      selectedTab.classList.add('active');
+    }
+
+    // Add active class to clicked button
+    event.target.classList.add('active');
+  }
+
+  // Handle Relic image upload
+  function handleRelicImageUpload(input, imgId, placeholderSpan) {
+    const file = input.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.getElementById(imgId);
+        img.src = e.target.result;
+        img.style.display = 'block';
+        if (placeholderSpan) {
+          placeholderSpan.style.display = 'none';
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // Handle Light Cone image upload
+  function handleLightConeImageUpload(input, imgId, placeholderSpan) {
+    const file = input.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.getElementById(imgId);
+        img.src = e.target.result;
+        img.style.display = 'block';
+        if (placeholderSpan) {
+          placeholderSpan.style.display = 'none';
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+</script>
+
+</body>
+</html>

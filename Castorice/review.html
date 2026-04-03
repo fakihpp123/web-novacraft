@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Castorice Review - Honkai: Star Rail</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #9d4edd;
+      --accent-light: #b369ff;
+      --quantum: #9d4edd;
+      --positive: #4ecca3;
+      --negative: #ff6b6b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      text-decoration: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+    }
+
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--quantum);
+      font-size: 2.2rem;
+      text-shadow: 0 0 15px rgba(157, 78, 221, 0.5);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      color: var(--quantum);
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    h3 {
+      color: var(--text);
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      margin-bottom: 2.5rem;
+      background: rgba(157, 78, 221, 0.05);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--quantum);
+    }
+
+    .pros {
+      background: rgba(76, 204, 163, 0.08);
+      border-left-color: var(--positive);
+      margin-bottom: 1.5rem;
+    }
+
+    .cons {
+      background: rgba(255, 107, 107, 0.08);
+      border-left-color: var(--negative);
+    }
+
+    .pros h3::before {
+      content: "✓ ";
+      color: var(--positive);
+    }
+
+    .cons h3::before {
+      content: "✗ ";
+      color: var(--negative);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1.5rem;
+    }
+
+    ul li {
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "→ ";
+      color: var(--quantum);
+      position: absolute;
+      left: -1.5rem;
+    }
+
+    .rating {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .rating-box {
+      background: rgba(157, 78, 221, 0.1);
+      border: 1px solid rgba(157, 78, 221, 0.3);
+      padding: 1rem;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 150px;
+      text-align: center;
+    }
+
+    .rating-label {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .rating-value {
+      color: var(--quantum);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .recommendation {
+      background: linear-gradient(135deg, rgba(157, 78, 221, 0.15), rgba(76, 204, 163, 0.1));
+      border: 2px solid var(--quantum);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    .recommendation h3 {
+      color: var(--positive);
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .rating {
+        flex-direction: column;
+      }
+
+      .rating-box {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <a href="character-castorice.html" class="back-btn">← Kembali</a>
+
+  <h1>Castorice - Review Lengkap</h1>
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <h2>Overview</h2>
+    <p>
+      Castorice adalah 5★ Quantum Remembrance DPS yang membawa mekanik HP-scaling yang revolusioner ke game. Berbeda dari karakter DPS lain yang mengandalkan ATK, Castorice menggunakan Max HP sebagai basis damage scaling untuk semua ability-nya. Dengan summon unik berupa Netherwing dan mekanik HP consumption untuk tim, Castorice adalah karakter dengan design yang sangat unique dan powerful untuk end-game content.
+    </p>
+    <p>
+      <strong>Role:</strong> HP-Based Quantum Main DPS | <strong>Playstyle:</strong> Aggressive HP management dengan damage amplification melalui HP loss mechanics
+    </p>
+  </div>
+
+  <!-- STRENGTHS -->
+  <div class="section pros">
+    <h3>Kekuatan</h3>
+    <ul>
+      <li><strong>HP-Based Scaling:</strong> Damage bukan dari ATK tapi dari Max HP, memberikan flexibility dalam build dan stat priority yang berbeda</li>
+      <li><strong>Dual DPS Engine:</strong> Castorice + Netherwing menciptakan action economy yang powerful dengan dual turn activity</li>
+      <li><strong>Team Synergy Potential:</strong> Talent memberikan DMG boost hingga 60% (1x3 stack) untuk entire team ketika ally HP drop</li>
+      <li><strong>All-Type RES Debuff:</strong> Ultimate menurunkan ALL-Type RES musuh sebesar 20%, benefit untuk entire team setup</li>
+      <li><strong>Netherwing Survivability:</strong> Mooncocoon memiliki unique defensive mechanic yang dapat mencegah KO sekali per battle</li>
+      <li><strong>E6 Quantum Breaking:</strong> E6 memungkinkan Netherwing untuk trigger Quantum weakness break dan ignore weakness type</li>
+    </ul>
+  </div>
+
+  <!-- WEAKNESSES -->
+  <div class="section cons">
+    <h3>Kelemahan</h3>
+    <ul>
+      <li><strong>Team HP Consumption:</strong> Skill dan Ultimate consume 30-40% HP dari entire team, memerlukan dedicated healer support yang strong</li>
+      <li><strong>Speed Scaling:</strong> Base SPD 95 cukup rendah, memerlukan shoes atau SPD buffer untuk optimal turn order</li>
+      <li><strong>Mechanic Complexity:</strong> Memerlukan deep understanding tentang HP management dan "Newbud" resource untuk optimize damage output</li>
+      <li><strong>Break Support Dependency:</strong> Performa tergantung pada team mampu konsisten apply Quantum break atau break type lain</li>
+      <li><strong>Squishy HP Pool:</strong> Meski HP-based damage, Castorice sendiri memiliki lower DEF dan perlu proteksi dari healer</li>
+      <li><strong>Momentum-Based:</strong> Damage ramp-up memerlukan beberapa turn untuk build "Newbud" optimal, tidak instant damage</li>
+    </ul>
+  </div>
+
+  <!-- RATINGS -->
+  <div class="section">
+    <h2>Ratings</h2>
+    <div class="rating">
+      <div class="rating-box">
+        <div class="rating-label">Overall</div>
+        <div class="rating-value">9.0/10</div>
+      </div>
+      <div class="rating-box">
+        <div class="rating-label">Damage Output</div>
+        <div class="rating-value">9.5/10</div>
+      </div>
+      <div class="rating-box">
+        <div class="rating-label">Survival</div>
+        <div class="rating-value">8.0/10</div>
+      </div>
+      <div class="rating-box">
+        <div class="rating-label">Utility</div>
+        <div class="rating-value">8.5/10</div>
+      </div>
+      <div class="rating-box">
+        <div class="rating-label">F2P Friendly</div>
+        <div class="rating-value">7.0/10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIER LIST PLACEMENT -->
+  <div class="section">
+    <h2>Tier List Placement</h2>
+    <p>
+      <strong>🏆 Rating: T0+ (Top Tier DPS)</strong>
+    </p>
+    <ul>
+      <li><strong>Quantum Team Composition:</strong> T0+ - Essential untuk quantum team yang optimized, damage output unmatched</li>
+      <li><strong>General Content:</strong> T0 - Powerful dalam konteks setup yang tepat dengan support roster yang adequate</li>
+      <li><strong>MoC/PF Speed Running:</strong> T0+ - Exceptional untuk time-sensitive challenges dengan proper rotation</li>
+      <li><strong>Casual/New Players:</strong> T1-2 - Requires established account dengan good support first, tidak cocok early-game</li>
+      <li><strong>F2P Viability:</strong> T1 - Possible dengan F2P supports seperti Lynx + Huohuo, tapi benefit dari 5★ healers</li>
+    </ul>
+  </div>
+
+  <!-- EIDOLON ANALYSIS -->
+  <div class="section">
+    <h2>Eidolon Analysis</h2>
+    
+    <h3>E0 Baseline</h3>
+    <p>Fully capable untuk semua permanent content dengan team composition yang tepat. Castorice E0 sudah menghasilkan damage yang kompetitif selama support roster strong dan team synergy well-planned.</p>
+
+    <h3>E1 - Snowbound Maiden</h3>
+    <p>Significant damage boost dengan conditional multiplier ketika enemy HP di bawah threshold tertentu. Recommended untuk pushing higher scores dan optimizing MoC runs.</p>
+
+    <h3>E2 - Crown on Wings</h3>
+    <p>Quality of life improvement dengan "Ardent Will" stacks yang reduce Netherwing HP consumption. Membuat team building lebih flexible dan mengurangi healer burden untuk HP management.</p>
+
+    <h3>E4 - Rest in Songs</h3>
+    <p>Team-wide incoming healing buff sebesar 20%. Powerful support passive yang benefit entire team dengan lebih consistent survivability.</p>
+
+    <h3>E6 - Await for Years</h3>
+    <p>Ultimate power spike dengan Quantum RES penetration dan weakness breaking capability untuk Netherwing. Memungkinkan Netherwing untuk independent break application dan trigger Quantum weakness break sendiri.</p>
+
+    <h3>Recommendation</h3>
+    <p><strong>Minimum untuk clear:</strong> E0 dengan proper team | <strong>Ideal untuk comfortable play:</strong> E2+ | <strong>Hardcore min-maxing:</strong> E6</p>
+  </div>
+
+  <!-- WHO SHOULD PULL -->
+  <div class="recommendation">
+    <h3>💡 Siapa Yang Harus Pull Castorice?</h3>
+    <ul>
+      <li>✓ Quantum enthusiasts dengan established account dan support roster (Huohuo, Lynx, Pela, Qingque)</li>
+      <li>✓ Players yang mencari unique damage scaling mechanic berbeda dari karakter lain</li>
+      <li>✓ Collectors yang ingin complete Remembrance character lineup</li>
+      <li>✓ Hardcore min-maxers dan speedrunners untuk MoC/PF optimization</li>
+      <li>✓ Players yang punya multiple 5★ healers untuk team flexibility</li>
+      <li>✗ NEW players atau account yang belum punya support roster yang solid</li>
+      <li>✗ Players dengan only one healer - Castorice memerlukan dedicated strong healer support</li>
+      <li>✗ Casual players yang ingin simple/straightforward gameplay mechanics</li>
+    </ul>
+  </div>
+
+  <!-- FINAL THOUGHTS -->
+  <div class="section">
+    <h2>Final Thoughts</h2>
+    <p>
+      Castorice adalah karakter yang membawa fresh perspective ke game dengan HP-based damage scaling yang tidak pernah ada sebelumnya. Dia bukan universal DPS yang cocok untuk semua situasi, tapi dalam konteks quantum teams dengan proper support setup, dia adalah salah satu DPS paling powerful di current meta.
+    </p>
+    <p>
+      <strong>Kesimpulan Pull?</strong> Untuk players yang sudah established dengan strong support roster dan tertarik dengan unique mechanics, Castorice adalah highly recommended pull. Dia memberikan quantum team identity yang kuat dan mechanical depth untuk optimize. Untuk casual atau newer players, prioritas harus pada support units dan free DPS terlebih dahulu.
+    </p>
+    <p style="color: var(--quantum); font-weight: 600;">
+      <em>"Castorice bukan hanya DPS biasa - dia adalah gateway ke dalam mekanik HP-based damage yang completely changes team building philosophy."</em>
+    </p>
+  </div>
+
+  <div style="text-align: center; margin-top: 3rem; padding: 2rem; opacity: 0.7;">
+    <p>Last Updated: Patch 3.2</p>
+  </div>
+</div>
+
+</body>
+</html>

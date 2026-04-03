@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Boothill • Review - Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #D4A574;
+      --accent-light: #E8C89A;
+      --glow: 0 0 20px rgba(212, 165, 116, 0.3);
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1620 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.5rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .back-link {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: rgba(212, 165, 116, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(212, 165, 116, 0.2);
+      transform: translateX(-3px);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 2rem 0;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-content">
+        <h1 class="header-title">Boothill</h1>
+        <p class="header-subtitle">Character Review & Analysis</p>
+      </div>
+      <a href="character-boothill.html" class="back-link">← Kembali ke Profile</a>
+    </div>
+
+    <!-- CHARACTER OVERVIEW -->
+    <div class="section">
+      <h2 class="section-title">Character Overview</h2>
+      <div style="background: rgba(212, 165, 116, 0.08); border: 1px solid rgba(212, 165, 116, 0.15); border-radius: 10px; padding: 1.5rem;">
+        <p style="color: var(--text); font-size: 1.05rem; line-height: 1.8; margin: 0;">
+          <strong style="color: var(--accent);">Boothill</strong> adalah karakter Physical Hunt 5-bintang yang berfokus pada <strong style="color: var(--accent);">Break mechanic dan single-target damage</strong>. Sebagai seorang koboi cyborg dari Departemen Keamanan IPC, Boothill memiliki mekanisme unik bernama <strong style="color: var(--accent);">Standoff</strong> yang memaksanya berduel satu lawan satu dengan musuh. Melalui sistem <strong style="color: var(--accent);">Pocket Trickshot</strong>, ia dapat menumpuk buff yang meningkatkan Break DMG secara masif. Boothill adalah salah satu karakter Break terkuat dalam game, terutama untuk konten single-target, dan sangat bergantung pada Break Effect sebagai stat utamanya.
+        </p>
+      </div>
+    </div>
+
+    <!-- STRENGTHS & WEAKNESSES -->
+    <div class="section">
+      <h2 class="section-title">Strengths & Weaknesses</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1.5rem;">
+        
+        <!-- STRENGTHS -->
+        <div style="background: rgba(70, 214, 207, 0.05); border: 1px solid rgba(70, 214, 207, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #46d6cf; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✓</span> Strengths
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Extremely High Break DMG</strong> - Salah satu karakter dengan Break DMG tertinggi dalam game, terutama saat Pocket Trickshot penuh
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Physical Weakness Implant</strong> - Ultimate dapat memberikan Physical Weakness kepada musuh yang tidak memilikinya, memungkinkan Boothill untuk break hampir semua musuh
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Self-Sufficient Scaling</strong> - Break Effect langsung meningkatkan CRIT Rate dan CRIT DMG melalui trace A2 "Ghost Load", mengurangi kebutuhan akan relic CRIT
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Action Delay</strong> - Ultimate menunda aksi musuh sebesar 40%, memberikan kontrol pertempuran yang signifikan
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Pocket Trickshot Retention</strong> - Mempertahankan tumpukan Pocket Trickshot antar pertempuran, memberikan keunggulan di awal fight berikutnya
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #46d6cf; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Flexible Light Cone Options</strong> - Dapat menggunakan berbagai Light Cone termasuk yang bintang 3 (Adversarial) dengan efektif karena scaling uniknya
+            </li>
+          </ul>
+        </div>
+
+        <!-- WEAKNESSES -->
+        <div style="background: rgba(255, 107, 107, 0.05); border: 1px solid rgba(255, 107, 107, 0.2); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: #ff6b6b; font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 1.5rem;">✗</span> Weaknesses
+          </h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Single-Target Focused</strong> - Hampir semua damage Boothill berfokus pada satu target, kurang efektif untuk konten AoE seperti Pure Fiction
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Standoff Taunt Risk</strong> - Skill memberikan Taunt kepada musuh yang ditarget, membuat Boothill menjadi sasaran utama serangan musuh
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Break-Dependent</strong> - Sebagian besar damage bergantung pada Weakness Break; musuh yang immune to break atau sudah broken oleh orang lain mengurangi efektivitasnya
+            </li>
+            <li style="color: var(--muted); margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">Skill Point Neutral</strong> - Enhanced Basic ATK tidak menghasilkan Skill Point, membutuhkan manajemen SP yang hati-hati dalam tim
+            </li>
+            <li style="color: var(--muted); padding-left: 1.5rem; position: relative; line-height: 1.5;">
+              <span style="position: absolute; left: 0; color: #ff6b6b; font-weight: bold;">•</span>
+              <strong style="color: var(--text);">High Energy Cost</strong> - Ultimate membutuhkan 115 Energy, salah satu yang tertinggi dalam game, memerlukan manajemen energy yang baik
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- USAGE RATING -->
+    <div class="section">
+      <h2 class="section-title">Usage Rating</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(212, 165, 116, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(212, 165, 116, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Memory of Chaos</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">9.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Top-Tier Single Target</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(212, 165, 116, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(212, 165, 116, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Pure Fiction</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">5.0/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Not Recommended</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(212, 165, 116, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(212, 165, 116, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Apocalyptic Shadow</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">9.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Excellent Choice</div>
+        </div>
+
+        <div style="background: rgba(10, 14, 20, 0.5); border: 1px solid rgba(212, 165, 116, 0.15); border-radius: 10px; padding: 1.5rem; text-align: center; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 24px rgba(212, 165, 116, 0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+          <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; font-weight: 600;">Open World</div>
+          <div style="color: var(--accent); font-size: 2.8rem; font-weight: 700;">8.5/10</div>
+          <div style="color: var(--accent); font-size: 0.85rem; margin-top: 0.5rem;">Very Strong</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECOMMENDED EIDOLONS -->
+    <div class="section">
+      <h2 class="section-title">Eidolon Recommendations</h2>
+      
+      <div style="display: grid; gap: 1.2rem; margin-top: 1.5rem;">
+        <div style="background: rgba(212, 165, 116, 0.1); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#E8C89A'; this.style.boxShadow='0 4px 12px rgba(212, 165, 116, 0.15)'" onmouseout="this.style.borderLeftColor='var(--accent)'; this.style.boxShadow='none'">
+          <div style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">💡 E0 (No Eidolons)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">Boothill di E0 sudah sangat kuat untuk konten single-target. Dengan build Break Effect yang tepat dan support yang sesuai (Fugue + Ruan Mei), ia mampu memberikan damage yang sangat kompetitif bahkan tanpa Eidolon. E0 adalah titik awal yang solid untuk semua konten.</p>
+        </div>
+
+        <div style="background: rgba(70, 214, 207, 0.1); border-left: 4px solid #46d6cf; border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#6fe6e0'; this.style.boxShadow='0 4px 12px rgba(70, 214, 207, 0.15)'" onmouseout="this.style.borderLeftColor='#46d6cf'; this.style.boxShadow='none'">
+          <div style="color: #46d6cf; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">⭐ E1 (Recommended)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E1 memberikan 1 tumpukan Pocket Trickshot gratis di awal pertempuran dan 16% DEF ignore saat memberikan damage. Ini adalah Eidolon yang sangat cost-effective — memberikan peningkatan damage yang signifikan sekaligus mempercepat ramp-up Boothill di awal fight. Sangat direkomendasikan jika memungkinkan.</p>
+        </div>
+
+        <div style="background: rgba(255, 199, 48, 0.1); border-left: 4px solid #ffc730; border-radius: 8px; padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.borderLeftColor='#ffd966'; this.style.boxShadow='0 4px 12px rgba(255, 199, 48, 0.15)'" onmouseout="this.style.borderLeftColor='#ffc730'; this.style.boxShadow='none'">
+          <div style="color: #ffc730; font-weight: 700; margin-bottom: 0.5rem; font-size: 1.1rem;">🌟 E6 (Whale Territory)</div>
+          <p style="color: var(--text); margin: 0; line-height: 1.6;">E6 memberikan power spike yang luar biasa dengan menambahkan Break DMG AoE kepada target di sekitar saat Talent terpicu — mengubah Boothill dari single-target specialist menjadi karakter yang juga bisa memberikan damage ke musuh adjacent. Ini membuka potensi Boothill di konten multi-target dan menjadikannya salah satu karakter terkuat di game pada E6.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLAYSTYLE GUIDE -->
+    <div class="section">
+      <h2 class="section-title">Playstyle Guide</h2>
+      
+      <div style="display: grid; gap: 1.5rem; margin-top: 1.5rem;">
+        
+        <div style="background: rgba(212, 165, 116, 0.06); border: 1px solid rgba(212, 165, 116, 0.15); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: var(--accent); font-size: 1.2rem; margin-bottom: 1rem; font-weight: 700;">🤠 Rotasi Dasar</h3>
+          <ol style="list-style: decimal; list-style-position: inside; color: var(--text); font-size: 0.95rem; line-height: 2.2;">
+            <li>Gunakan <strong style="color: var(--accent);">Technique</strong> sebelum pertempuran untuk memberikan Physical Weakness di Skill pertama</li>
+            <li>Gunakan <strong style="color: var(--accent);">Skill (Sizzlin' Tango)</strong> untuk memasuki Standoff dan mengaktifkan Enhanced Basic ATK</li>
+            <li>Gunakan <strong style="color: var(--accent);">Enhanced Basic ATK (Fanning the Hammer)</strong> untuk menyerang musuh dalam Standoff dan menumpuk Pocket Trickshot</li>
+            <li>Saat musuh Weakness Broken, <strong style="color: var(--accent);">Talent (Five Peas in a Pod)</strong> akan memicu Break DMG masif berdasarkan jumlah Pocket Trickshot</li>
+            <li>Gunakan <strong style="color: var(--accent);">Ultimate (Dust Devil's Sunset Rodeo)</strong> untuk memberikan Physical Weakness baru, delay musuh 40%, dan damage besar</li>
+            <li>Ulangi siklus Standoff untuk memaksimalkan output damage</li>
+          </ol>
+        </div>
+
+        <div style="background: rgba(212, 165, 116, 0.06); border: 1px solid rgba(212, 165, 116, 0.15); border-radius: 10px; padding: 1.5rem;">
+          <h3 style="color: var(--accent); font-size: 1.2rem; margin-bottom: 1rem; font-weight: 700;">💡 Tips Penting</h3>
+          <ul style="list-style: none; padding: 0; color: var(--text); font-size: 0.95rem; line-height: 2;">
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              Prioritaskan <strong style="color: var(--accent);">Break Effect 250%+</strong> untuk memaksimalkan bonus dari Iron Cavalry set dan trace Ghost Load
+            </li>
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              Pasangkan dengan <strong style="color: var(--accent);">Fugue</strong> sebagai support utama — ia memberikan Super Break DMG yang sangat sinergis dengan Boothill
+            </li>
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              <strong style="color: var(--accent);">Ruan Mei</strong> adalah support terbaik kedua karena meningkatkan Weakness Break Efficiency dan memberikan RES PEN
+            </li>
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              Gunakan <strong style="color: var(--accent);">Gallagher</strong> sebagai sustain karena ia juga meningkatkan Break Effect tim dan memiliki sinergi yang baik
+            </li>
+            <li style="padding-left: 1.5rem; position: relative;">
+              <span style="position: absolute; left: 0; color: var(--accent);">→</span>
+              Pocket Trickshot yang tersisa dari pertempuran sebelumnya memberikan keunggulan besar — manfaatkan ini untuk burst damage di awal fight
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Last updated: March 2026 | Boothill • Honkai: Star Rail</p>
+    </footer>
+  </div>
+</body>
+</html>
