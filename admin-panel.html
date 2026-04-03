@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel | Game Tier List</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0b14;
+      --card: #11121f;
+      --accent: #7b5eff;
+      --accent-dark: #5a3eff;
+      --text: #e0e0ff;
+      --muted: #a0a0cc;
+      --error: #ff6b6b;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --glow: 0 0 25px rgba(123, 94, 255, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background: linear-gradient(135deg, #11121f, #0c0d18);
+      border-bottom: 1px solid rgba(123, 94, 255, 0.18);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .navbar h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      text-shadow: 0 0 15px rgba(123, 94, 255, 0.5);
+      letter-spacing: 1px;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .user-info {
+      text-align: right;
+      font-size: 0.9rem;
+    }
+
+    .user-info .username {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .logout-btn {
+      padding: 0.6rem 1.2rem;
+      background: linear-gradient(135deg, var(--error), #cc5555);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .logout-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #11121f, #0c0d18);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(123, 94, 255, 0.18);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .stat-card h3 {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .stat-card .value {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .section {
+      background: linear-gradient(135deg, #11121f, #0c0d18);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(123, 94, 255, 0.18);
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(123, 94, 255, 0.3);
+    }
+
+    .users-list {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    table th {
+      background: rgba(123, 94, 255, 0.1);
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 2px solid rgba(123, 94, 255, 0.3);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    table td {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(123, 94, 255, 0.1);
+    }
+
+    table tr:hover {
+      background: rgba(123, 94, 255, 0.08);
+    }
+
+    .action-btn {
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .delete-btn {
+      background: var(--error);
+      color: white;
+    }
+
+    .delete-btn:hover {
+      background: #ff8888;
+      box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+    }
+
+    .edit-btn {
+      background: var(--accent);
+      color: white;
+    }
+
+    .edit-btn:hover {
+      background: #9180ff;
+      box-shadow: 0 4px 12px rgba(123, 94, 255, 0.3);
+    }
+
+    .add-user-form {
+      display: grid;
+      gap: 1rem;
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 0.5rem;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .form-group input {
+      padding: 0.8rem 1rem;
+      background: rgba(20, 20, 35, 0.8);
+      border: 1px solid rgba(123, 94, 255, 0.25);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(123, 94, 255, 0.2);
+    }
+
+    .form-btn {
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(123, 94, 255, 0.3);
+      width: fit-content;
+    }
+
+    .form-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(123, 94, 255, 0.4);
+    }
+
+    .message {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid var(--success);
+      color: var(--success);
+    }
+
+    .message.error {
+      background: rgba(255, 107, 107, 0.1);
+      border: 1px solid var(--error);
+      color: var(--error);
+    }
+
+    .content-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.7rem 1.5rem;
+      background: rgba(123, 94, 255, 0.1);
+      border: 1px solid rgba(123, 94, 255, 0.25);
+      color: var(--muted);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .form-group select {
+      padding: 0.8rem 1rem;
+      background: rgba(20, 20, 35, 0.8);
+      border: 1px solid rgba(123, 94, 255, 0.25);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(123, 94, 255, 0.2);
+    }
+
+    .form-group select option {
+      background: #0a0b14;
+      color: #fff;
+    }
+
+    .tier-edit-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(20, 20, 35, 0.5);
+      border: 1px solid rgba(123, 94, 255, 0.15);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .tier-edit-item img {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      border: 1px solid rgba(123, 94, 255, 0.25);
+      object-fit: cover;
+    }
+
+    .tier-edit-info {
+      flex: 1;
+    }
+
+    .tier-edit-info .name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .tier-edit-info .role {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .tier-edit-select {
+      padding: 0.5rem 1rem;
+      background: rgba(20, 20, 35, 0.8);
+      border: 1px solid rgba(123, 94, 255, 0.25);
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    /* ===== EDIT RELIC MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .modal-box {
+      background: linear-gradient(135deg, #11121f, #0c0d18);
+      border: 1px solid rgba(123, 94, 255, 0.35);
+      border-radius: 14px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 580px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(123,94,255,0.15);
+      animation: modalIn 0.25s ease;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(-10px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-box h3 {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(123,94,255,0.2);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      justify-content: flex-end;
+    }
+
+    .cancel-btn {
+      padding: 0.8rem 1.5rem;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: var(--muted);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .cancel-btn:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .navbar-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        font-size: 0.85rem;
+      }
+
+      table th, table td {
+        padding: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <h1>🔐 Admin Panel</h1>
+    <div class="navbar-right">
+      <div class="user-info">
+        <div>Admin Panel</div>
+        <div class="username" id="adminUsername"></div>
+      </div>
+      <a href="karakter-editor.html" style="color: var(--text); text-decoration: none; padding: 0.6rem 1.2rem; background: rgba(123, 94, 255, 0.15); border-radius: 8px; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(123, 94, 255, 0.25)'" onmouseout="this.style.background='rgba(123, 94, 255, 0.15)'">🎮 Karakter Editor</a>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Dashboard Stats -->
+    <div class="dashboard-grid">
+      <div class="stat-card">
+        <h3>Total Users</h3>
+        <div class="value" id="totalUsers">0</div>
+      </div>
+      <div class="stat-card">
+        <h3>Registered Today</h3>
+        <div class="value" id="todayUsers">0</div>
+      </div>
+      <div class="stat-card">
+        <h3>Active Sessions</h3>
+        <div class="value" id="activeSessions">0</div>
+      </div>
+    </div>
+
+    <!-- Add New User Section -->
+    <div class="section">
+      <h2>➕ Tambah User Baru</h2>
+      <div id="addMsg" class="message"></div>
+      <form class="add-user-form" onsubmit="addUser(event)">
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="newUsername" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="newEmail" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="newPassword" placeholder="Password (min. 6 karakter)" required>
+        </div>
+        <button type="submit" class="form-btn">Tambah User</button>
+      </form>
+    </div>
+
+    <!-- Users List Section -->
+    <div class="section">
+      <h2>👥 Daftar Semua Users</h2>
+      <div class="users-list">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Terdaftar</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="usersTableBody">
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--muted);">Tidak ada users</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Content Management Section -->
+    <div class="section">
+      <h2>🎮 Manajemen Konten Website</h2>
+      <div class="content-tabs">
+        <button class="tab-btn active" onclick="switchTab('characters')">📋 Karakter List</button>
+        <button class="tab-btn" onclick="switchTab('lightcones')">💡 Light Cones</button>
+        <button class="tab-btn" onclick="switchTab('tierlist')">⭐ Tier List</button>
+        <button class="tab-btn" onclick="switchTab('relics')">💎 Relic Sets</button>
+        <button class="tab-btn" onclick="switchTab('settings')">⚙️ Pengaturan Tier/Role</button>
+      </div>
+
+      <!-- Characters Management -->
+      <div id="characters-tab" class="tab-content active">
+        <h3 style="margin: 1.5rem 0 1rem 0; color: var(--accent);">Tambah Karakter Baru</h3>
+        <p style="color: var(--muted); margin-bottom: 1.5rem; font-size: 0.9rem;">
+          💡 <strong>Cara penggunaan:</strong> Isi form di bawah. Jika ada folder karakter di <code>build karakter/[Nama]/</code>, pilih dari dropdown "Folder Name". 
+          Nama file karakter harus: <code>character-[nama-lowercase].html</code> (contoh: <code>character-feixiao.html</code>)
+        </p>
+        <div id="charMsg" class="message"></div>
+        <form class="add-user-form" onsubmit="addCharacter(event)">
+          <div class="form-group">
+            <label>Nama Karakter</label>
+            <input type="text" id="charName" placeholder="Contoh: Kafka" required>
+          </div>
+          <div class="form-group">
+            <label>Rarity (★)</label>
+            <select id="charRarity" required>
+              <option value="">-- Pilih Rarity --</option>
+              <option value="4">4-Star</option>
+              <option value="5">5-Star</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Element</label>
+            <select id="charElement" required>
+              <option value="">-- Pilih Element --</option>
+              <option value="physical">Physical</option>
+              <option value="fire">Fire</option>
+              <option value="ice">Ice</option>
+              <option value="lightning">Lightning</option>
+              <option value="wind">Wind</option>
+              <option value="quantum">Quantum</option>
+              <option value="imaginary">Imaginary</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Path</label>
+            <select id="charPath" required>
+              <option value="">-- Pilih Path --</option>
+              <option value="abundance">Abundance</option>
+              <option value="destruction">Destruction</option>
+              <option value="elation">Elation</option>
+              <option value="erudition">Erudition</option>
+              <option value="harmony">Harmony</option>
+              <option value="hunt">Hunt</option>
+              <option value="nihility">Nihility</option>
+              <option value="preservation">Preservation</option>
+              <option value="remembrance">Remembrance</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Nama File Gambar (tanpa .webp)</label>
+            <input type="text" id="charImage" placeholder="Contoh: kafka" required>
+          </div>
+          <div class="form-group">
+            <label>Folder Name (untuk build karakter)</label>
+            <select id="charFolder">
+              <option value="">-- Tidak ada folder (default) --</option>
+              <option value="Acheron">Acheron</option>
+              <option value="Aglaea">Aglaea</option>
+              <option value="Anaxa">Anaxa</option>
+              <option value="Archer">Archer</option>
+              <option value="Argenti">Argenti</option>
+              <option value="Arlan">Arlan</option>
+              <option value="Ashveil">Ashveil</option>
+              <option value="Asta">Asta</option>
+              <option value="Aventurine">Aventurine</option>
+              <option value="Bailu">Bailu</option>
+              <option value="Black Swan">Black Swan</option>
+              <option value="Blade">Blade</option>
+              <option value="Boothill">Boothill</option>
+              <option value="Bronya">Bronya</option>
+              <option value="Castorice">Castorice</option>
+              <option value="Cerydra">Cerydra</option>
+              <option value="Cipher">Cipher</option>
+              <option value="Clara">Clara</option>
+              <option value="Cyrene">Cyrene</option>
+              <option value="Dan Heng">Dan Heng</option>
+              <option value="Dan Heng Imbibitor Lunae">Dan Heng Imbibitor Lunae</option>
+              <option value="Dan Heng Permansor Terrae">Dan Heng Permansor Terrae</option>
+              <option value="Dr Ratio">Dr Ratio</option>
+              <option value="Feixiao">Feixiao</option>
+              <option value="Firefly">Firefly</option>
+              <option value="Fu Xuan">Fu Xuan</option>
+              <option value="Gallagher">Gallagher</option>
+              <option value="Gepard">Gepard</option>
+              <option value="Guinaifen">Guinaifen</option>
+              <option value="Hanya">Hanya</option>
+              <option value="Herta">Herta</option>
+               <option value="Himeko">Himeko</option>
+              <option value="Hook">Hook</option>
+              <option value="HuoHuo">HuoHuo</option>
+              <option value="Hyacine">Hyacine</option>
+              <option value="Hysilens">Hysilens</option>
+              <option value="Jade">Jade</option>
+              <option value="Jiaoqiu">Jiaoqiu</option>
+              <option value="Jing yuan">Jing yuan</option>
+              <option value="Jingliu">Jingliu</option>
+              <option value="Kafka">Kafka</option>
+              <option value="Lingsha">Lingsha</option>
+              <option value="Luka">Luka</option>
+              <option value="Luocha">Luocha</option>
+              <option value="Lynx">Lynx</option>
+              <option value="March 7th">March 7th</option>
+              <option value="March 7th.Evernight">March 7th.Evernight</option>
+              <option value="March 7th.hunt">March 7th.hunt</option>
+              <option value="MC.Destruction">MC.Destruction</option>
+              <option value="MC.Harmony">MC.Harmony</option>
+              <option value="MC.Preservation">MC.Preservation</option>
+              <option value="mc.Remembrance">mc.Remembrance</option>
+              <option value="Misha">Misha</option>
+              <option value="Moze">Moze</option>
+              <option value="Mydei">Mydei</option>
+              <option value="Natasha">Natasha</option>
+              <option value="Pela">Pela</option>
+              <option value="Phainon">Phainon</option>
+              <option value="Qingque">Qingque</option>
+              <option value="Rappa">Rappa</option>
+              <option value="Robin">Robin</option>
+              <option value="Ruan Mei">Ruan Mei</option>
+              <option value="Saber">Saber</option>
+              <option value="Sampo">Sampo</option>
+              <option value="Seele">Seele</option>
+              <option value="Serval">Serval</option>
+              <option value="Silver Wolf">Silver Wolf</option>
+              <option value="Sparkle">Sparkle</option>
+              <option value="Sparxie">Sparxie</option>
+              <option value="Sunday">Sunday</option>
+              <option value="Sushang">Sushang</option>
+              <option value="The Dahlia">The Dahlia</option>
+              <option value="The Herta">The Herta</option>
+              <option value="Tingyun">Tingyun</option>
+              <option value="Tingyun.Fugue">Tingyun.Fugue</option>
+              <option value="Topaz">Topaz</option>
+              <option value="Tribbie">Tribbie</option>
+              <option value="Welt">Welt</option>
+              <option value="Xueyi">Xueyi</option>
+              <option value="Yanqing">Yanqing</option>
+              <option value="Yao Guang">Yao Guang</option>
+              <option value="Yukong">Yukong</option>
+              <option value="Yunli">Yunli</option>
+            </select>
+            <small style="color: var(--muted); margin-top: 0.3rem; display: block;">List folder yang ada di build karakter/</small>
+          </div>
+          <button type="submit" class="form-btn">Tambah Karakter</button>
+        </form>
+
+        <h3 style="margin: 2rem 0 1rem 0; color: var(--accent);">Daftar Semua Karakter (Characters List)</h3>
+        <p style="color: var(--muted); margin-bottom: 1rem; font-size: 0.9rem;">Edit karakter yang ditampilkan di halaman Characters List</p>
+        <div class="users-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Rarity</th>
+                <th>Element</th>
+                <th>Path</th>
+                <th>Folder</th>
+                <th>Gambar</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="charactersTableBody">
+              <tr>
+                <td colspan="7" style="text-align: center; color: var(--muted);">Tidak ada karakter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Relic Sets Management -->
+      <div id="relics-tab" class="tab-content">
+        <h3 style="margin: 1.5rem 0 1rem 0; color: var(--accent);">Tambah Relic Set Baru</h3>
+        <p style="color: var(--muted); margin-bottom: 1.5rem; font-size: 0.9rem;">
+          💡 Tambah relic set (4-piece) atau planar ornament (2-piece) yang akan ditampilkan di halaman Relic &amp; Planar.
+        </p>
+        <div id="relicMsg" class="message"></div>
+        <form class="add-user-form" style="max-width: 600px;" onsubmit="addRelicSet(event)">
+          <div class="form-group">
+            <label>Nama Relic Set</label>
+            <input type="text" id="relicName" placeholder="Contoh: Band of Sizzling Thunder" required>
+          </div>
+          <div class="form-group">
+            <label>Tipe</label>
+            <select id="relicType" required>
+              <option value="">-- Pilih Tipe --</option>
+              <option value="relic">Relic Set (4-piece)</option>
+              <option value="planar">Planar Ornament (2-piece)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Nama File Gambar (tanpa .webp)</label>
+            <input type="text" id="relicImage" placeholder="Contoh: band of sizzling thunder">
+            <small style="color: var(--muted); margin-top: 0.3rem; display: block;">File harus ada di folder asset/. Kosongkan jika tidak ada gambar.</small>
+          </div>
+          <div class="form-group">
+            <label>Bonus 2-Piece</label>
+            <textarea id="relicBonus2" rows="3" placeholder="Contoh: Increases Lightning DMG by 10%." style="padding: 0.8rem 1rem; background: rgba(20, 20, 35, 0.8); border: 1px solid rgba(123, 94, 255, 0.25); border-radius: 8px; color: #fff; font-size: 0.95rem; resize: vertical; font-family: inherit;" required></textarea>
+          </div>
+          <div class="form-group" id="bonus4Group">
+            <label>Bonus 4-Piece <span style="color: var(--muted); font-size: 0.85rem;">(hanya untuk Relic Set)</span></label>
+            <textarea id="relicBonus4" rows="3" placeholder="Contoh: When the wearer uses their Ultimate or Skill, their ATK increases by 28% for 1 turn(s)." style="padding: 0.8rem 1rem; background: rgba(20, 20, 35, 0.8); border: 1px solid rgba(123, 94, 255, 0.25); border-radius: 8px; color: #fff; font-size: 0.95rem; resize: vertical; font-family: inherit;"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Recommended For (opsional)</label>
+            <input type="text" id="relicRecommended" placeholder="Contoh: Kafka, Black Swan, Sampo">
+            <small style="color: var(--muted); margin-top: 0.3rem; display: block;">Pisahkan dengan koma jika lebih dari satu karakter.</small>
+          </div>
+          <button type="submit" class="form-btn">Tambah Relic Set</button>
+        </form>
+
+        <h3 style="margin: 2rem 0 1rem 0; color: var(--accent);">Daftar Relic Sets</h3>
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+          <button class="tab-btn active" id="relicFilterAll" onclick="filterRelicList('all', this)">Semua</button>
+          <button class="tab-btn" id="relicFilterRelic" onclick="filterRelicList('relic', this)">Relic Sets</button>
+          <button class="tab-btn" id="relicFilterPlanar" onclick="filterRelicList('planar', this)">Planar Ornaments</button>
+        </div>
+        <div class="users-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Gambar</th>
+                <th>Nama</th>
+                <th>Tipe</th>
+                <th>2-Piece Bonus</th>
+                <th>4-Piece Bonus</th>
+                <th>Recommended</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="relicsTableBody">
+              <tr>
+                <td colspan="7" style="text-align: center; color: var(--muted);">Tidak ada relic set</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Light Cones Management -->
+      <div id="lightcones-tab" class="tab-content">
+        <h3 style="margin: 1.5rem 0 1rem 0; color: var(--accent);">Tambah Light Cone Baru</h3>
+        <p style="color: var(--muted); margin-bottom: 1.5rem; font-size: 0.9rem;">
+          💡 Tambah light cone yang akan ditampilkan di halaman Tier List dan website.
+        </p>
+        <div id="lightconeMsg" class="message"></div>
+        <form class="add-user-form" style="max-width: 600px;" onsubmit="addLightCone(event)">
+          <div class="form-group">
+            <label>Nama Light Cone</label>
+            <input type="text" id="lightconeName" placeholder="Contoh: In the Night" required>
+          </div>
+          <div class="form-group">
+            <label>Rarity (★)</label>
+            <select id="lightconeRarity" required>
+              <option value="">-- Pilih Rarity --</option>
+              <option value="3">3-Star</option>
+              <option value="4">4-Star</option>
+              <option value="5">5-Star</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Path</label>
+            <select id="lightconePath" required>
+              <option value="">-- Pilih Path --</option>
+              <option value="abundance">Abundance</option>
+              <option value="destruction">Destruction</option>
+              <option value="elation">Elation</option>
+              <option value="erudition">Erudition</option>
+              <option value="harmony">Harmony</option>
+              <option value="hunt">Hunt</option>
+              <option value="nihility">Nihility</option>
+              <option value="preservation">Preservation</option>
+              <option value="remembrance">Remembrance</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Nama File Gambar (tanpa .webp)</label>
+            <input type="text" id="lightconeImage" placeholder="Contoh: in the night">
+            <small style="color: var(--muted); margin-top: 0.3rem; display: block;">File harus ada di folder asset/. Kosongkan jika tidak ada gambar.</small>
+          </div>
+          <div class="form-group">
+            <label>Effect (Deskripsi Skill)</label>
+            <textarea id="lightconeEffect" rows="3" placeholder="Contoh: Increases the wearer's CRIT Rate by 18%..." style="padding: 0.8rem 1rem; background: rgba(20, 20, 35, 0.8); border: 1px solid rgba(123, 94, 255, 0.25); border-radius: 8px; color: #fff; font-size: 0.95rem; resize: vertical; font-family: inherit;" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>Base ATK</label>
+            <input type="number" id="lightconeATK" placeholder="Contoh: 423" required>
+          </div>
+          <div class="form-group">
+            <label>Base HP</label>
+            <input type="number" id="lightconeHP" placeholder="Contoh: 158" required>
+          </div>
+          <div class="form-group">
+            <label>Base DEF</label>
+            <input type="number" id="lightconeDEF" placeholder="Contoh: 75" required>
+          </div>
+          <div class="form-group">
+            <label>Recommended For (opsional)</label>
+            <input type="text" id="lightconeRecommended" placeholder="Contoh: Kafka, Black Swan">
+            <small style="color: var(--muted); margin-top: 0.3rem; display: block;">Pisahkan dengan koma jika lebih dari satu karakter.</small>
+          </div>
+          <button type="submit" class="form-btn">Tambah Light Cone</button>
+        </form>
+
+        <h3 style="margin: 2rem 0 1rem 0; color: var(--accent);">Daftar Light Cones</h3>
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+          <button class="tab-btn active" id="lightconeFilterAll" onclick="filterLightConeList('all', this)">Semua</button>
+          <button class="tab-btn" id="lightconeFilter5" onclick="filterLightConeList('5', this)">5-Star</button>
+          <button class="tab-btn" id="lightconeFilter4" onclick="filterLightConeList('4', this)">4-Star</button>
+          <button class="tab-btn" id="lightconeFilter3" onclick="filterLightConeList('3', this)">3-Star</button>
+        </div>
+        <div class="users-list">
+          <table>
+            <thead>
+              <tr>
+                <th>Gambar</th>
+                <th>Nama</th>
+                <th>Rarity</th>
+                <th>Path</th>
+                <th>ATK/HP/DEF</th>
+                <th>Effect</th>
+                <th>Recommended</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="lightconesTableBody">
+              <tr>
+                <td colspan="8" style="text-align: center; color: var(--muted);">Tidak ada light cone</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tier Management -->
+      <div id="tierlist-tab" class="tab-content">
+        <h3 style="margin: 1.5rem 0 1rem 0; color: var(--accent);">Edit Tier List (Tier List Page)</h3>
+        <p style="color: var(--muted); margin-bottom: 1.5rem; font-size: 0.9rem;">Edit karakter yang ada di tier list dengan mengubah tier dan role mereka:</p>
+        <div id="tierMsg" class="message"></div>
+        <div id="tiersContainer" style="display: grid; gap: 1rem;"></div>
+      </div>
+
+      <!-- Settings Management -->
+      <div id="settings-tab" class="tab-content">
+        <h3 style="margin: 1.5rem 0 1rem 0; color: var(--accent);">Kelola Opsi Tier</h3>
+        <p style="color: var(--muted); margin-bottom: 1rem; font-size: 0.9rem;">Tambah atau hapus pilihan tier yang tersedia:</p>
+        <div id="tierSettingsMsg" class="message"></div>
+        
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+          <input type="text" id="newTierInput" placeholder="Contoh: T6, Legend, Custom" style="flex: 1; padding: 0.8rem 1rem; background: rgba(20, 20, 35, 0.8); border: 1px solid rgba(123, 94, 255, 0.25); border-radius: 6px; color: #fff;">
+          <button class="form-btn" onclick="addTierOption()" style="width: auto;">Tambah</button>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;" id="tierOptionsList"></div>
+
+        <h3 style="margin: 1.5rem 0 1rem 0; color: var(--accent);">Kelola Opsi Role</h3>
+        <p style="color: var(--muted); margin-bottom: 1rem; font-size: 0.9rem;">Tambah atau hapus pilihan role yang tersedia:</p>
+        <div id="roleSettingsMsg" class="message"></div>
+        
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+          <input type="text" id="newRoleInput" placeholder="Contoh: DPS, Healer, CC" style="flex: 1; padding: 0.8rem 1rem; background: rgba(20, 20, 35, 0.8); border: 1px solid rgba(123, 94, 255, 0.25); border-radius: 6px; color: #fff;">
+          <button class="form-btn" onclick="addRoleOption()" style="width: auto;">Tambah</button>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;" id="roleOptionsList"></div>
+      </div>
+
+    </div>
+
+  <script>
+    // Check if user is admin
+    function checkAdminAccess() {
+      const isAdmin = localStorage.getItem("isAdmin");
+      const adminUser = localStorage.getItem("adminUser");
+
+      if (!isAdmin || !adminUser) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      document.getElementById("adminUsername").innerText = adminUser;
+      loadDashboard();
+    }
+
+    function loadDashboard() {
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      
+      document.getElementById("totalUsers").innerText = users.length;
+      document.getElementById("todayUsers").innerText = Math.floor(users.length / 2); // Simulasi
+      document.getElementById("activeSessions").innerText = Math.floor(users.length / 3) + 1; // Simulasi
+
+      loadUsersList(users);
+    }
+
+    function loadUsersList(users) {
+      const tbody = document.getElementById("usersTableBody");
+
+      if (users.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--muted);">Tidak ada users</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = users.map((user, index) => `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${user.username}</td>
+          <td>${user.email}</td>
+          <td>${new Date().toLocaleDateString('id-ID')}</td>
+          <td>
+            <button class="action-btn delete-btn" onclick="deleteUser('${user.username}')">Delete</button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function addUser(e) {
+      e.preventDefault();
+
+      const username = document.getElementById("newUsername").value.trim();
+      const email = document.getElementById("newEmail").value.trim();
+      const password = document.getElementById("newPassword").value.trim();
+      const msgEl = document.getElementById("addMsg");
+
+      if (!username || !email || !password) {
+        showMessage(msgEl, "Semua field wajib diisi!", "error");
+        return;
+      }
+
+      if (password.length < 6) {
+        showMessage(msgEl, "Password minimal 6 karakter!", "error");
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      if (users.some(u => u.username === username)) {
+        showMessage(msgEl, "Username sudah ada!", "error");
+        return;
+      }
+
+      if (users.some(u => u.email === email)) {
+        showMessage(msgEl, "Email sudah terdaftar!", "error");
+        return;
+      }
+
+      users.push({ username, email, password });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      showMessage(msgEl, "User berhasil ditambahkan!", "success");
+      document.getElementById("newUsername").value = "";
+      document.getElementById("newEmail").value = "";
+      document.getElementById("newPassword").value = "";
+
+      setTimeout(() => {
+        msgEl.classList.remove("show");
+        loadDashboard();
+      }, 2000);
+    }
+
+    function deleteUser(username) {
+      if (!confirm(`Yakin hapus user '${username}'?`)) return;
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      users = users.filter(u => u.username !== username);
+      localStorage.setItem("users", JSON.stringify(users));
+
+      loadDashboard();
+    }
+
+    function showMessage(el, text, type) {
+      el.innerText = text;
+      el.className = `message ${type} show`;
+    }
+
+    function logout() {
+      if (confirm("Yakin logout?")) {
+        localStorage.removeItem("isAdmin");
+        localStorage.removeItem("adminUser");
+        localStorage.removeItem("userRole");
+        window.location.href = "login.html";
+      }
+    }
+
+    // ===== TAB MANAGEMENT =====
+    function switchTab(tabName) {
+      document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      
+      document.getElementById(tabName + "-tab").classList.add("active");
+      event.target.classList.add("active");
+
+      if (tabName === "tierlist") {
+        loadTierManagement();
+      } else if (tabName === "settings") {
+        loadTierOptions();
+        loadRoleOptions();
+      } else if (tabName === "relics") {
+        loadRelicsList('all');
+        const relicTypeEl = document.getElementById("relicType");
+        if (relicTypeEl && !relicTypeEl._listenerAdded) {
+          relicTypeEl.addEventListener("change", function() {
+            document.getElementById("bonus4Group").style.display = this.value === "planar" ? "none" : "flex";
+          });
+          relicTypeEl._listenerAdded = true;
+        }
+      } else if (tabName === "lightcones") {
+        loadLightConesList('all');
+      }
+    }
+
+    function addCharacter(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("charName").value.trim();
+      const rarity = document.getElementById("charRarity").value;
+      const element = document.getElementById("charElement").value;
+      const path = document.getElementById("charPath").value;
+      let image = document.getElementById("charImage").value.trim();
+      const folder = document.getElementById("charFolder").value.trim();
+      const msgEl = document.getElementById("charMsg");
+
+      if (!name || !rarity || !element || !path || !image) {
+        showMessage(msgEl, "Semua field wajib diisi!", "error");
+        return;
+      }
+
+      // Format image path - otomatis tambah asset/ dan .webp jika belum ada
+      if (!image.includes('/')) {
+        image = 'asset/' + image;
+      }
+      if (!image.endsWith('.webp') && !image.endsWith('.jpg') && !image.endsWith('.png')) {
+        image = image + '.webp';
+      }
+
+      let characters = JSON.parse(localStorage.getItem("charList")) || [];
+
+      if (characters.some(c => c.name.toLowerCase() === name.toLowerCase())) {
+        showMessage(msgEl, "Karakter dengan nama ini sudah ada!", "error");
+        return;
+      }
+
+      characters.push({ name, rarity: parseInt(rarity), element, path, image, folder: folder || '' });
+      localStorage.setItem("charList", JSON.stringify(characters));
+
+      showMessage(msgEl, "Karakter berhasil ditambahkan!", "success");
+      document.getElementById("charName").value = "";
+      document.getElementById("charRarity").value = "";
+      document.getElementById("charElement").value = "";
+      document.getElementById("charPath").value = "";
+      document.getElementById("charImage").value = "";
+      document.getElementById("charFolder").value = "";
+
+      setTimeout(() => {
+        msgEl.classList.remove("show");
+        loadCharactersForList();
+        updateGuideCharacterSelect();
+      }, 2000);
+    }
+
+    function loadCharactersForList() {
+      const characters = JSON.parse(localStorage.getItem("charList")) || [];
+      const tbody = document.getElementById("charactersTableBody");
+
+      if (characters.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted);">Tidak ada karakter</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = characters.map((char, idx) => `
+        <tr>
+          <td>${char.name}</td>
+          <td><span style="color: var(--accent); font-weight: 600;">★ ${char.rarity}</span></td>
+          <td>${char.element.charAt(0).toUpperCase() + char.element.slice(1)}</td>
+          <td>${char.path.charAt(0).toUpperCase() + char.path.slice(1)}</td>
+          <td><small style="color: var(--muted);">${char.folder || '-'}</small></td>
+          <td><small style="color: var(--muted);">${char.image}</small></td>
+          <td>
+            <button class="action-btn edit-btn" onclick="editCharacterList(${idx})">Edit</button>
+            <button class="action-btn delete-btn" onclick="deleteCharacterList(${idx})">Delete</button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function editCharacterList(idx) {
+      const characters = JSON.parse(localStorage.getItem("charList")) || [];
+      const char = characters[idx];
+
+      // Buat prompt untuk edit folder
+      const folderOptions = ["(Tidak ada folder)", "Acheron", "Castorice", "Feixiao"];
+      const currentFolder = char.folder || "(Tidak ada folder)";
+      
+      const folderList = folderOptions.map((opt, i) => `${i}: ${opt}`).join("\n");
+      const folderInput = prompt(
+        `Edit folder untuk ${char.name}:\n\n${folderList}\n\nMasukkan nomor (0-${folderOptions.length - 1}):`,
+        folderOptions.indexOf(currentFolder)
+      );
+      
+      if (folderInput === null) return;
+      
+      const folderIdx = parseInt(folderInput);
+      if (folderIdx >= 0 && folderIdx < folderOptions.length) {
+        characters[idx].folder = folderOptions[folderIdx] === "(Tidak ada folder)" ? "" : folderOptions[folderIdx];
+        localStorage.setItem("charList", JSON.stringify(characters));
+        loadCharactersForList();
+        alert(`Folder ${char.name} berhasil diupdate!`);
+      } else {
+        alert("Pilihan tidak valid!");
+      }
+    }
+
+    function deleteCharacterList(idx) {
+      if (!confirm("Yakin hapus karakter ini?")) return;
+
+      let characters = JSON.parse(localStorage.getItem("charList")) || [];
+      characters.splice(idx, 1);
+      localStorage.setItem("charList", JSON.stringify(characters));
+      loadCharactersForList();
+    }
+
+    // ===== TIER LIST MANAGEMENT =====
+    function loadTierManagement() {
+      initTierRoleDefaults();
+      const characters = JSON.parse(localStorage.getItem("charList")) || [];
+      const tierOptions = JSON.parse(localStorage.getItem("tierOptions")) || ["T0", "T0.5", "T1", "T1.5", "T2", "T3", "T4", "T5"];
+      const roleOptions = JSON.parse(localStorage.getItem("roleOptions")) || ["DPS", "Support DPS", "Amplifier", "Sustain"];
+      const container = document.getElementById("tiersContainer");
+
+      if (characters.length === 0) {
+        container.innerHTML = '<p style="color: var(--muted);">Belum ada karakter. Tambah karakter terlebih dahulu di tab Karakter List.</p>';
+        return;
+      }
+
+      // Generate tier dropdown options
+      const tierOptionsHTML = tierOptions.map(t => {
+        const value = t.toLowerCase().replace(/\./g, '').replace(/\s+/g, '');
+        return `<option value="${value}">${t}</option>`;
+      }).join("");
+
+      // Generate role dropdown options
+      const roleOptionsHTML = roleOptions.map(r => {
+        const value = r.toLowerCase().replace(/\s+/g, '');
+        return `<option value="${value}">${r}</option>`;
+      }).join("");
+
+      container.innerHTML = characters.map((char, idx) => `
+        <div class="tier-edit-item">
+          <img src="${char.image}" onerror="this.src='asset/placeholder.webp'" alt="${char.name}">
+          <div class="tier-edit-info">
+            <div class="name">${char.name}</div>
+            <div class="role">★${char.rarity} • ${char.element} • ${char.path}</div>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <select class="tier-edit-select" id="tierSelect${idx}">
+              ${tierOptionsHTML}
+            </select>
+            <select class="tier-edit-select" id="roleSelect${idx}">
+              ${roleOptionsHTML}
+            </select>
+            <button class="action-btn edit-btn" onclick="saveTierData(${idx})">Simpan</button>
+          </div>
+        </div>
+      `).join("");
+
+      // Load tier list data from localStorage
+      let tierListChars = JSON.parse(localStorage.getItem("characters")) || [];
+      characters.forEach((char, idx) => {
+        let tierChar = tierListChars.find(c => c.name === char.name);
+        if (tierChar) {
+          document.getElementById(`tierSelect${idx}`).value = tierChar.tier;
+          document.getElementById(`roleSelect${idx}`).value = tierChar.role;
+        }
+      });
+    }
+
+    function saveTierData(idx) {
+      const characters = JSON.parse(localStorage.getItem("charList")) || [];
+      const char = characters[idx];
+      const tier = document.getElementById(`tierSelect${idx}`).value;
+      const role = document.getElementById(`roleSelect${idx}`).value;
+
+      let tierListChars = JSON.parse(localStorage.getItem("characters")) || [];
+      let existing = tierListChars.findIndex(c => c.name === char.name);
+
+      if (existing > -1) {
+        tierListChars[existing].tier = tier;
+        tierListChars[existing].role = role;
+      } else {
+        tierListChars.push({
+          name: char.name,
+          role: role,
+          tier: tier,
+          image: char.image
+        });
+      }
+
+      localStorage.setItem("characters", JSON.stringify(tierListChars));
+
+      const msgEl = document.getElementById("tierMsg");
+      showMessage(msgEl, `${char.name} tier berhasil diubah ke ${tier.toUpperCase()}!`, "success");
+      setTimeout(() => msgEl.classList.remove("show"), 2000);
+    }
+
+    // ===== TIER/ROLE OPTIONS MANAGEMENT =====
+    function initTierRoleDefaults() {
+      const defaultTiers = JSON.parse(localStorage.getItem("tierOptions")) || null;
+      const defaultRoles = JSON.parse(localStorage.getItem("roleOptions")) || null;
+
+      if (!defaultTiers) {
+        const tiers = ["T0", "T0.5", "T1", "T1.5", "T2", "T3", "T4", "T5"];
+        localStorage.setItem("tierOptions", JSON.stringify(tiers));
+      }
+
+      if (!defaultRoles) {
+        const roles = ["DPS", "Support DPS", "Amplifier", "Sustain"];
+        localStorage.setItem("roleOptions", JSON.stringify(roles));
+      }
+    }
+
+    function loadTierOptions() {
+      initTierRoleDefaults();
+      const tiers = JSON.parse(localStorage.getItem("tierOptions")) || [];
+      const container = document.getElementById("tierOptionsList");
+
+      container.innerHTML = tiers.map((tier, idx) => `
+        <div style="background: rgba(123, 94, 255, 0.15); padding: 0.5rem 1rem; border-radius: 6px; display: flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(123, 94, 255, 0.3);">
+          <span>${tier}</span>
+          <button onclick="deleteTierOption(${idx})" style="background: var(--error); color: white; border: none; border-radius: 4px; padding: 0.3rem 0.7rem; cursor: pointer; font-size: 0.8rem;">✕</button>
+        </div>
+      `).join("");
+    }
+
+    function loadRoleOptions() {
+      initTierRoleDefaults();
+      const roles = JSON.parse(localStorage.getItem("roleOptions")) || [];
+      const container = document.getElementById("roleOptionsList");
+
+      container.innerHTML = roles.map((role, idx) => `
+        <div style="background: rgba(123, 94, 255, 0.15); padding: 0.5rem 1rem; border-radius: 6px; display: flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(123, 94, 255, 0.3);">
+          <span>${role}</span>
+          <button onclick="deleteRoleOption(${idx})" style="background: var(--error); color: white; border: none; border-radius: 4px; padding: 0.3rem 0.7rem; cursor: pointer; font-size: 0.8rem;">✕</button>
+        </div>
+      `).join("");
+    }
+
+    function addTierOption() {
+      const input = document.getElementById("newTierInput");
+      const newTier = input.value.trim();
+      const msgEl = document.getElementById("tierSettingsMsg");
+
+      if (!newTier) {
+        showMessage(msgEl, "Masukkan nama tier!", "error");
+        setTimeout(() => msgEl.classList.remove("show"), 2000);
+        return;
+      }
+
+      const tiers = JSON.parse(localStorage.getItem("tierOptions")) || [];
+
+      if (tiers.includes(newTier)) {
+        showMessage(msgEl, "Tier ini sudah ada!", "error");
+        setTimeout(() => msgEl.classList.remove("show"), 2000);
+        return;
+      }
+
+      tiers.push(newTier);
+      localStorage.setItem("tierOptions", JSON.stringify(tiers));
+      
+      input.value = "";
+      loadTierOptions();
+      showMessage(msgEl, `Tier "${newTier}" berhasil ditambahkan!`, "success");
+      setTimeout(() => msgEl.classList.remove("show"), 2000);
+    }
+
+    function addRoleOption() {
+      const input = document.getElementById("newRoleInput");
+      const newRole = input.value.trim();
+      const msgEl = document.getElementById("roleSettingsMsg");
+
+      if (!newRole) {
+        showMessage(msgEl, "Masukkan nama role!", "error");
+        setTimeout(() => msgEl.classList.remove("show"), 2000);
+        return;
+      }
+
+      const roles = JSON.parse(localStorage.getItem("roleOptions")) || [];
+
+      if (roles.includes(newRole)) {
+        showMessage(msgEl, "Role ini sudah ada!", "error");
+        setTimeout(() => msgEl.classList.remove("show"), 2000);
+        return;
+      }
+
+      roles.push(newRole);
+      localStorage.setItem("roleOptions", JSON.stringify(roles));
+      
+      input.value = "";
+      loadRoleOptions();
+      showMessage(msgEl, `Role "${newRole}" berhasil ditambahkan!`, "success");
+      setTimeout(() => msgEl.classList.remove("show"), 2000);
+    }
+
+    function deleteTierOption(idx) {
+      if (!confirm("Yakin hapus opsi tier ini?")) return;
+
+      let tiers = JSON.parse(localStorage.getItem("tierOptions")) || [];
+      tiers.splice(idx, 1);
+      localStorage.setItem("tierOptions", JSON.stringify(tiers));
+      loadTierOptions();
+    }
+
+    function deleteRoleOption(idx) {
+      if (!confirm("Yakin hapus opsi role ini?")) return;
+
+      let roles = JSON.parse(localStorage.getItem("roleOptions")) || [];
+      roles.splice(idx, 1);
+      localStorage.setItem("roleOptions", JSON.stringify(roles));
+      loadRoleOptions();
+    }
+
+    // ===== RELIC SETS MANAGEMENT =====
+    function addRelicSet(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("relicName").value.trim();
+      const type = document.getElementById("relicType").value;
+      let image = document.getElementById("relicImage").value.trim();
+      const bonus2 = document.getElementById("relicBonus2").value.trim();
+      const bonus4 = document.getElementById("relicBonus4").value.trim();
+      const recommended = document.getElementById("relicRecommended").value.trim();
+      const msgEl = document.getElementById("relicMsg");
+
+      if (!name || !type || !bonus2) {
+        showMessage(msgEl, "Nama, tipe, dan bonus 2-piece wajib diisi!", "error");
+        return;
+      }
+
+      if (type === "relic" && !bonus4) {
+        showMessage(msgEl, "Bonus 4-piece wajib diisi untuk Relic Set!", "error");
+        return;
+      }
+
+      // Format image path
+      if (image) {
+        if (!image.includes('/')) {
+          image = 'asset/' + image;
+        }
+        if (!image.endsWith('.webp') && !image.endsWith('.jpg') && !image.endsWith('.png')) {
+          image = image + '.webp';
+        }
+      }
+
+      let relics = JSON.parse(localStorage.getItem("relicSets")) || [];
+
+      if (relics.some(r => r.name.toLowerCase() === name.toLowerCase())) {
+        showMessage(msgEl, "Relic set dengan nama ini sudah ada!", "error");
+        return;
+      }
+
+      const recommendedArr = recommended ? recommended.split(',').map(s => s.trim()).filter(s => s) : [];
+
+      relics.push({
+        name,
+        type,
+        image: image || '',
+        bonus2,
+        bonus4: type === "relic" ? bonus4 : '',
+        recommended: recommendedArr
+      });
+      localStorage.setItem("relicSets", JSON.stringify(relics));
+
+      showMessage(msgEl, `Relic set "${name}" berhasil ditambahkan!`, "success");
+      document.getElementById("relicName").value = "";
+      document.getElementById("relicType").value = "";
+      document.getElementById("relicImage").value = "";
+      document.getElementById("relicBonus2").value = "";
+      document.getElementById("relicBonus4").value = "";
+      document.getElementById("relicRecommended").value = "";
+      document.getElementById("bonus4Group").style.display = "flex";
+
+      setTimeout(() => {
+        msgEl.classList.remove("show");
+        loadRelicsList('all');
+      }, 2000);
+    }
+
+    let currentRelicFilter = 'all';
+
+    function filterRelicList(filter, btn) {
+      currentRelicFilter = filter;
+      document.querySelectorAll('#relics-tab .tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      loadRelicsList(filter);
+    }
+
+    function loadRelicsList(filter) {
+      const relics = JSON.parse(localStorage.getItem("relicSets")) || [];
+      const tbody = document.getElementById("relicsTableBody");
+
+      const filtered = filter === 'all' ? relics : relics.filter(r => r.type === filter);
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted);">Tidak ada relic set</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map((relic, idx) => {
+        const realIdx = relics.indexOf(relic);
+        const typeLabel = relic.type === 'relic' ? '<span style="color: var(--accent); font-weight: 600;">Relic (4pc)</span>' : '<span style="color: #fbbf24; font-weight: 600;">Planar (2pc)</span>';
+        const imgHtml = relic.image ? `<img src="${relic.image}" onerror="this.style.display='none'" alt="${relic.name}" style="width:50px;height:50px;border-radius:6px;object-fit:cover;border:1px solid rgba(123,94,255,0.25);">` : '<span style="color:var(--muted);font-size:0.8rem;">No img</span>';
+        const bonus2Short = relic.bonus2.length > 60 ? relic.bonus2.substring(0, 60) + '...' : relic.bonus2;
+        const bonus4Short = relic.bonus4 ? (relic.bonus4.length > 60 ? relic.bonus4.substring(0, 60) + '...' : relic.bonus4) : '<span style="color:var(--muted);">-</span>';
+        const recHtml = relic.recommended && relic.recommended.length > 0 ? relic.recommended.join(', ') : '<span style="color:var(--muted);">-</span>';
+        return `
+          <tr>
+            <td>${imgHtml}</td>
+            <td style="font-weight:600;">${relic.name}</td>
+            <td>${typeLabel}</td>
+            <td style="font-size:0.85rem;color:var(--muted);">${bonus2Short}</td>
+            <td style="font-size:0.85rem;color:var(--muted);">${bonus4Short}</td>
+            <td style="font-size:0.85rem;">${recHtml}</td>
+            <td>
+              <button class="action-btn edit-btn" onclick="editRelicSet(${realIdx})">Edit</button>
+              <button class="action-btn delete-btn" onclick="deleteRelicSet(${realIdx})">Delete</button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function editRelicSet(idx) {
+      const relics = JSON.parse(localStorage.getItem("relicSets")) || [];
+      const relic = relics[idx];
+
+      // Populate modal fields
+      document.getElementById("editRelicIdx").value = idx;
+      document.getElementById("editRelicTypeHidden").value = relic.type;
+      document.getElementById("editRelicName").value = relic.name;
+      document.getElementById("editRelicBonus2").value = relic.bonus2;
+      document.getElementById("editRelicBonus4").value = relic.bonus4 || '';
+      document.getElementById("editRelicRecommended").value = relic.recommended ? relic.recommended.join(', ') : '';
+
+      // Image: strip asset/ prefix and .webp suffix for display
+      let imgDisplay = relic.image || '';
+      if (imgDisplay.startsWith('asset/')) imgDisplay = imgDisplay.slice(6);
+      if (imgDisplay.endsWith('.webp')) imgDisplay = imgDisplay.slice(0, -5);
+      else if (imgDisplay.endsWith('.jpg')) imgDisplay = imgDisplay.slice(0, -4);
+      else if (imgDisplay.endsWith('.png')) imgDisplay = imgDisplay.slice(0, -4);
+      document.getElementById("editRelicImage").value = imgDisplay;
+
+      // Show/hide 4-piece bonus field
+      document.getElementById("editBonus4Group").style.display = relic.type === 'planar' ? 'none' : 'flex';
+
+      // Show modal
+      document.getElementById("editRelicModal").classList.add("show");
+    }
+
+    function closeEditRelicModal(e) {
+      if (e && e.target !== document.getElementById("editRelicModal")) return;
+      document.getElementById("editRelicModal").classList.remove("show");
+    }
+
+    function saveEditRelicSet() {
+      const idx = parseInt(document.getElementById("editRelicIdx").value);
+      const type = document.getElementById("editRelicTypeHidden").value;
+      const relics = JSON.parse(localStorage.getItem("relicSets")) || [];
+      const relic = relics[idx];
+
+      const newName = document.getElementById("editRelicName").value.trim();
+      const newBonus2 = document.getElementById("editRelicBonus2").value.trim();
+      const newBonus4 = document.getElementById("editRelicBonus4").value.trim();
+      const newRecommended = document.getElementById("editRelicRecommended").value.trim();
+      let newImage = document.getElementById("editRelicImage").value.trim();
+
+      if (!newName || !newBonus2) {
+        alert("Nama dan bonus 2-piece wajib diisi!");
+        return;
+      }
+
+      if (type === 'relic' && !newBonus4) {
+        alert("Bonus 4-piece wajib diisi untuk Relic Set!");
+        return;
+      }
+
+      // Format image path
+      if (newImage) {
+        if (!newImage.includes('/')) newImage = 'asset/' + newImage;
+        if (!newImage.endsWith('.webp') && !newImage.endsWith('.jpg') && !newImage.endsWith('.png')) newImage += '.webp';
+      }
+
+      relics[idx] = {
+        ...relic,
+        name: newName,
+        bonus2: newBonus2,
+        bonus4: type === 'relic' ? newBonus4 : '',
+        recommended: newRecommended ? newRecommended.split(',').map(s => s.trim()).filter(s => s) : [],
+        image: newImage
+      };
+
+      localStorage.setItem("relicSets", JSON.stringify(relics));
+      document.getElementById("editRelicModal").classList.remove("show");
+
+      const msgEl = document.getElementById("relicMsg");
+      showMessage(msgEl, `Relic set "${relics[idx].name}" berhasil diupdate!`, "success");
+      setTimeout(() => msgEl.classList.remove("show"), 2500);
+
+      loadRelicsList(currentRelicFilter);
+    }
+
+    function deleteRelicSet(idx) {
+      const relics = JSON.parse(localStorage.getItem("relicSets")) || [];
+      if (!confirm(`Yakin hapus relic set "${relics[idx].name}"?`)) return;
+
+      relics.splice(idx, 1);
+      localStorage.setItem("relicSets", JSON.stringify(relics));
+      loadRelicsList(currentRelicFilter);
+    }
+
+    // ===== LIGHT CONES MANAGEMENT =====
+    function addLightCone(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("lightconeName").value.trim();
+      const rarity = document.getElementById("lightconeRarity").value;
+      const path = document.getElementById("lightconePath").value;
+      let image = document.getElementById("lightconeImage").value.trim();
+      const effect = document.getElementById("lightconeEffect").value.trim();
+      const atk = document.getElementById("lightconeATK").value;
+      const hp = document.getElementById("lightconeHP").value;
+      const def = document.getElementById("lightconeDEF").value;
+      const recommended = document.getElementById("lightconeRecommended").value.trim();
+      const msgEl = document.getElementById("lightconeMsg");
+
+      if (!name || !rarity || !path || !effect || !atk || !hp || !def) {
+        showMessage(msgEl, "Semua field wajib diisi!", "error");
+        return;
+      }
+
+      // Format image path
+      if (image) {
+        if (!image.includes('/')) {
+          image = 'asset/' + image;
+        }
+        if (!image.endsWith('.webp') && !image.endsWith('.jpg') && !image.endsWith('.png')) {
+          image = image + '.webp';
+        }
+      }
+
+      let lightCones = JSON.parse(localStorage.getItem("lightCones")) || [];
+
+      if (lightCones.some(lc => lc.name.toLowerCase() === name.toLowerCase())) {
+        showMessage(msgEl, "Light cone dengan nama ini sudah ada!", "error");
+        return;
+      }
+
+      const recommendedArr = recommended ? recommended.split(',').map(s => s.trim()).filter(s => s) : [];
+
+      lightCones.push({
+        name,
+        rarity: parseInt(rarity),
+        path,
+        image: image || '',
+        effect,
+        atk: parseInt(atk),
+        hp: parseInt(hp),
+        def: parseInt(def),
+        recommended: recommendedArr
+      });
+      localStorage.setItem("lightCones", JSON.stringify(lightCones));
+
+      showMessage(msgEl, `Light cone "${name}" berhasil ditambahkan!`, "success");
+      document.getElementById("lightconeName").value = "";
+      document.getElementById("lightconeRarity").value = "";
+      document.getElementById("lightconePath").value = "";
+      document.getElementById("lightconeImage").value = "";
+      document.getElementById("lightconeEffect").value = "";
+      document.getElementById("lightconeATK").value = "";
+      document.getElementById("lightconeHP").value = "";
+      document.getElementById("lightconeDEF").value = "";
+      document.getElementById("lightconeRecommended").value = "";
+
+      setTimeout(() => {
+        msgEl.classList.remove("show");
+        loadLightConesList('all');
+      }, 2000);
+    }
+
+    let currentLightConeFilter = 'all';
+
+    function filterLightConeList(filter, btn) {
+      currentLightConeFilter = filter;
+      document.querySelectorAll('#lightcones-tab .tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      loadLightConesList(filter);
+    }
+
+    function loadLightConesList(filter) {
+      const lightCones = JSON.parse(localStorage.getItem("lightCones")) || [];
+      const tbody = document.getElementById("lightconesTableBody");
+
+      const filtered = filter === 'all' ? lightCones : lightCones.filter(lc => lc.rarity.toString() === filter);
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align: center; color: var(--muted);">Tidak ada light cone</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map((lc, idx) => {
+        const realIdx = lightCones.indexOf(lc);
+        const rarityLabel = lc.rarity == 5 ? '<span style="color: #fbbf24; font-weight: 600;">★★★★★ (5-Star)</span>' : lc.rarity == 4 ? '<span style="color: var(--accent); font-weight: 600;">★★★★ (4-Star)</span>' : '<span style="color: #60a5fa; font-weight: 600;">★★★ (3-Star)</span>';
+        const pathLabel = lc.path.charAt(0).toUpperCase() + lc.path.slice(1);
+        const imgHtml = lc.image ? `<img src="${lc.image}" onerror="this.style.display='none'" alt="${lc.name}" style="width:50px;height:50px;border-radius:6px;object-fit:cover;border:1px solid rgba(123,94,255,0.25);">` : '<span style="color:var(--muted);font-size:0.8rem;">No img</span>';
+        const effectShort = lc.effect.length > 50 ? lc.effect.substring(0, 50) + '...' : lc.effect;
+        const recHtml = lc.recommended && lc.recommended.length > 0 ? lc.recommended.join(', ') : '<span style="color:var(--muted);">-</span>';
+        return `
+          <tr>
+            <td>${imgHtml}</td>
+            <td style="font-weight:600;">${lc.name}</td>
+            <td>${rarityLabel}</td>
+            <td>${pathLabel}</td>
+            <td style="font-size:0.85rem;">ATK: ${lc.atk}<br>HP: ${lc.hp}<br>DEF: ${lc.def || 0}</td>
+            <td style="font-size:0.85rem;color:var(--muted);">${effectShort}</td>
+            <td style="font-size:0.85rem;">${recHtml}</td>
+            <td>
+              <button class="action-btn edit-btn" onclick="editLightCone(${realIdx})">Edit</button>
+              <button class="action-btn delete-btn" onclick="deleteLightCone(${realIdx})">Delete</button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function editLightCone(idx) {
+      const lightCones = JSON.parse(localStorage.getItem("lightCones")) || [];
+      const lc = lightCones[idx];
+
+      // Populate modal fields
+      document.getElementById("editLightconeIdx").value = idx;
+      document.getElementById("editLightconeName").value = lc.name;
+      document.getElementById("editLightconeRarity").value = lc.rarity;
+      document.getElementById("editLightconePath").value = lc.path;
+      document.getElementById("editLightconeEffect").value = lc.effect;
+      document.getElementById("editLightconeATK").value = lc.atk;
+      document.getElementById("editLightconeHP").value = lc.hp;
+      document.getElementById("editLightconeDEF").value = lc.def || '';
+      document.getElementById("editLightconeRecommended").value = lc.recommended ? lc.recommended.join(', ') : '';
+
+      // Image: strip asset/ prefix and .webp suffix for display
+      let imgDisplay = lc.image || '';
+      if (imgDisplay.startsWith('asset/')) imgDisplay = imgDisplay.slice(6);
+      if (imgDisplay.endsWith('.webp')) imgDisplay = imgDisplay.slice(0, -5);
+      else if (imgDisplay.endsWith('.jpg')) imgDisplay = imgDisplay.slice(0, -4);
+      else if (imgDisplay.endsWith('.png')) imgDisplay = imgDisplay.slice(0, -4);
+      document.getElementById("editLightconeImage").value = imgDisplay;
+
+      // Show modal
+      document.getElementById("editLightconeModal").classList.add("show");
+    }
+
+    function closeEditLightconeModal(e) {
+      if (e && e.target !== document.getElementById("editLightconeModal")) return;
+      document.getElementById("editLightconeModal").classList.remove("show");
+    }
+
+    function saveEditLightCone() {
+      const idx = parseInt(document.getElementById("editLightconeIdx").value);
+      const lightCones = JSON.parse(localStorage.getItem("lightCones")) || [];
+      const lc = lightCones[idx];
+
+      const newName = document.getElementById("editLightconeName").value.trim();
+      const newRarity = document.getElementById("editLightconeRarity").value;
+      const newPath = document.getElementById("editLightconePath").value;
+      const newEffect = document.getElementById("editLightconeEffect").value.trim();
+      const newATK = document.getElementById("editLightconeATK").value;
+      const newHP = document.getElementById("editLightconeHP").value;
+      const newDEF = document.getElementById("editLightconeDEF").value;
+      const newRecommended = document.getElementById("editLightconeRecommended").value.trim();
+      let newImage = document.getElementById("editLightconeImage").value.trim();
+
+      if (!newName || !newRarity || !newPath || !newEffect || !newATK || !newHP || !newDEF) {
+        alert("Semua field wajib diisi!");
+        return;
+      }
+
+      // Format image path
+      if (newImage) {
+        if (!newImage.includes('/')) newImage = 'asset/' + newImage;
+        if (!newImage.endsWith('.webp') && !newImage.endsWith('.jpg') && !newImage.endsWith('.png')) newImage += '.webp';
+      }
+
+      lightCones[idx] = {
+        ...lc,
+        name: newName,
+        rarity: parseInt(newRarity),
+        path: newPath,
+        effect: newEffect,
+        atk: parseInt(newATK),
+        hp: parseInt(newHP),
+        def: parseInt(newDEF),
+        recommended: newRecommended ? newRecommended.split(',').map(s => s.trim()).filter(s => s) : [],
+        image: newImage
+      };
+
+      localStorage.setItem("lightCones", JSON.stringify(lightCones));
+      document.getElementById("editLightconeModal").classList.remove("show");
+
+      const msgEl = document.getElementById("lightconeMsg");
+      showMessage(msgEl, `Light cone "${lightCones[idx].name}" berhasil diupdate!`, "success");
+      setTimeout(() => msgEl.classList.remove("show"), 2500);
+
+      loadLightConesList(currentLightConeFilter);
+    }
+
+    function deleteLightCone(idx) {
+      const lightCones = JSON.parse(localStorage.getItem("lightCones")) || [];
+      if (!confirm(`Yakin hapus light cone "${lightCones[idx].name}"?`)) return;
+
+      lightCones.splice(idx, 1);
+      localStorage.setItem("lightCones", JSON.stringify(lightCones));
+      loadLightConesList(currentLightConeFilter);
+    }
+
+    // ===== CHARACTER GUIDE MANAGEMENT =====
+    function updateGuideCharacterSelect() {
+      const characters = JSON.parse(localStorage.getItem("charList")) || [];
+      const select = document.getElementById("guideCharSelect");
+
+      if (!select) return; // Skip jika element tidak ada
+
+      select.innerHTML = '<option value="">-- Pilih Karakter --</option>' + 
+        characters.map((char, idx) => 
+          `<option value="${idx}">${char.name}</option>`
+        ).join("");
+    }
+
+    function loadCharacterGuide() {
+      const select = document.getElementById("guideCharSelect");
+      if (!select) return; // Skip jika element tidak ada
+
+      const idx = select.value;
+      if (!idx) return;
+
+      const characters = JSON.parse(localStorage.getItem("charList")) || [];
+      const guides = JSON.parse(localStorage.getItem("charGuides")) || {};
+      const char = characters[idx];
+      const guide = guides[char.name] || {};
+
+      const hpInput = document.getElementById("guideHP");
+      const atkInput = document.getElementById("guideATK");
+      const defInput = document.getElementById("guideDEF");
+      const spdInput = document.getElementById("guideSPD");
+      const overviewInput = document.getElementById("guideOverview");
+
+      if (hpInput) hpInput.value = guide.hp || "";
+      if (atkInput) atkInput.value = guide.atk || "";
+      if (defInput) defInput.value = guide.def || "";
+      if (spdInput) spdInput.value = guide.spd || "";
+      if (overviewInput) overviewInput.value = guide.overview || "";
+    }
+
+    function saveCharacterGuide(e) {
+      e.preventDefault();
+
+      const select = document.getElementById("guideCharSelect");
+      const guideMsg = document.getElementById("guideMsg");
+
+      if (!select || !guideMsg) return; // Skip jika element tidak ada
+
+      const idx = select.value;
+      if (!idx) {
+        showMessage(guideMsg, "Pilih karakter terlebih dahulu!", "error");
+        return;
+      }
+
+      const characters = JSON.parse(localStorage.getItem("charList")) || [];
+      const char = characters[idx];
+
+      const hpInput = document.getElementById("guideHP");
+      const atkInput = document.getElementById("guideATK");
+      const defInput = document.getElementById("guideDEF");
+      const spdInput = document.getElementById("guideSPD");
+      const overviewInput = document.getElementById("guideOverview");
+
+      if (!hpInput || !atkInput || !defInput || !spdInput || !overviewInput) return;
+
+      const hp = hpInput.value;
+      const atk = atkInput.value;
+      const def = defInput.value;
+      const spd = spdInput.value;
+      const overview = overviewInput.value;
+
+      let guides = JSON.parse(localStorage.getItem("charGuides")) || {};
+      guides[char.name] = { hp, atk, def, spd, overview };
+      localStorage.setItem("charGuides", JSON.stringify(guides));
+
+      showMessage(guideMsg, `Guide untuk ${char.name} berhasil disimpan!`, "success");
+      setTimeout(() => guideMsg.classList.remove("show"), 2000);
+    }
+
+    // ===== AEON PAGES MANAGEMENT =====
+    function saveAeonPage(e) {
+      e.preventDefault();
+
+      const aeon = document.getElementById("aeonSelect").value;
+      const title = document.getElementById("aeonTitle").value.trim();
+      const subtitle = document.getElementById("aeonSubtitle").value.trim();
+      const content = document.getElementById("aeonContent").value.trim();
+      const msgEl = document.getElementById("aeonsMsg");
+
+      if (!aeon || !title || !content) {
+        showMessage(msgEl, "Semua field wajib diisi!", "error");
+        return;
+      }
+
+      let aeons = JSON.parse(localStorage.getItem("aeonPages")) || {};
+      aeons[aeon] = { title, subtitle, content };
+      localStorage.setItem("aeonPages", JSON.stringify(aeons));
+
+      showMessage(msgEl, `${title} berhasil disimpan!`, "success");
+      document.getElementById("aeonTitle").value = "";
+      document.getElementById("aeonSubtitle").value = "";
+      document.getElementById("aeonContent").value = "";
+      document.getElementById("aeonSelect").value = "";
+
+      setTimeout(() => msgEl.classList.remove("show"), 2000);
+    }
+
+    // ===== PAGE CONTENT MANAGEMENT =====
+    function loadPageContent() {
+      const pageSelect = document.getElementById("pageSelect").value;
+      const pages = JSON.parse(localStorage.getItem("pageContent")) || {};
+      
+      if (pageSelect) {
+        document.getElementById("pageContent").value = pages[pageSelect] || "";
+        document.getElementById("pageContentPreview").style.display = "block";
+        document.getElementById("previewContent").innerHTML = pages[pageSelect] || "(Kosong)";
+      }
+    }
+
+    function updatePageContent(e) {
+      e.preventDefault();
+
+      const pageSelect = document.getElementById("pageSelect").value;
+      const content = document.getElementById("pageContent").value.trim();
+      const msgEl = document.getElementById("pagesMsg");
+
+      if (!pageSelect) {
+        showMessage(msgEl, "Pilih halaman terlebih dahulu!", "error");
+        return;
+      }
+
+      let pages = JSON.parse(localStorage.getItem("pageContent")) || {};
+      pages[pageSelect] = content;
+      localStorage.setItem("pageContent", JSON.stringify(pages));
+
+      document.getElementById("previewContent").innerHTML = content || "(Kosong)";
+      showMessage(msgEl, "Konten halaman berhasil diperbarui!", "success");
+      setTimeout(() => msgEl.classList.remove("show"), 2000);
+    }
+
+    // Load on page load
+    window.onload = function() {
+      checkAdminAccess();
+      initTierRoleDefaults();
+      loadCharactersForList();
+      updateGuideCharacterSelect();
+    };
+  </script>
+
+  <!-- Edit Relic Modal -->
+  <div class="modal-overlay" id="editRelicModal" onclick="closeEditRelicModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3>✏️ Edit Relic Set</h3>
+      <input type="hidden" id="editRelicIdx">
+      <input type="hidden" id="editRelicTypeHidden">
+      <div class="add-user-form" style="max-width:100%;">
+        <div class="form-group">
+          <label>Nama Relic Set</label>
+          <input type="text" id="editRelicName" placeholder="Nama relic set">
+        </div>
+        <div class="form-group">
+          <label>Nama File Gambar (tanpa .webp)</label>
+          <input type="text" id="editRelicImage" placeholder="Contoh: band of sizzling thunder">
+          <small style="color: var(--muted); margin-top: 0.3rem; display: block;">File harus ada di folder asset/. Kosongkan jika tidak ada gambar.</small>
+        </div>
+        <div class="form-group">
+          <label>Bonus 2-Piece</label>
+          <textarea id="editRelicBonus2" rows="3" placeholder="Bonus 2-piece..." style="padding: 0.8rem 1rem; background: rgba(20, 20, 35, 0.8); border: 1px solid rgba(123, 94, 255, 0.25); border-radius: 8px; color: #fff; font-size: 0.95rem; resize: vertical; font-family: inherit;"></textarea>
+        </div>
+        <div class="form-group" id="editBonus4Group">
+          <label>Bonus 4-Piece <span style="color: var(--muted); font-size: 0.85rem;">(hanya untuk Relic Set)</span></label>
+          <textarea id="editRelicBonus4" rows="3" placeholder="Bonus 4-piece..." style="padding: 0.8rem 1rem; background: rgba(20, 20, 35, 0.8); border: 1px solid rgba(123, 94, 255, 0.25); border-radius: 8px; color: #fff; font-size: 0.95rem; resize: vertical; font-family: inherit;"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Recommended For (opsional)</label>
+          <input type="text" id="editRelicRecommended" placeholder="Contoh: Kafka, Black Swan, Sampo">
+          <small style="color: var(--muted); margin-top: 0.3rem; display: block;">Pisahkan dengan koma jika lebih dari satu karakter.</small>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="cancel-btn" onclick="closeEditRelicModal()">Batal</button>
+        <button class="form-btn" onclick="saveEditRelicSet()">💾 Simpan Perubahan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Light Cone Modal -->
+  <div class="modal-overlay" id="editLightconeModal" onclick="closeEditLightconeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <h3>✏️ Edit Light Cone</h3>
+      <input type="hidden" id="editLightconeIdx">
+      <div class="add-user-form" style="max-width:100%;">
+        <div class="form-group">
+          <label>Nama Light Cone</label>
+          <input type="text" id="editLightconeName" placeholder="Nama light cone">
+        </div>
+        <div class="form-group">
+          <label>Rarity (★)</label>
+          <select id="editLightconeRarity" required>
+            <option value="">-- Pilih Rarity --</option>
+            <option value="3">3-Star</option>
+            <option value="4">4-Star</option>
+            <option value="5">5-Star</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Path</label>
+          <select id="editLightconePath" required>
+            <option value="">-- Pilih Path --</option>
+            <option value="abundance">Abundance</option>
+            <option value="destruction">Destruction</option>
+            <option value="elation">Elation</option>
+            <option value="erudition">Erudition</option>
+            <option value="harmony">Harmony</option>
+            <option value="hunt">Hunt</option>
+            <option value="nihility">Nihility</option>
+            <option value="preservation">Preservation</option>
+            <option value="remembrance">Remembrance</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nama File Gambar (tanpa .webp)</label>
+          <input type="text" id="editLightconeImage" placeholder="Contoh: in the night">
+          <small style="color: var(--muted); margin-top: 0.3rem; display: block;">File harus ada di folder asset/. Kosongkan jika tidak ada gambar.</small>
+        </div>
+        <div class="form-group">
+          <label>Effect (Deskripsi Skill)</label>
+          <textarea id="editLightconeEffect" rows="3" placeholder="Effect..." style="padding: 0.8rem 1rem; background: rgba(20, 20, 35, 0.8); border: 1px solid rgba(123, 94, 255, 0.25); border-radius: 8px; color: #fff; font-size: 0.95rem; resize: vertical; font-family: inherit;"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Base HP</label>
+          <input type="number" id="editLightconeHP" placeholder="Contoh: 423">
+        </div>
+        <div class="form-group">
+          <label>Base ATK</label>
+          <input type="number" id="editLightconeATK" placeholder="Contoh: 158">
+        </div>
+        <div class="form-group">
+          <label>Base DEF</label>
+          <input type="number" id="editLightconeDEF" placeholder="Contoh: 75">
+        </div>
+        <div class="form-group">
+          <label>Recommended For (opsional)</label>
+          <input type="text" id="editLightconeRecommended" placeholder="Contoh: Kafka, Black Swan">
+          <small style="color: var(--muted); margin-top: 0.3rem; display: block;">Pisahkan dengan koma jika lebih dari satu karakter.</small>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="cancel-btn" onclick="closeEditLightconeModal()">Batal</button>
+        <button class="form-btn" onclick="saveEditLightCone()">💾 Simpan Perubahan</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

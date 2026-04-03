@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NovaCraft – Informasi Dasar Minecraft</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f121a;
+      --card: #1a1f2e;
+      --accent: #4dabf7;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    section {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.8rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '•';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      font-size: 1.2rem;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: all 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #60a5fa;
+      transform: translateY(-2px);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: rgba(74, 171, 247, 0.2);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(74, 171, 247, 0.3);
+      transform: translateX(-4px);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      section { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <a href="minecraft.html" class="back-btn">← Kembali</a>
+
+    <header>
+      <h1>Minecraft – Informasi Dasar</h1>
+      <p class="subtitle">Panduan singkat untuk pemula tentang game Minecraft</p>
+      <img src="asset/minecraft java.jpg" alt="Minecraft Logo" style="width: 100px; margin-top: 1rem; filter: drop-shadow(0 0 15px rgba(74, 171, 247, 0.5));">
+    </header>
+
+    <!-- Apa itu Minecraft -->
+    <section>
+      <h2>Apa itu Minecraft?</h2>
+      <p>Minecraft adalah game sandbox (kotak pasir) yang dikembangkan oleh Mojang Studios (sekarang bagian dari Microsoft). Pemain bisa membangun, menjelajah, bertahan hidup, dan berkreasi di dunia yang terbuat dari blok.</p>
+      <p>Dua versi utama:</p>
+      <ul>
+        <li><strong>Java Edition</strong> – Versi PC resmi, paling banyak fitur dan komunitas besar</li>
+        <li><strong>Bedrock Edition</strong> – Versi cross-platform (mobile, console, Windows 10/11)</li>
+      </ul>
+    </section>
+
+    <!-- Fitur Dasar -->
+    <section>
+      <h2>Fitur Dasar Minecraft</h2>
+      <ul>
+        <li>Membangun apa saja menggunakan blok (rumah, kastil, kota, mesin redstone)</li>
+        <li>Menjelajahi dunia yang dihasilkan secara acak (biome, gua, desa, Nether, End)</li>
+        <li>Bertahan hidup: kumpulkan makanan, lawan monster (zombie, creeper, skeleton)</li>
+        <li>Crafting: buat alat, senjata, armor, dan item dari bahan yang dikumpulkan</li>
+        <li>Mode permainan: Survival, Creative, Adventure, Spectator</li>
+        <li>Multiplayer: main bersama teman di dunia yang sama</li>
+      </ul>
+    </section>
+
+    <!-- Block & Item Dasar -->
+    <section>
+      <h2>Block & Item Dasar</h2>
+      <p>Di Minecraft Java Edition (versi terbaru 1.21+), ada sekitar <strong>1,200+ jenis block</strong> (termasuk variasi slab, stair, wall, dll.).</p>
+      <p>Beberapa kategori utama:</p>
+      <ul>
+        <li><strong>Building Blocks</strong>: Kayu, batu, batu bata, beton, wol, terracotta</li>
+        <li><strong>Natural Blocks</strong>: Rumput, tanah, pasir, kerikil, salju</li>
+        <li><strong>Ore & Mineral</strong>: Besi, emas, berlian, lapis lazuli, redstone, coal</li>
+        <li><strong>Nether & End</strong>: Netherrack, obsidian, end stone, purpur</li>
+        <li><strong>Decoration</strong>: Bunga, pagar, tangga, karpet, lukisan</li>
+      </ul>
+      <p>Item dasar: Pickaxe, Sword, Armor, Food (daging, apel, roti), Torch, Chest, Furnace, Crafting Table.</p>
+    </section>
+
+    <!-- Cara Mulai Bermain -->
+    <section>
+      <h2>Cara Mulai Bermain</h2>
+      <ol>
+        <li>Beli dan download Minecraft resmi di situs Mojang</li>
+        <li>Login dengan akun Microsoft</li>
+        <li>Pilih mode Survival atau Creative</li>
+        <li>Pukul pohon untuk ambil kayu → buat crafting table → mulai bertahan hidup</li>
+      </ol>
+      <a href="https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc" target="_blank" class="download-btn">Download Minecraft Resmi</a>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NovaCraft – Informasi dasar Minecraft. Hak cipta game dimiliki Mojang Studios / Microsoft.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aeon & Paths | NovaCraft</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:          #0a0814;
+      --card:        #131023;
+      --accent:      #9a9aff;
+      --accent-glow: #7b7bff;
+      --gold:        #d4c0ff;
+      --muted:       #b0b0e8;
+      --border:      #2a1f45;
+      --glow:        0 0 20px rgba(154, 154, 255, 0.3);
+      --text:        #e8e8ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      background-image: 
+        radial-gradient(circle at 30% 20%, rgba(154, 154, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(212, 192, 255, 0.06) 0%, transparent 50%);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(135deg, #1a142f 0%, #0f0a20 100%);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(154, 154, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      border-radius: 16px;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-shadow: var(--glow);
+    }
+
+    .home-btn {
+      background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(154, 154, 255, 0.4);
+      position: absolute;
+      top: 1.2rem;
+      right: 2rem;
+      z-index: 2;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(154, 154, 255, 0.6);
+      background: linear-gradient(90deg, var(--accent-glow), #a0a0ff);
+    }
+
+    .intro {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+      font-size: 2.2rem;
+      margin: 4rem 0 1.8rem;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 4px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+      border-radius: 4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+      grid-auto-rows: 1fr; /* semua baris tinggi sama */
+    }
+
+    .card {
+      background: rgba(19, 16, 35, 0.85);
+      border-radius: 16px;
+      padding: 1.8rem 1.4rem;
+      text-align: center;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(154, 154, 255, 0.15);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      aspect-ratio: 4 / 5; /* rasio lebih tinggi agar teks muat rapi */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 50px rgba(154, 154, 255, 0.25);
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 4px 12px rgba(154, 154, 255, 0.4));
+    }
+
+    .card-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.45rem;
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.3;
+      margin-top: auto; /* teks deskripsi selalu di bawah */
+    }
+
+    .card-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      height: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); } /* 3-4 kolom */
+    }
+
+    @media (max-width: 768px) {
+      .header { flex-direction: column; text-align: center; gap: 1rem; }
+      .home-btn { margin-top: 1rem; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } /* 2-3 kolom */
+    }
+
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; } /* 1 kolom */
+      .card img { width: 90px; height: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1><img src="asset/hsr logo.jpg" alt="Aeons" style="height: 40px; vertical-align: middle;"> Aeons
+      <a href="home menu hsr.html" class="home-btn">← Kembali ke Home</a>
+    </div>
+
+    <p class="intro">Daftar Path dan Aeon di Honkai: Star Rail — entitas kosmik yang membentuk filosofi dan kekuatan di seluruh alam semesta.</p>
+
+    <h2 class="section-title">Aeons</h2>
+    <div class="grid">
+      <a href="aeon and path/Nanook.html" class="card-link">
+        <div class="card">
+          <img src="asset/aeon_nanook.webp" alt="Nanook">
+          <div class="card-name">Nanook</div>
+          <div class="card-sub">Aeon of Destruction</div>
+        </div>
+      </a>
+      <a href="aeon and path/Lan.html" class="card-link">
+        <div class="card">
+          <img src="asset/aeon_lan.webp" alt="Lan">
+          <div class="card-name">Lan</div>
+          <div class="card-sub">Reignbow Arbiter • The Hunt</div>
+        </div>
+      </a>
+      <a href="aeon and path/Nous.html" class="card-link">
+        <div class="card">
+          <img src="asset/aeon_nous.webp" alt="Nous">
+          <div class="card-name">Nous</div>
+          <div class="card-sub">Aeon of Erudition</div>
+        </div>
+      </a>
+      <a href="aeon and path/xipe.html" class="card-link">
+        <div class="card">
+          <img src="asset/aeon_xipe.webp" alt="Xipe">
+          <div class="card-name">Xipe</div>
+          <div class="card-sub">Aeon of Harmony</div>
+        </div>
+      </a>
+      <a href="aeon and path/qlipoth.html" class="card-link">
+        <div class="card">
+          <img src="asset/aeon_qlipoth.webp" alt="Qlipoth">
+          <div class="card-name">Qlipoth</div>
+          <div class="card-sub">Aeon of Preservation</div>
+        </div>
+      </a>
+      <a href="aeon and path/Yaoshi.html" class="card-link">
+        <div class="card">
+          <img src="asset/aeon_yaoshi.webp" alt="Yaoshi">
+          <div class="card-name">Yaoshi</div>
+          <div class="card-sub">Aeon of Abundance</div>
+        </div>
+      </a>
+      <a href="aeon and path/IX.html" class="card-link">
+        <div class="card">
+          <img src="asset/aeon_ix.webp" alt="IX">
+          <div class="card-name">IX</div>
+          <div class="card-sub">Aeon of Nihility</div>
+        </div>
+      </a>
+      <a href="aeon and path/Aha.html" class="card-link">
+        <div class="card">
+          <img src="asset/aeon_aha.webp" alt="Aha">
+          <div class="card-name">Aha</div>
+          <div class="card-sub">Aeon of Elation</div>
+        </div>
+      </a>
+      <a href="aeon and path/fuli.html" class="card-link">
+        <div class="card">
+          <img src="asset/aeon_fuli.webp" alt="Fuli">
+          <div class="card-name">Fuli</div>
+          <div class="card-sub">Aeon of Remembrance</div>
+        </div>
+      </a>
+      <a href="aeon and path/Ena.html" class="card-link">
+        <div class="card">
+          <img src="aeon and path/Aeon_Ena.webp" alt="Ena">
+          <div class="card-name">Ena</div>
+          <div class="card-sub">Aeon of Order (Assimilated)</div>
+        </div>
+      </a>
+      <a href="aeon and path/long.html" class="card-link">
+        <div class="card">
+          <img src="aeon and path/Aeon_Long.webp" alt="Long">
+          <div class="card-name">Long</div>
+          <div class="card-sub">Aeon of Permanence</div>
+        </div>
+      </a>
+      <a href="aeon and path/termitus.html" class="card-link">
+        <div class="card">
+          <img src="aeon and path/Aeon_Terminus.webp" alt="Terminus">
+          <div class="card-name">Terminus</div>
+          <div class="card-sub">Aeon of Finality</div>
+        </div>
+      </a>
+      <a href="aeon and path/hooh.html" class="card-link">
+        <div class="card">
+          <img src="aeon and path/Aeon_HooH.webp" alt="HooH">
+          <div class="card-name">HooH</div>
+          <div class="card-sub">Aeon of Equilibrium</div>
+        </div>
+      </a>
+      <a href="aeon and path/tazzzyroth.html" class="card-link">
+        <div class="card">
+          <img src="aeon and path/Aeon_Tayzzyronth.webp" alt="Tazzyronth">
+          <div class="card-name">Tazzyronth</div>
+          <div class="card-sub">Aeon of Propagation</div>
+        </div>
+      </a>
+      <a href="aeon and path/mythus.html" class="card-link">
+        <div class="card">
+          <img src="aeon and path/Aeon_Mythus.webp" alt="Mythus">
+          <div class="card-name">Mythus</div>
+          <div class="card-sub">Aeon of Enigmata</div>
+        </div>
+      </a>
+      <a href="aeon and path/oroboros.html" class="card-link">
+        <div class="card">
+          <img src="aeon and path/Aeon_Oroboros.webp" alt="Oroboros">
+          <div class="card-name">Oroboros</div>
+          <div class="card-sub">Aeon of Voracity</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

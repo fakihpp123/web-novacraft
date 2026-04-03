@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NovaCraft – Minecraft Bedrock Edition</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f121a;
+      --card: #1a1f2e;
+      --accent: #ff8c42;
+      --accent-light: #ffb366;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 140, 66, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 140, 66, 0.05) 0%, transparent 60%);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255, 140, 66, 0.2);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 140, 66, 0.3);
+      transform: translateX(-4px);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 20px rgba(255, 140, 66, 0.3);
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .edition-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #000;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 0.8rem;
+    }
+
+    section {
+      background: linear-gradient(135deg, rgba(26, 31, 46, 0.8), rgba(20, 24, 36, 0.8));
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(255, 140, 66, 0.1);
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.8rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: rgba(226, 232, 240, 0.95);
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    ul li::before {
+      content: '●';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      font-size: 1rem;
+    }
+
+    ol {
+      padding-left: 1.5rem;
+    }
+
+    ol li {
+      margin: 0.8rem 0;
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #000;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+      transition: all 0.3s;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 140, 66, 0.4);
+    }
+
+    .highlight-box {
+      background: rgba(255, 140, 66, 0.1);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .highlight-box strong {
+      color: var(--accent-light);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      section { padding: 1.5rem; }
+      .container { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <a href="minecraft.html" class="back-btn">← Kembali</a>
+
+    <header>
+      <h1>Minecraft Bedrock Edition</h1>
+      <p class="subtitle">Panduan Lengkap Minecraft Versi Cross-Platform</p>
+      <span class="edition-tag">🎮 Bedrock Edition</span>
+    </header>
+
+    <!-- Apa itu Minecraft Bedrock -->
+    <section>
+      <h2>Apa itu Minecraft Bedrock Edition?</h2>
+      <p>Minecraft Bedrock Edition adalah versi modern Minecraft yang tersedia di berbagai platform: Windows 10/11, Xbox One, PlayStation, Nintendo Switch, Mobile (iOS & Android), dan VR.</p>
+      <div class="highlight-box">
+        <strong>Keunggulan Bedrock:</strong> Cross-Platform Play (main dengan siapa saja di device yang berbeda), integrasi dengan Microsoft ecosystem, dan optimasi performa yang lebih baik.
+      </div>
+    </section>
+
+    <!-- Fitur Utama Bedrock -->
+    <section>
+      <h2>Fitur Utama Bedrock Edition</h2>
+      <ul>
+        <li><strong>Cross-Platform Multiplayer</strong> – Bermain dengan teman di PC, Xbox, PlayStation, Mobile, Nintendo Switch</li>
+        <li><strong>Realms</strong> – Game server pribadi untuk main bersama hingga 10 pemain</li>
+        <li><strong>Xbox Live Integration</strong> – Achievements, Friends list, Game Pass availability</li>
+        <li><strong>Marketplace</strong> – Beli skins, texture packs, maps, dan add-ons</li>
+        <li><strong>Better Performance</strong> – Render engine C++ yang lebih cepat dan smooth</li>
+        <li><strong>Building, Exploring, Survival</strong> – Sama seperti Java Edition</li>
+        <li><strong>Creative Mode & Adventure Mode</strong> – Tersedia di semua platform</li>
+        <li><strong>Updates Reguler</strong> – Fitur dan konten baru setiap bulan</li>
+      </ul>
+    </section>
+
+    <!-- Platform & Kompatibilitas -->
+    <section>
+      <h2>Platform & Kompatibilitas</h2>
+      <p>Minecraft Bedrock Edition tersedia di:</p>
+      <ul>
+        <li><strong>Windows 10/11</strong> – Melalui Microsoft Store atau Game Pass</li>
+        <li><strong>Xbox One / Xbox Series X|S</strong> – Game Pass included</li>
+        <li><strong>PlayStation 4/5</strong> – Sony Store</li>
+        <li><strong>Nintendo Switch</strong> – Nintendo eShop</li>
+        <li><strong>Mobile</strong> – iOS (App Store) & Android (Google Play, Amazon Appstore)</li>
+        <li><strong>VR</strong> – Windows Mixed Reality dan Oculus</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>Cross-Play:</strong> Semua pemain Bedrock Edition bisa bermain bersama di Realms atau dunia lokal, terlepas dari platform mereka!
+      </div>
+    </section>
+
+    <!-- Fitur Bedrock vs Java -->
+    <section>
+      <h2>Perbedaan Bedrock vs Java Edition</h2>
+      <ul>
+        <li><strong>Bedrock:</strong> Cross-platform, marketplace, Realms, Game Pass, performance lebih baik</li>
+        <li><strong>Java:</strong> Modding unlimited, serbuan server, komunitas lebih besar, lebih banyak content creator</li>
+      </ul>
+      <p style="margin-top: 1rem; font-style: italic; color: var(--muted);">Pilih sesuai preferensi Anda: ingin cross-play dengan teman di berbagai device? Pilih Bedrock. Ingin modding ekstensif? Pilih Java.</p>
+    </section>
+
+    <!-- Cara Memulai -->
+    <section>
+      <h2>Cara Memulai di Bedrock Edition</h2>
+      <ol>
+        <li>Download Minecraft untuk platform Anda (Windows, Xbox, Mobile, dll)</li>
+        <li>Login dengan Microsoft Account (gratis atau Game Pass)</li>
+        <li>Pilih mode Survival, Creative, atau Adventure</li>
+        <li>Mulai bermain dan invite teman untuk cross-platform play!</li>
+      </ol>
+      <a href="https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc" target="_blank" class="download-btn">Download Bedrock Edition</a>
+    </section>
+
+    <!-- Marketplace & Add-ons -->
+    <section>
+      <h2>Marketplace & Add-ons</h2>
+      <p>Bedrock Edition menyediakan <strong>Marketplace</strong> untuk membeli content resmi:</p>
+      <ul>
+        <li><strong>Skins</strong> – Avatar character dari berbagai tema (anime, hero, game lain)</li>
+        <li><strong>Texture Packs</strong> – Ubah tampilan grafis game (pixel art, realistis, lucu)</li>
+        <li><strong>World Templates</strong> – Dunia pre-made dengan challenge atau tema tertentu</li>
+        <li><strong>Add-ons</strong> – Menambah creature, block, atau mekanik game</li>
+      </ul>
+      <div class="highlight-box">
+        <strong>Catatan:</strong> Marketplace content adalah opsional. Game dasar tetap gratis atau termasuk dalam Game Pass.
+      </div>
+    </section>
+
+    <!-- Tips & Tricks -->
+    <section>
+      <h2>Tips Bermain Bedrock</h2>
+      <ul>
+        <li>Manfaatkan <strong>Realms</strong> untuk main bersama teman dengan aman (jangan beli server pihak ketiga jika tidak perlu)</li>
+        <li>Sesuaikan <strong>graphics settings</strong> untuk performa maksimal sesuai device Anda</li>
+        <li>Gunakan <strong>controller</strong> di mobile/tablet untuk experience yang lebih baik</li>
+        <li>Aktifkan <strong>achievements</strong> untuk mendapat rewards Xbox Live</li>
+        <li>Explore <strong>Marketplace</strong> untuk content premium, tapi tidak wajib beli</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 NovaCraft – Panduan Minecraft Bedrock Edition. Hak cipta game dimiliki Mojang Studios / Microsoft.</p>
+  </footer>
+
+</body>
+</html>

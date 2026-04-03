@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Characters List • Honkai: Star Rail Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0e14;
+      --card-bg: #0f1620;
+      --text: #d1d9e0;
+      --muted: #8a96a6;
+      --border: #2a3340;
+      --accent: #ff2d55;
+      --accent-light: #ff6b8a;
+      
+      --physical: #8d5524;
+      --fire: #ff6b00;
+      --ice: #4a9eff;
+      --lightning: #ffc730;
+      --wind: #46d6cf;
+      --quantum: #9d4edd;
+      --imaginary: #f4d58d;
+      
+      --glow: 0 0 20px rgba(255, 45, 85, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--accent);
+      text-shadow: var(--glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .header p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .last-updated {
+      color: var(--muted);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* FILTER SECTION */
+    .filter-section {
+      background: linear-gradient(135deg, var(--card-bg), #0a0f1a);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .filter-title {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .filter-group {
+      margin-bottom: 2rem;
+    }
+
+    .filter-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .filter-label {
+      display: block;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .filter-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .filter-btn {
+      background: rgba(255, 45, 85, 0.15);
+      border: 1px solid rgba(255, 45, 85, 0.3);
+      color: var(--text);
+      padding: 0.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 45, 85, 0.25);
+      border-color: var(--accent);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .filter-icon-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .filter-icon-btn {
+      padding: 8px;
+      width: 50px;
+      height: 50px;
+    }
+
+    .reset-btn {
+      background: rgba(70, 214, 207, 0.2);
+      border: 1px solid #46d6cf;
+      color: #46d6cf;
+      padding: 0.7rem 1.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .reset-btn:hover {
+      background: rgba(70, 214, 207, 0.3);
+    }
+
+    /* CHARACTER COUNTER */
+    .char-counter {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* CHARACTER GRID */
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .char-card {
+      background: linear-gradient(135deg, rgba(15, 22, 32, 0.9), rgba(10, 14, 20, 0.9));
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .char-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(255, 45, 85, 0.2);
+    }
+
+    .char-image {
+      width: 100%;
+      height: 200px;
+      background: rgba(255, 45, 85, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .char-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rarity-badge {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: rgba(255, 200, 50, 0.9);
+      color: #000;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .element-badge {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+
+    .element-badge img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .rarity-badge.rare4 {
+      background: rgba(150, 150, 255, 0.9);
+      color: white;
+    }
+
+    .rarity-badge.rare5 {
+      background: rgba(255, 200, 50, 0.9);
+      color: #000;
+    }
+
+    .char-info {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .char-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .char-meta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .path-image {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      filter: brightness(1.1);
+    }
+
+    /* NO RESULTS */
+    .no-results {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--muted);
+    }
+
+    .no-results h2 {
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .char-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .char-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1rem;
+      }
+
+      .filter-section {
+        padding: 1.5rem;
+      }
+
+      .filter-options {
+        gap: 0.6rem;
+      }
+
+      .filter-btn {
+        padding: 0.4rem;
+        font-size: 0.85rem;
+        min-width: 40px;
+        min-height: 40px;
+      }
+
+      .filter-icon-btn {
+        width: 40px;
+        height: 40px;
+        padding: 4px;
+      }
+
+      .char-image {
+        height: 160px;
+      }
+
+      .char-info {
+        padding: 0.8rem;
+        gap: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="home menu hsr.html" class="back-btn">← Kembali ke Home</a>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1><img src="asset/hsr logo.jpg" alt="Characters" style="height: 40px; vertical-align: middle;"> Characters List
+    <p class="last-updated">Last updated: February 4, 2026</p>
+  </div>
+
+  <!-- FILTER SECTION -->
+  <div class="filter-section">
+    <div class="filter-title">🔍 Filter Characters</div>
+
+    <!-- RARITY FILTER -->
+    <div class="filter-group">
+      <label class="filter-label">Rarity</label>
+      <div class="filter-options">
+        <button class="filter-btn" onclick="toggleFilter('rarity', '4')">
+          ★ 4-Star
+        </button>
+        <button class="filter-btn" onclick="toggleFilter('rarity', '5')">
+          ★ 5-Star
+        </button>
+      </div>
+    </div>
+
+    <!-- ELEMENT FILTER -->
+    <div class="filter-group">
+      <label class="filter-label">Element</label>
+      <div class="filter-options">
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('element', 'physical')" title="Physical">
+          <img src="asset/ele_physical.webp" alt="Physical">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('element', 'fire')" title="Fire">
+          <img src="asset/ele_fire.webp" alt="Fire">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('element', 'ice')" title="Ice">
+          <img src="asset/ele_ice.webp" alt="Ice">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('element', 'lightning')" title="Lightning">
+          <img src="asset/ele_lightning.webp" alt="Lightning">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('element', 'wind')" title="Wind">
+          <img src="asset/ele_wind.webp" alt="Wind">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('element', 'quantum')" title="Quantum">
+          <img src="asset/ele_quantum.webp" alt="Quantum">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('element', 'imaginary')" title="Imaginary">
+          <img src="asset/ele_imaginary.webp" alt="Imaginary">
+        </button>
+      </div>
+    </div>
+
+    <!-- PATH FILTER -->
+    <div class="filter-group">
+      <label class="filter-label">Path</label>
+      <div class="filter-options">
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('path', 'abundance')" title="Abundance">
+          <img src="asset/path_abundance.webp" alt="Abundance">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('path', 'destruction')" title="Destruction">
+          <img src="asset/path_destruction.webp" alt="Destruction">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('path', 'elation')" title="Elation">
+          <img src="asset/path_elation.webp" alt="Elation">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('path', 'erudition')" title="Erudition">
+          <img src="asset/path_erudition.webp" alt="Erudition">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('path', 'harmony')" title="Harmony">
+          <img src="asset/path_harmony.webp" alt="Harmony">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('path', 'hunt')" title="Hunt">
+          <img src="asset/path_hunt.webp" alt="Hunt">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('path', 'nihility')" title="Nihility">
+          <img src="asset/path_nihility.webp" alt="Nihility">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('path', 'preservation')" title="Preservation">
+          <img src="asset/path_preservation.webp" alt="Preservation">
+        </button>
+        <button class="filter-btn filter-icon-btn" onclick="toggleFilter('path', 'remembrance')" title="Remembrance">
+          <img src="asset/path_remem.webp" alt="Remembrance">
+        </button>
+      </div>
+    </div>
+
+    <!-- RESET BUTTON -->
+    <div style="margin-top: 2rem; display: flex; gap: 1rem; align-items: center;">
+      <button class="reset-btn" onclick="resetFilters()">↻ Reset Filters</button>
+      <div id="charCounter" class="char-counter" style="margin: 0;"></div>
+    </div>
+  </div>
+
+  <!-- CHARACTER GRID -->
+  <div id="charGrid" class="char-grid"></div>
+
+  <!-- NO RESULTS -->
+  <div id="noResults" class="no-results" style="display: none;">
+    <h2>No characters found</h2>
+    <p>Try adjusting your filters</p>
+  </div>
+
+</div>
+
+<script>
+  // Character data dikosongkan - akan diisi melalui admin panel
+  const DEFAULT_CHARACTERS = [];
+
+  // Load characters dari localStorage atau gunakan default
+  function getCharacters() {
+    let stored = localStorage.getItem("charList");
+    if (!stored) {
+      return DEFAULT_CHARACTERS;
+    }
+    return JSON.parse(stored);
+  }
+
+  let characters = getCharacters();
+
+  let activeFilters = {
+    rarity: [],
+    element: [],
+    path: []
+  };
+
+  const pathColors = {
+    abundance: '#4ade80',
+    destruction: '#ff6b6b',
+    elation: '#ff2d55',
+    erudition: '#8365ff',
+    harmony: '#46d6cf',
+    hunt: '#ffc730',
+    nihility: '#9d4edd',
+    preservation: '#457b9d',
+    remembrance: '#f4d58d'
+  };
+
+  const elementColors = {
+    physical: '#8d5524',
+    fire: '#ff6b00',
+    ice: '#4a9eff',
+    lightning: '#ffc730',
+    wind: '#46d6cf',
+    quantum: '#9d4edd',
+    imaginary: '#f4d58d'
+  };
+
+  function toggleFilter(type, value) {
+    const index = activeFilters[type].indexOf(value);
+    if (index > -1) {
+      activeFilters[type].splice(index, 1);
+    } else {
+      activeFilters[type].push(value);
+    }
+
+    // Update button styling
+    document.querySelectorAll(`.filter-btn`).forEach(btn => {
+      const hasValue = btn.textContent.includes(value);
+      if (hasValue && btn.getAttribute('onclick').includes(type)) {
+        btn.classList.toggle('active');
+      }
+    });
+
+    renderCharacters();
+  }
+
+  function resetFilters() {
+    activeFilters = { rarity: [], element: [], path: [] };
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    renderCharacters();
+  }
+
+  function filterCharacters() {
+    return characters.filter(char => {
+      const passRarity = activeFilters.rarity.length === 0 || activeFilters.rarity.includes(String(char.rarity));
+      const passElement = activeFilters.element.length === 0 || activeFilters.element.includes(char.element);
+      const passPath = activeFilters.path.length === 0 || activeFilters.path.includes(char.path);
+      return passRarity && passElement && passPath;
+    });
+  }
+
+  function renderCharacters() {
+    const filtered = filterCharacters();
+    const grid = document.getElementById('charGrid');
+    const noResults = document.getElementById('noResults');
+    const counter = document.getElementById('charCounter');
+
+    counter.textContent = `Showing ${filtered.length} character${filtered.length !== 1 ? 's' : ''}`;
+
+    if (filtered.length === 0) {
+      grid.style.display = 'none';
+      noResults.style.display = 'block';
+      return;
+    }
+
+    grid.style.display = 'grid';
+    noResults.style.display = 'none';
+
+    grid.innerHTML = filtered.map(char => {
+      // Generate correct link based on folder
+      let charLink = 'character-template.html?char=' + encodeURIComponent(char.name);
+      if (char.folder) {
+        // Convert name to lowercase filename (e.g., "Feixiao" -> "feixiao")
+        const fileName = char.name.toLowerCase().replace(/\s+/g, '-');
+        charLink = `build karakter/${char.folder}/character-${fileName}.html`;
+      }
+      
+      return `
+      <a href="${charLink}" class="char-card">
+        <div class="char-image">
+          <img src="${char.image || 'asset/placeholder.webp'}" alt="${char.name}" onerror="this.src='asset/placeholder.webp'">
+          <div class="element-badge" title="${char.element}">
+            <img src="asset/ele_${char.element}.webp" alt="${char.element}" onerror="this.src='asset/placeholder.webp'">
+          </div>
+          <div class="rarity-badge rare${char.rarity}">★ ${char.rarity}</div>
+        </div>
+        <div class="char-info">
+          <div class="char-name">${char.name}</div>
+          <div class="char-meta">
+            <img src="asset/path_${char.path === 'remembrance' ? 'remem' : char.path}.webp" alt="${char.path}" class="path-image" title="${char.path}" onerror="this.src='asset/placeholder.webp'">
+          </div>
+        </div>
+      </a>
+    `;
+    }).join('');
+  }
+
+  // Initial render
+  renderCharacters();
+
+  // Refresh ketika localStorage berubah (dari admin panel)
+  window.addEventListener("storage", () => {
+    characters = getCharacters();
+    renderCharacters();
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilih Game</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1e1f2b, #0d0e14);
+    color: white;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* LOGO */
+.logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+.logo img {
+    height: 45px;
+}
+
+/* WRAPPER */
+.game-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* JUDUL */
+.page-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* CONTAINER CARD */
+.game-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* CARD UMUM – ukuran mengikuti foto */
+.game-card {
+    width: 220px; /* sesuaikan dengan lebar foto kamu */
+    border-radius: 18px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    background: rgba(30, 30, 50, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Foto mengisi lebar penuh card */
+.game-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Judul game di bawah foto */
+.game-card h2 {
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 12px 10px;
+    margin: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+/* Hover effect */
+.game-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(120,130,255,0.5);
+}
+
+/* BUTTON LOGIN */
+.login-btn {
+    margin-top: 40px;
+    padding: 12px 30px;
+    border-radius: 12px;
+    background: #5865f2;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(88,101,242,0.4);
+}
+
+.login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(88,101,242,0.6);
+}
+</style>
+</head>
+<body>
+
+<!-- LOGO -->
+<div class="logo">
+    <img src="asset/logo.png" alt="Logo Website">
+</div>
+
+<!-- KONTEN -->
+<div class="game-wrapper">
+    <div class="page-title">
+        Pilih Informasi Game yang Anda Inginkan
+    </div>
+
+    <div class="game-container">
+        <a href="home menu mc.html" class="game-card minecraft">
+            <img src="asset/mc logo.jpg" alt="Minecraft">
+            <h2>Minecraft</h2>
+        </a>
+
+        <a href="home menu hsr.html" class="game-card hsr">
+            <img src="asset/hsr logo.jpg" alt="Honkai: Star Rail">
+            <h2>Honkai: Star Rail</h2>
+        </a>
+
+        <!-- Tambah game lain jika perlu -->
+        <!-- <a href="#" class="game-card roblox">
+            <img src="image/roblox-logo.jpg" alt="Roblox">
+            <h2>Roblox</h2>
+        </a> -->
+    </div>
+
+    <button class="login-btn" onclick="logout()">Kembali ke Login</button>
+</div>
+
+<script>
+function logout() {
+    localStorage.removeItem("isLogin");
+    localStorage.removeItem("activeUser");
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
